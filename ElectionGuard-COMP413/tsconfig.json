@@ -20,10 +20,15 @@
     "experimentalDecorators": true,
     "sourceMap": true,
     "outDir": "./dist/tsc/",
-    "types": [
-      "node",
-      "jest"
+    "typeRoots": [
+      "./node_modules/@types",
+      "./node_modules/gmp-wasm/types"
     ],
+//    "types": [
+//      "node",
+//      "jest",
+//      "gmp-wasm"
+//    ],
     "lib": [
       "ES2020",
       "DOM"
