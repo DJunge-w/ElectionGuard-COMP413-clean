@@ -1,5 +1,3 @@
-///<reference path="/Users/djunge/Documents/codes/COMP413/ElectionGuard-COMP413-clean/ElectionGuard-COMP413/node_modules/gmp-wasm/dist/types/index.d.ts"/>
-
 import {
   ElementModQ,
   // ElementModP,
@@ -26,7 +24,6 @@ import {
 import {get_optional} from "./utils";
 // import exp from 'constants';
 // import {PowRadixOption} from './powRadix'
-import gmp = require('gmp-wasm');
 
 function measureTimeMillis(f: () => void): number {
   const start = Date.now();
@@ -46,16 +43,19 @@ describe("BenchmarkElgamal", () => {
     const max = 1000;
     const min = 0;
 
-
-    gmp.init().then(({ calculate }) => {
-      // calculate() automatically deallocates all objects created within the callback function
-      const result = calculate((g) => {
-        const six = g.Float(1).add(5);
-        return g.Pi().div(six).sin(); // sin(Pi/6) = 0.5
-      });
-      console.log("gmp-wasm");
-      console.log(result);
-    });
+    // const n1 = "f10853b38e67ed882bc0284b8e71581469806699e8a028a19cd8cac913a3f8b859ee0999833886f13987ecf4ed3a11cf6aabd0b074531f5ef338f624e62429ff";
+    // const n2 = "d978cfde1678dc8ce9dab4bfe2e1fa8be09a5668cd8e607cc24f28e440495c7f4b5317d6533e3fb232ebce63fab872ece25935a5cacc5cb8a94b5";
+    // const five = "5";
+    //
+    // const a = new sjcl.bn(n1);
+    // const b = new sjcl.bn(n2);
+    // let c = a.sub(b);
+    // c = a.mod(b);
+    // c = a.mul(b);
+    // c = a.add(b);
+    // c = a.powermod(new sjcl.bn(five), b);
+    //
+    // console.log(c);
 
     // const message = BigInt(Math.floor(Math.random() * (max - min + 1) + min));
     const messages: bigint[] = Array.from(Array(N)).map(() =>{ return BigInt(Math.floor(Math.random() * (max - min + 1) + min))});
