@@ -1,0 +1,918 @@
+{
+    "id": "7e9ed0c9-028d-471e-a3a5-8e6ed2d31e8d",
+    "electionName": [
+        {
+            "languageID": "en",
+            "text": "2021 COMP 413 FINAL DEMO ELECTION"
+        }
+    ],
+    "title": [
+        {
+            "languageID": "en",
+            "text": "RICE UNIVERSITY OFFICIAL BALLOT"
+        }
+    ],
+    "subTitle": [
+        {
+            "languageID": "en",
+            "text": "DEMONSTRATIVE ELECTION"
+        }
+    ],
+    "text0": [
+        {
+            "languageID": "en",
+            "text": "HARRIS COUNTY, TEXAS"
+        }
+    ],
+    "text1": [
+        {
+            "languageID": "en",
+            "text": "2000-01-01T00:00:00"
+        }
+    ],
+    "text2": [
+        {
+            "languageID": "en",
+            "text": null
+        }
+    ],
+    "partyId": "rice-university-comp-413",
+    "partyName": [
+        {
+            "languageID": "en",
+            "text": "RICE UNIVERSITY COMP 413"
+        }
+    ],
+    "precinctId": "rice-university",
+    "precinctName": "RICE UNIVERSITY",
+    "ballotMarkerLayoutType": 0,
+    "ballotPrinterType": 0,
+    "ballotItems": [
+        {
+            "id": "0a0ea028-46f9-4454-a89d-41602bb6a2e4",
+            "order": 0,
+            "type": 1,
+            "title": [
+                {
+                    "languageID": "en",
+                    "text": "Instructor of COMP413"
+                }
+            ],
+            "subTitle": [
+                {
+                    "languageID": "en",
+                    "text": ""
+                }
+            ],
+            "instructions": [
+                {
+                    "languageID": "en",
+                    "text": "(Vote for one)"
+                }
+            ],
+            "referendum": [
+                {
+                    "languageID": "en",
+                    "text": ""
+                }
+            ],
+            "text1": [
+                {
+                    "languageID": "en",
+                    "text": ""
+                }
+            ],
+            "text2": [
+                {
+                    "languageID": "en",
+                    "text": ""
+                }
+            ],
+            "partyId": "8d5ceaaa-1231-4c31-a63c-1e5325ce747e",
+            "partyName": [
+                {
+                    "languageID": "en",
+                    "text": "COMP413 RICE UNIVERSITY"
+                }
+            ],
+            "writeInText": [
+                {
+                    "languageID": "en",
+                    "text": "Write-In"
+                }
+            ],
+            "voteForMax": 1,
+            "writeIns": 0,
+            "ballotOptions": [
+                {
+                    "id": "6d6e2d5e-6b01-453e-aae1-009be8d032cf",
+                    "order": 0,
+                    "type": 1,
+                    "title": [
+                        {
+                            "languageID": "en",
+                            "text": "Luay Nakhleh"
+                        }
+                    ],
+                    "subTitle": [
+                        {
+                            "languageID": "en",
+                            "text": ""
+                        }
+                    ],
+                    "text1": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "text2": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "partyId": "8d5ceaaa-1231-4c31-a63c-1e5325ce747e",
+                    "partyName": [
+                        {
+                            "languageID": "en",
+                            "text": "RICE UNIVERSITY"
+                        }
+                    ],
+                    "displayParty": false,
+                    "selected": false,
+                    "writeInSelection": null
+                },
+                {
+                    "id": "f397cb9c-0b18-4674-b581-fadf9bb11ce4",
+                    "order": 1,
+                    "type": 1,
+                    "title": [
+                        {
+                            "languageID": "en",
+                            "text": "Dan Wallach"
+                        }
+                    ],
+                    "subTitle": [
+                        {
+                            "languageID": "en",
+                            "text": ""
+                        }
+                    ],
+                    "text1": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "text2": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "partyId": "8d5ceaaa-1231-4c31-a63c-1e5325ce747e",
+                    "partyName": [
+                        {
+                            "languageID": "en",
+                            "text": "RICE UNIVERSITY"
+                        }
+                    ],
+                    "displayParty": false,
+                    "selected": false,
+                    "writeInSelection": null
+                },
+                {
+                    "id": "8e05c23e-0c30-4672-96a5-07c7ec42c519",
+                    "order": 2,
+                    "type": 1,
+                    "title": [
+                        {
+                            "languageID": "en",
+                            "text": "Scott Rixner"
+                        }
+                    ],
+                    "subTitle": [
+                        {
+                            "languageID": "en",
+                            "text": ""
+                        }
+                    ],
+                    "text1": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "text2": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "partyId": "8d5ceaaa-1231-4c31-a63c-1e5325ce747e",
+                    "partyName": [
+                        {
+                            "languageID": "en",
+                            "text": "RICE UNIVERSITY"
+                        }
+                    ],
+                    "displayParty": false,
+                    "selected": false,
+                    "writeInSelection": null
+                },
+                {
+                    "id": "8e05c23e-0c30-4672-96a5-07c7ec42c569",
+                    "order": 3,
+                    "type": 1,
+                    "title": [
+                        {
+                            "languageID": "en",
+                            "text": "Write In"
+                        }
+                    ],
+                    "subTitle": [
+                        {
+                            "languageID": "en",
+                            "text": ""
+                        }
+                    ],
+                    "text1": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "text2": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "partyId": "8d5ceaaa-1231-4c31-a63c-1e5325ce747e",
+                    "partyName": [
+                        {
+                            "languageID": "en",
+                            "text": "RICE UNIVERSITY"
+                        }
+                    ],
+                    "displayParty": false,
+                    "selected": false,
+                    "writeInSelection": null
+                }
+            ],
+            "undervoteWarningEnabled": true,
+            "overvoteWarningEnabled": false
+        },
+        {
+            "id": "84a2e49c-afd6-4952-ae2a-f5daba6ebd6a",
+            "order": 1,
+            "type": 1,
+            "title": [
+                {
+                    "languageID": "en",
+                    "text": "Best College in Texas"
+                }
+            ],
+            "subTitle": [
+                {
+                    "languageID": "en",
+                    "text": ""
+                }
+            ],
+            "instructions": [
+                {
+                    "languageID": "en",
+                    "text": "(Vote for one)"
+                }
+            ],
+            "referendum": [
+                {
+                    "languageID": "en",
+                    "text": ""
+                }
+            ],
+            "text1": [
+                {
+                    "languageID": "en",
+                    "text": ""
+                }
+            ],
+            "text2": [
+                {
+                    "languageID": "en",
+                    "text": ""
+                }
+            ],
+            "partyId": "8d5ceaaa-1231-4c31-a63c-1e5325ce747e",
+            "partyName": [
+                {
+                    "languageID": "en",
+                    "text": "COMP413 RICE UNIVERSITY"
+                }
+            ],
+            "writeInText": [
+                {
+                    "languageID": "en",
+                    "text": "Write-In"
+                }
+            ],
+            "voteForMax": 1,
+            "writeIns": 0,
+            "ballotOptions": [
+                {
+                    "id": "a8670ebc-fd9b-41ff-a7e6-9ac34761b006",
+                    "order": 0,
+                    "type": 1,
+                    "title": [
+                        {
+                            "languageID": "en",
+                            "text": "RICE UNIVERSITY"
+                        }
+                    ],
+                    "subTitle": [
+                        {
+                            "languageID": "en",
+                            "text": ""
+                        }
+                    ],
+                    "text1": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "text2": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "partyId": "8d5ceaaa-1231-4c31-a63c-1e5325ce747e",
+                    "partyName": [
+                        {
+                            "languageID": "en",
+                            "text": "RICE UNIVERSITY"
+                        }
+                    ],
+                    "displayParty": false,
+                    "selected": false,
+                    "writeInSelection": null
+                },
+                {
+                    "id": "c6d0c0e8-3c7d-405a-8d22-8ea6af76433b",
+                    "order": 1,
+                    "type": 1,
+                    "title": [
+                        {
+                            "languageID": "en",
+                            "text": "UT Austin"
+                        }
+                    ],
+                    "subTitle": [
+                        {
+                            "languageID": "en",
+                            "text": ""
+                        }
+                    ],
+                    "text1": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "text2": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "partyId": "8d5ceaaa-1231-4c31-a63c-1e5325ce747e",
+                    "partyName": [
+                        {
+                            "languageID": "en",
+                            "text": "RICE UNIVERSITY"
+                        }
+                    ],
+                    "displayParty": false,
+                    "selected": false,
+                    "writeInSelection": null
+                },
+                {
+                    "id": "c6d0c0e8-3c7d-405a-8d22-8ea6af696628",
+                    "order": 2,
+                    "type": 1,
+                    "title": [
+                        {
+                            "languageID": "en",
+                            "text": "UH"
+                        }
+                    ],
+                    "subTitle": [
+                        {
+                            "languageID": "en",
+                            "text": ""
+                        }
+                    ],
+                    "text1": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "text2": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "partyId": "8d5ceaaa-1231-4c31-a63c-1e5325ce747e",
+                    "partyName": [
+                        {
+                            "languageID": "en",
+                            "text": "RICE UNIVERSITY"
+                        }
+                    ],
+                    "displayParty": false,
+                    "selected": false,
+                    "writeInSelection": null
+                },
+                {
+                    "id": "c6d0c0e8-3c7d-405a-8d22-8ea6af696629",
+                    "order": 3,
+                    "type": 1,
+                    "title": [
+                        {
+                            "languageID": "en",
+                            "text": "Write In"
+                        }
+                    ],
+                    "subTitle": [
+                        {
+                            "languageID": "en",
+                            "text": ""
+                        }
+                    ],
+                    "text1": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "text2": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "partyId": "8d5ceaaa-1231-4c31-a63c-1e5325ce747e",
+                    "partyName": [
+                        {
+                            "languageID": "en",
+                            "text": "RICE UNIVERSITY"
+                        }
+                    ],
+                    "displayParty": false,
+                    "selected": false,
+                    "writeInSelection": null
+                }
+            ],
+            "undervoteWarningEnabled": true,
+            "overvoteWarningEnabled": false
+        },
+        {
+            "id": "206f6ed4-8bbc-42e7-b206-5471ef811602",
+            "order": 2,
+            "type": 1,
+            "title": [
+                {
+                    "languageID": "en",
+                    "text": "Best Department"
+                }
+            ],
+            "subTitle": [
+                {
+                    "languageID": "en",
+                    "text": ""
+                }
+            ],
+            "instructions": [
+                {
+                    "languageID": "en",
+                    "text": "(Vote for one)"
+                }
+            ],
+            "referendum": [
+                {
+                    "languageID": "en",
+                    "text": ""
+                }
+            ],
+            "text1": [
+                {
+                    "languageID": "en",
+                    "text": ""
+                }
+            ],
+            "text2": [
+                {
+                    "languageID": "en",
+                    "text": ""
+                }
+            ],
+            "partyId": "8d5ceaaa-1231-4c31-a63c-1e5325ce747e",
+            "partyName": [
+                {
+                    "languageID": "en",
+                    "text": "RICE UNIVERSITY"
+                }
+            ],
+            "writeInText": [
+                {
+                    "languageID": "en",
+                    "text": "Write-In"
+                }
+            ],
+            "voteForMax": 1,
+            "writeIns": 0,
+            "ballotOptions": [
+                {
+                    "id": "d8eda7e1-a771-4e7a-993d-578b0da8293a",
+                    "order": 0,
+                    "type": 1,
+                    "title": [
+                        {
+                            "languageID": "en",
+                            "text": "CS"
+                        }
+                    ],
+                    "subTitle": [
+                        {
+                            "languageID": "en",
+                            "text": ""
+                        }
+                    ],
+                    "text1": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "text2": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "partyId": "8d5ceaaa-1231-4c31-a63c-1e5325ce747e",
+                    "partyName": [
+                        {
+                            "languageID": "en",
+                            "text": "RICE UNIVERSITY"
+                        }
+                    ],
+                    "displayParty": false,
+                    "selected": false,
+                    "writeInSelection": null
+                },
+                {
+                    "id": "7612c57f-ff13-46c7-85b4-0d22be11bea1",
+                    "order": 1,
+                    "type": 1,
+                    "title": [
+                        {
+                            "languageID": "en",
+                            "text": "ECE"
+                        }
+                    ],
+                    "subTitle": [
+                        {
+                            "languageID": "en",
+                            "text": ""
+                        }
+                    ],
+                    "text1": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "text2": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "partyId": "8d5ceaaa-1231-4c31-a63c-1e5325ce747e",
+                    "partyName": [
+                        {
+                            "languageID": "en",
+                            "text": "RICE UNIVERSITY"
+                        }
+                    ],
+                    "displayParty": false,
+                    "selected": false,
+                    "writeInSelection": null
+                },
+                {
+                    "id": "7612c57f-ff13-46c7-85b4-0d22be11bek3",
+                    "order": 2,
+                    "type": 1,
+                    "title": [
+                        {
+                            "languageID": "en",
+                            "text": "Economics"
+                        }
+                    ],
+                    "subTitle": [
+                        {
+                            "languageID": "en",
+                            "text": ""
+                        }
+                    ],
+                    "text1": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "text2": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "partyId": "8d5ceaaa-1231-4c31-a63c-1e5325ce747e",
+                    "partyName": [
+                        {
+                            "languageID": "en",
+                            "text": "RICE UNIVERSITY"
+                        }
+                    ],
+                    "displayParty": false,
+                    "selected": false,
+                    "writeInSelection": null
+                },
+                {
+                    "id": "7612c57f-ff13-46c7-85b4-0d22be11bez5",
+                    "order": 3,
+                    "type": 1,
+                    "title": [
+                        {
+                            "languageID": "en",
+                            "text": "Write In"
+                        }
+                    ],
+                    "subTitle": [
+                        {
+                            "languageID": "en",
+                            "text": ""
+                        }
+                    ],
+                    "text1": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "text2": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "partyId": "8d5ceaaa-1231-4c31-a63c-1e5325ce747e",
+                    "partyName": [
+                        {
+                            "languageID": "en",
+                            "text": "RICE UNIVERSITY"
+                        }
+                    ],
+                    "displayParty": false,
+                    "selected": false,
+                    "writeInSelection": null
+                }
+            ],
+            "undervoteWarningEnabled": true,
+            "overvoteWarningEnabled": false
+        },
+        {
+            "id": "35652684-a91f-4507-90a8-965076a89acb",
+            "order": 3,
+            "type": 1,
+            "title": [
+                {
+                    "languageID": "en",
+                    "text": "Do you like ElectionGuard-Typescript?"
+                }
+            ],
+            "subTitle": [
+                {
+                    "languageID": "en",
+                    "text": ""
+                }
+            ],
+            "instructions": [
+                {
+                    "languageID": "en",
+                    "text": "(Vote for one)"
+                }
+            ],
+            "referendum": [
+                {
+                    "languageID": "en",
+                    "text": ""
+                }
+            ],
+            "text1": [
+                {
+                    "languageID": "en",
+                    "text": ""
+                }
+            ],
+            "text2": [
+                {
+                    "languageID": "en",
+                    "text": ""
+                }
+            ],
+            "partyId": "8d5ceaaa-1231-4c31-a63c-1e5325ce747e",
+            "partyName": [
+                {
+                    "languageID": "en",
+                    "text": "RICE UNIVERSITY"
+                }
+            ],
+            "writeInText": [
+                {
+                    "languageID": "en",
+                    "text": "Write-In"
+                }
+            ],
+            "voteForMax": 1,
+            "writeIns": 0,
+            "ballotOptions": [
+                {
+                    "id": "95825d9d-7a52-4632-a401-40ea3a3d910a",
+                    "order": 0,
+                    "type": 1,
+                    "title": [
+                        {
+                            "languageID": "en",
+                            "text": "Yes"
+                        }
+                    ],
+                    "subTitle": [
+                        {
+                            "languageID": "en",
+                            "text": ""
+                        }
+                    ],
+                    "text1": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "text2": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "partyId": "8d5ceaaa-1231-4c31-a63c-1e5325ce747e",
+                    "partyName": [
+                        {
+                            "languageID": "en",
+                            "text": "RICE UNIVERSITY"
+                        }
+                    ],
+                    "displayParty": false,
+                    "selected": false,
+                    "writeInSelection": null
+                },
+                {
+                    "id": "d21fdac7-fd1f-440f-9a2c-184292811e30",
+                    "order": 1,
+                    "type": 1,
+                    "title": [
+                        {
+                            "languageID": "en",
+                            "text": "You cannot say no"
+                        }
+                    ],
+                    "subTitle": [
+                        {
+                            "languageID": "en",
+                            "text": ""
+                        }
+                    ],
+                    "text1": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "text2": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "partyId": "8d5ceaaa-1231-4c31-a63c-1e5325ce747e",
+                    "partyName": [
+                        {
+                            "languageID": "en",
+                            "text": "RICE UNIVERSITY"
+                        }
+                    ],
+                    "displayParty": false,
+                    "selected": false,
+                    "writeInSelection": null
+                },
+                {
+                    "id": "743599b8-304c-4179-955d-1519d82ad229",
+                    "order": 2,
+                    "type": 1,
+                    "title": [
+                        {
+                            "languageID": "en",
+                            "text": "Yes and yes"
+                        }
+                    ],
+                    "subTitle": [
+                        {
+                            "languageID": "en",
+                            "text": ""
+                        }
+                    ],
+                    "text1": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "text2": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "partyId": "8d5ceaaa-1231-4c31-a63c-1e5325ce747e",
+                    "partyName": [
+                        {
+                            "languageID": "en",
+                            "text": "RICE UNIVERSITY"
+                        }
+                    ],
+                    "displayParty": false,
+                    "selected": false,
+                    "writeInSelection": null
+                },
+                {
+                    "id": "26661225-9d20-40c1-947f-ea4532df7eb5",
+                    "order": 3,
+                    "type": 1,
+                    "title": [
+                        {
+                            "languageID": "en",
+                            "text": "Write In"
+                        }
+                    ],
+                    "subTitle": [
+                        {
+                            "languageID": "en",
+                            "text": ""
+                        }
+                    ],
+                    "text1": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "text2": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "partyId": "8d5ceaaa-1231-4c31-a63c-1e5325ce747e",
+                    "partyName": [
+                        {
+                            "languageID": "en",
+                            "text": "RICE UNIVERSITY"
+                        }
+                    ],
+                    "displayParty": false,
+                    "selected": false,
+                    "writeInSelection": null
+                }
+            ],
+            "undervoteWarningEnabled": true,
+            "overvoteWarningEnabled": false
+        }
+    ],
+    "ballotPages": null,
+    "ballotImages": null
+}

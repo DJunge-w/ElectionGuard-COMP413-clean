@@ -1,0 +1,3039 @@
+{
+    "id": "18915f72-cafb-4720-abdc-54852bf1a918",
+    "electionName": [
+        {
+            "languageID": "en",
+            "text": "2020 PRIMARY AND CONSTITUTIONAL AMENDMENT ELECTION"
+        }
+    ],
+    "title": [
+        {
+            "languageID": "en",
+            "text": "ABSENTEE OFFICIAL BALLOT"
+        }
+    ],
+    "subTitle": [
+        {
+            "languageID": "en",
+            "text": "PRIMARY AND CONSTITUTIONAL AMENDMENT ELECTION"
+        }
+    ],
+    "text0": [
+        {
+            "languageID": "en",
+            "text": "AUTAUGA COUNTY, ALABAMA"
+        }
+    ],
+    "text1": [
+        {
+            "languageID": "en",
+            "text": "MARCH 3, 2020"
+        }
+    ],
+    "text2": [
+        {
+            "languageID": "en",
+            "text": null
+        }
+    ],
+    "markingInstructions": [
+        {
+            "languageID": "en",
+            "text": "<p>Follow the instructions below when using the ballot marking wizard.</p>\r\n<div class=\"my-3\">\r\n<h2><span class=\"px-3 py-1 bg-secondary text-light rounded-circle\">1</span> Getting Started</h2>\r\n<div class=\"mx-5\">Click the <strong>Start Ballot</strong> link to begin voting your ballot.</div>\r\n</div>\r\n<div class=\"my-3\">\r\n<h2><span class=\"px-3 py-1 bg-secondary text-light rounded-circle\">2</span> Review Each Office or Question</h2>\r\n<p class=\"mx-5\">You will be presented one office or question at a time. Read each one carefully.</p>\r\n</div>\r\n<div class=\"my-3\">\r\n<h2><span class=\"px-3 py-1 bg-secondary text-light rounded-circle\">3</span> Make Selections</h2>\r\n<p class=\"mx-5\">You may indicate your choice by clicking on the option or options you prefer. Be sure to only vote for the number of options you are allowed to.</p>\r\n</div>\r\n<div class=\"my-3\">\r\n<h2><span class=\"px-3 py-1 bg-secondary text-light rounded-circle\">4</span> Navigate the Ballot</h2>\r\n<p class=\"mx-5\">Use the Next and Previous buttons to move to the next or previous office/question. After the last item on the ballot, you will have the option to review all of your selections.</p>\r\n</div>\r\n<div class=\"my-3\">\r\n<h2><span class=\"px-3 py-1 bg-secondary text-light rounded-circle\">5</span> Review the Ballot</h2>\r\n<p class=\"mx-5\">When ready, you may review each of your selections. Be sure to review carefully. After reviewing, you may complete the online marking and move to the ballot download step.</p>\r\n</div>\r\n<div class=\"my-3\">\r\n<h2><span class=\"px-3 py-1 bg-secondary text-light rounded-circle\">6</span> Download the Ballot and Return Material</h2>\r\n<p class=\"mx-5\">At this last step, you will be able to download your marked ballot and all necessary documents required for the proper return of your ballot. Be sure you review everything carefully and follow all return instructions.</p>\r\n</div>"
+        }
+    ],
+    "printableInstructions": [
+        {
+            "languageID": "en",
+            "text": "<div style=\"font-family: 'Open Sans';\"><strong> Please read the following before marking your ballot:</strong><br />To vote, completely darken the OVAL beside your choice. To vote for a person whose name is NOT on the ballot, write the candidates name on the write-in line and darken the OVAL beside the name.</div>"
+        }
+    ],
+    "partyId": "8d5ceaaa-1231-4c31-a63c-1e5325ce747e",
+    "partyName": [
+        {
+            "languageID": "en",
+            "text": "ALABAMA DEMOCRATIC PARTY"
+        }
+    ],
+    "precinctId": "eab2a503-d176-403b-8969-59942442368d",
+    "precinctName": "DOSTER COMM. CTR. 00160.005",
+    "ballotMarkerLayoutType": 0,
+    "ballotPrinterType": 0,
+    "ballotItems": [
+        {
+            "id": "0a0ea028-46f9-4454-a89d-41602bb6a2e4",
+            "order": 1,
+            "type": 1,
+            "title": [
+                {
+                    "languageID": "en",
+                    "text": "CANDIDATE OF THE DEMOCRATIC PARTY FOR PRESIDENT OF THE UNITED STATES"
+                }
+            ],
+            "subTitle": [
+                {
+                    "languageID": "en",
+                    "text": ""
+                }
+            ],
+            "instructions": [
+                {
+                    "languageID": "en",
+                    "text": "(Vote for one)"
+                }
+            ],
+            "referendum": [
+                {
+                    "languageID": "en",
+                    "text": ""
+                }
+            ],
+            "text1": [
+                {
+                    "languageID": "en",
+                    "text": ""
+                }
+            ],
+            "text2": [
+                {
+                    "languageID": "en",
+                    "text": ""
+                }
+            ],
+            "partyId": "8d5ceaaa-1231-4c31-a63c-1e5325ce747e",
+            "partyName": [
+                {
+                    "languageID": "en",
+                    "text": "ALABAMA DEMOCRATIC PARTY"
+                }
+            ],
+            "writeInText": [
+                {
+                    "languageID": "en",
+                    "text": "Write-In"
+                }
+            ],
+            "voteForMax": 1,
+            "writeIns": 0,
+            "ballotOptions": [
+                {
+                    "id": "6d6e2d5e-6b01-453e-aae1-009be8d032cf",
+                    "order": 1,
+                    "type": 1,
+                    "title": [
+                        {
+                            "languageID": "en",
+                            "text": "MICHAEL BENNET"
+                        }
+                    ],
+                    "subTitle": [
+                        {
+                            "languageID": "en",
+                            "text": ""
+                        }
+                    ],
+                    "text1": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "text2": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "partyId": "8d5ceaaa-1231-4c31-a63c-1e5325ce747e",
+                    "partyName": [
+                        {
+                            "languageID": "en",
+                            "text": "ALABAMA DEMOCRATIC PARTY"
+                        }
+                    ],
+                    "displayParty": false,
+                    "selected": false,
+                    "writeInSelection": null
+                },
+                {
+                    "id": "f397cb9c-0b18-4674-b581-fadf9bb11ce4",
+                    "order": 2,
+                    "type": 1,
+                    "title": [
+                        {
+                            "languageID": "en",
+                            "text": "JOSEPH R. BIDEN"
+                        }
+                    ],
+                    "subTitle": [
+                        {
+                            "languageID": "en",
+                            "text": ""
+                        }
+                    ],
+                    "text1": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "text2": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "partyId": "8d5ceaaa-1231-4c31-a63c-1e5325ce747e",
+                    "partyName": [
+                        {
+                            "languageID": "en",
+                            "text": "ALABAMA DEMOCRATIC PARTY"
+                        }
+                    ],
+                    "displayParty": false,
+                    "selected": false,
+                    "writeInSelection": null
+                },
+                {
+                    "id": "8e05c23e-0c30-4672-96a5-07c7ec42c519",
+                    "order": 3,
+                    "type": 1,
+                    "title": [
+                        {
+                            "languageID": "en",
+                            "text": "MICHAEL R. BLOOMBERG"
+                        }
+                    ],
+                    "subTitle": [
+                        {
+                            "languageID": "en",
+                            "text": ""
+                        }
+                    ],
+                    "text1": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "text2": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "partyId": "8d5ceaaa-1231-4c31-a63c-1e5325ce747e",
+                    "partyName": [
+                        {
+                            "languageID": "en",
+                            "text": "ALABAMA DEMOCRATIC PARTY"
+                        }
+                    ],
+                    "displayParty": false,
+                    "selected": false,
+                    "writeInSelection": null
+                },
+                {
+                    "id": "8671cb36-b18f-4ee6-9e44-b5457dc71a6d",
+                    "order": 4,
+                    "type": 1,
+                    "title": [
+                        {
+                            "languageID": "en",
+                            "text": "CORY BOOKER"
+                        }
+                    ],
+                    "subTitle": [
+                        {
+                            "languageID": "en",
+                            "text": ""
+                        }
+                    ],
+                    "text1": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "text2": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "partyId": "8d5ceaaa-1231-4c31-a63c-1e5325ce747e",
+                    "partyName": [
+                        {
+                            "languageID": "en",
+                            "text": "ALABAMA DEMOCRATIC PARTY"
+                        }
+                    ],
+                    "displayParty": false,
+                    "selected": false,
+                    "writeInSelection": null
+                },
+                {
+                    "id": "605a45b1-1add-4c5c-b09f-49ceb22d077b",
+                    "order": 5,
+                    "type": 1,
+                    "title": [
+                        {
+                            "languageID": "en",
+                            "text": "PETE BUTTIGIEG"
+                        }
+                    ],
+                    "subTitle": [
+                        {
+                            "languageID": "en",
+                            "text": ""
+                        }
+                    ],
+                    "text1": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "text2": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "partyId": "8d5ceaaa-1231-4c31-a63c-1e5325ce747e",
+                    "partyName": [
+                        {
+                            "languageID": "en",
+                            "text": "ALABAMA DEMOCRATIC PARTY"
+                        }
+                    ],
+                    "displayParty": false,
+                    "selected": false,
+                    "writeInSelection": null
+                },
+                {
+                    "id": "2599d6fe-f205-4299-a72b-820dca2b8a6e",
+                    "order": 6,
+                    "type": 1,
+                    "title": [
+                        {
+                            "languageID": "en",
+                            "text": "JULIAN CASTRO"
+                        }
+                    ],
+                    "subTitle": [
+                        {
+                            "languageID": "en",
+                            "text": ""
+                        }
+                    ],
+                    "text1": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "text2": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "partyId": "8d5ceaaa-1231-4c31-a63c-1e5325ce747e",
+                    "partyName": [
+                        {
+                            "languageID": "en",
+                            "text": "ALABAMA DEMOCRATIC PARTY"
+                        }
+                    ],
+                    "displayParty": false,
+                    "selected": false,
+                    "writeInSelection": null
+                },
+                {
+                    "id": "bfdca7cf-815a-4fa5-9b11-03866ed6546d",
+                    "order": 7,
+                    "type": 1,
+                    "title": [
+                        {
+                            "languageID": "en",
+                            "text": "JOHN K. DELANEY"
+                        }
+                    ],
+                    "subTitle": [
+                        {
+                            "languageID": "en",
+                            "text": ""
+                        }
+                    ],
+                    "text1": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "text2": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "partyId": "8d5ceaaa-1231-4c31-a63c-1e5325ce747e",
+                    "partyName": [
+                        {
+                            "languageID": "en",
+                            "text": "ALABAMA DEMOCRATIC PARTY"
+                        }
+                    ],
+                    "displayParty": false,
+                    "selected": false,
+                    "writeInSelection": null
+                },
+                {
+                    "id": "4db63028-3e4b-4f22-b088-5e68dfeb4f39",
+                    "order": 8,
+                    "type": 1,
+                    "title": [
+                        {
+                            "languageID": "en",
+                            "text": "TULSI GABBARD"
+                        }
+                    ],
+                    "subTitle": [
+                        {
+                            "languageID": "en",
+                            "text": ""
+                        }
+                    ],
+                    "text1": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "text2": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "partyId": "8d5ceaaa-1231-4c31-a63c-1e5325ce747e",
+                    "partyName": [
+                        {
+                            "languageID": "en",
+                            "text": "ALABAMA DEMOCRATIC PARTY"
+                        }
+                    ],
+                    "displayParty": false,
+                    "selected": false,
+                    "writeInSelection": null
+                },
+                {
+                    "id": "17e68416-c720-4d8f-bb4a-56e71416c455",
+                    "order": 9,
+                    "type": 1,
+                    "title": [
+                        {
+                            "languageID": "en",
+                            "text": "AMY KLOBUCHAR"
+                        }
+                    ],
+                    "subTitle": [
+                        {
+                            "languageID": "en",
+                            "text": ""
+                        }
+                    ],
+                    "text1": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "text2": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "partyId": "8d5ceaaa-1231-4c31-a63c-1e5325ce747e",
+                    "partyName": [
+                        {
+                            "languageID": "en",
+                            "text": "ALABAMA DEMOCRATIC PARTY"
+                        }
+                    ],
+                    "displayParty": false,
+                    "selected": false,
+                    "writeInSelection": null
+                },
+                {
+                    "id": "c327c8aa-866b-4368-95d0-a6bff27b31eb",
+                    "order": 10,
+                    "type": 1,
+                    "title": [
+                        {
+                            "languageID": "en",
+                            "text": "BERNIE SANDERS"
+                        }
+                    ],
+                    "subTitle": [
+                        {
+                            "languageID": "en",
+                            "text": ""
+                        }
+                    ],
+                    "text1": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "text2": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "partyId": "8d5ceaaa-1231-4c31-a63c-1e5325ce747e",
+                    "partyName": [
+                        {
+                            "languageID": "en",
+                            "text": "ALABAMA DEMOCRATIC PARTY"
+                        }
+                    ],
+                    "displayParty": false,
+                    "selected": false,
+                    "writeInSelection": null
+                },
+                {
+                    "id": "d2456a35-2347-4e00-82a4-c534edaec12d",
+                    "order": 11,
+                    "type": 1,
+                    "title": [
+                        {
+                            "languageID": "en",
+                            "text": "TOM STEYER"
+                        }
+                    ],
+                    "subTitle": [
+                        {
+                            "languageID": "en",
+                            "text": ""
+                        }
+                    ],
+                    "text1": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "text2": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "partyId": "8d5ceaaa-1231-4c31-a63c-1e5325ce747e",
+                    "partyName": [
+                        {
+                            "languageID": "en",
+                            "text": "ALABAMA DEMOCRATIC PARTY"
+                        }
+                    ],
+                    "displayParty": false,
+                    "selected": false,
+                    "writeInSelection": null
+                },
+                {
+                    "id": "f4bf0936-ff08-486a-8fa0-18f83ff0f789",
+                    "order": 12,
+                    "type": 1,
+                    "title": [
+                        {
+                            "languageID": "en",
+                            "text": "ELIZABETH WARREN"
+                        }
+                    ],
+                    "subTitle": [
+                        {
+                            "languageID": "en",
+                            "text": ""
+                        }
+                    ],
+                    "text1": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "text2": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "partyId": "8d5ceaaa-1231-4c31-a63c-1e5325ce747e",
+                    "partyName": [
+                        {
+                            "languageID": "en",
+                            "text": "ALABAMA DEMOCRATIC PARTY"
+                        }
+                    ],
+                    "displayParty": false,
+                    "selected": false,
+                    "writeInSelection": null
+                },
+                {
+                    "id": "b2cf6536-b6cd-49de-8595-e001edc4f4b3",
+                    "order": 13,
+                    "type": 1,
+                    "title": [
+                        {
+                            "languageID": "en",
+                            "text": "MARIANNE WILLIAMSON"
+                        }
+                    ],
+                    "subTitle": [
+                        {
+                            "languageID": "en",
+                            "text": ""
+                        }
+                    ],
+                    "text1": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "text2": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "partyId": "8d5ceaaa-1231-4c31-a63c-1e5325ce747e",
+                    "partyName": [
+                        {
+                            "languageID": "en",
+                            "text": "ALABAMA DEMOCRATIC PARTY"
+                        }
+                    ],
+                    "displayParty": false,
+                    "selected": false,
+                    "writeInSelection": null
+                },
+                {
+                    "id": "9c907d72-68a1-48aa-baec-7eceba34b1a0",
+                    "order": 14,
+                    "type": 1,
+                    "title": [
+                        {
+                            "languageID": "en",
+                            "text": "ANDREW YANG"
+                        }
+                    ],
+                    "subTitle": [
+                        {
+                            "languageID": "en",
+                            "text": ""
+                        }
+                    ],
+                    "text1": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "text2": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "partyId": "8d5ceaaa-1231-4c31-a63c-1e5325ce747e",
+                    "partyName": [
+                        {
+                            "languageID": "en",
+                            "text": "ALABAMA DEMOCRATIC PARTY"
+                        }
+                    ],
+                    "displayParty": false,
+                    "selected": false,
+                    "writeInSelection": null
+                },
+                {
+                    "id": "e081075c-4342-467f-b35c-b509c2d8f56a",
+                    "order": 15,
+                    "type": 1,
+                    "title": [
+                        {
+                            "languageID": "en",
+                            "text": "UNCOMMITTED"
+                        }
+                    ],
+                    "subTitle": [
+                        {
+                            "languageID": "en",
+                            "text": ""
+                        }
+                    ],
+                    "text1": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "text2": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "partyId": "8d5ceaaa-1231-4c31-a63c-1e5325ce747e",
+                    "partyName": [
+                        {
+                            "languageID": "en",
+                            "text": "ALABAMA DEMOCRATIC PARTY"
+                        }
+                    ],
+                    "displayParty": false,
+                    "selected": false,
+                    "writeInSelection": null
+                }
+            ],
+            "undervoteWarningEnabled": true,
+            "overvoteWarningEnabled": false
+        },
+        {
+            "id": "84a2e49c-afd6-4952-ae2a-f5daba6ebd6a",
+            "order": 6,
+            "type": 1,
+            "title": [
+                {
+                    "languageID": "en",
+                    "text": "FOR UNITED STATES REPRESENTATIVE,"
+                }
+            ],
+            "subTitle": [
+                {
+                    "languageID": "en",
+                    "text": "2ND CONGRESSIONAL DISTRICT"
+                }
+            ],
+            "instructions": [
+                {
+                    "languageID": "en",
+                    "text": "(Vote for one)"
+                }
+            ],
+            "referendum": [
+                {
+                    "languageID": "en",
+                    "text": ""
+                }
+            ],
+            "text1": [
+                {
+                    "languageID": "en",
+                    "text": ""
+                }
+            ],
+            "text2": [
+                {
+                    "languageID": "en",
+                    "text": ""
+                }
+            ],
+            "partyId": "8d5ceaaa-1231-4c31-a63c-1e5325ce747e",
+            "partyName": [
+                {
+                    "languageID": "en",
+                    "text": "ALABAMA DEMOCRATIC PARTY"
+                }
+            ],
+            "writeInText": [
+                {
+                    "languageID": "en",
+                    "text": "Write-In"
+                }
+            ],
+            "voteForMax": 1,
+            "writeIns": 0,
+            "ballotOptions": [
+                {
+                    "id": "a8670ebc-fd9b-41ff-a7e6-9ac34761b006",
+                    "order": 1,
+                    "type": 1,
+                    "title": [
+                        {
+                            "languageID": "en",
+                            "text": "PHYLLIS HARVEY-HALL"
+                        }
+                    ],
+                    "subTitle": [
+                        {
+                            "languageID": "en",
+                            "text": ""
+                        }
+                    ],
+                    "text1": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "text2": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "partyId": "8d5ceaaa-1231-4c31-a63c-1e5325ce747e",
+                    "partyName": [
+                        {
+                            "languageID": "en",
+                            "text": "ALABAMA DEMOCRATIC PARTY"
+                        }
+                    ],
+                    "displayParty": false,
+                    "selected": false,
+                    "writeInSelection": null
+                },
+                {
+                    "id": "c6d0c0e8-3c7d-405a-8d22-8ea6af76433b",
+                    "order": 2,
+                    "type": 1,
+                    "title": [
+                        {
+                            "languageID": "en",
+                            "text": "NATHAN MATHIS"
+                        }
+                    ],
+                    "subTitle": [
+                        {
+                            "languageID": "en",
+                            "text": ""
+                        }
+                    ],
+                    "text1": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "text2": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "partyId": "8d5ceaaa-1231-4c31-a63c-1e5325ce747e",
+                    "partyName": [
+                        {
+                            "languageID": "en",
+                            "text": "ALABAMA DEMOCRATIC PARTY"
+                        }
+                    ],
+                    "displayParty": false,
+                    "selected": false,
+                    "writeInSelection": null
+                }
+            ],
+            "undervoteWarningEnabled": true,
+            "overvoteWarningEnabled": false
+        },
+        {
+            "id": "206f6ed4-8bbc-42e7-b206-5471ef811602",
+            "order": 25,
+            "type": 1,
+            "title": [
+                {
+                    "languageID": "en",
+                    "text": "FOR PRESIDENT, PUBLIC SERVICE COMMISSION"
+                }
+            ],
+            "subTitle": [
+                {
+                    "languageID": "en",
+                    "text": ""
+                }
+            ],
+            "instructions": [
+                {
+                    "languageID": "en",
+                    "text": "(Vote for one)"
+                }
+            ],
+            "referendum": [
+                {
+                    "languageID": "en",
+                    "text": ""
+                }
+            ],
+            "text1": [
+                {
+                    "languageID": "en",
+                    "text": ""
+                }
+            ],
+            "text2": [
+                {
+                    "languageID": "en",
+                    "text": ""
+                }
+            ],
+            "partyId": "8d5ceaaa-1231-4c31-a63c-1e5325ce747e",
+            "partyName": [
+                {
+                    "languageID": "en",
+                    "text": "ALABAMA DEMOCRATIC PARTY"
+                }
+            ],
+            "writeInText": [
+                {
+                    "languageID": "en",
+                    "text": "Write-In"
+                }
+            ],
+            "voteForMax": 1,
+            "writeIns": 0,
+            "ballotOptions": [
+                {
+                    "id": "d8eda7e1-a771-4e7a-993d-578b0da8293a",
+                    "order": 1,
+                    "type": 1,
+                    "title": [
+                        {
+                            "languageID": "en",
+                            "text": "LAURA  CASEY"
+                        }
+                    ],
+                    "subTitle": [
+                        {
+                            "languageID": "en",
+                            "text": ""
+                        }
+                    ],
+                    "text1": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "text2": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "partyId": "8d5ceaaa-1231-4c31-a63c-1e5325ce747e",
+                    "partyName": [
+                        {
+                            "languageID": "en",
+                            "text": "ALABAMA DEMOCRATIC PARTY"
+                        }
+                    ],
+                    "displayParty": false,
+                    "selected": false,
+                    "writeInSelection": null
+                },
+                {
+                    "id": "7612c57f-ff13-46c7-85b4-0d22be11bea1",
+                    "order": 2,
+                    "type": 1,
+                    "title": [
+                        {
+                            "languageID": "en",
+                            "text": "ROBERT L. MARDIS, III"
+                        }
+                    ],
+                    "subTitle": [
+                        {
+                            "languageID": "en",
+                            "text": ""
+                        }
+                    ],
+                    "text1": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "text2": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "partyId": "8d5ceaaa-1231-4c31-a63c-1e5325ce747e",
+                    "partyName": [
+                        {
+                            "languageID": "en",
+                            "text": "ALABAMA DEMOCRATIC PARTY"
+                        }
+                    ],
+                    "displayParty": false,
+                    "selected": false,
+                    "writeInSelection": null
+                }
+            ],
+            "undervoteWarningEnabled": true,
+            "overvoteWarningEnabled": false
+        },
+        {
+            "id": "35652684-a91f-4507-90a8-965076a89acb",
+            "order": 28,
+            "type": 1,
+            "title": [
+                {
+                    "languageID": "en",
+                    "text": "FOR MEMBER, STATE BOARD OF EDUCATION,"
+                }
+            ],
+            "subTitle": [
+                {
+                    "languageID": "en",
+                    "text": "DISTRICT NO. 5"
+                }
+            ],
+            "instructions": [
+                {
+                    "languageID": "en",
+                    "text": "(Vote for one)"
+                }
+            ],
+            "referendum": [
+                {
+                    "languageID": "en",
+                    "text": ""
+                }
+            ],
+            "text1": [
+                {
+                    "languageID": "en",
+                    "text": ""
+                }
+            ],
+            "text2": [
+                {
+                    "languageID": "en",
+                    "text": ""
+                }
+            ],
+            "partyId": "8d5ceaaa-1231-4c31-a63c-1e5325ce747e",
+            "partyName": [
+                {
+                    "languageID": "en",
+                    "text": "ALABAMA DEMOCRATIC PARTY"
+                }
+            ],
+            "writeInText": [
+                {
+                    "languageID": "en",
+                    "text": "Write-In"
+                }
+            ],
+            "voteForMax": 1,
+            "writeIns": 0,
+            "ballotOptions": [
+                {
+                    "id": "95825d9d-7a52-4632-a401-40ea3a3d910a",
+                    "order": 1,
+                    "type": 1,
+                    "title": [
+                        {
+                            "languageID": "en",
+                            "text": "FRED BELL"
+                        }
+                    ],
+                    "subTitle": [
+                        {
+                            "languageID": "en",
+                            "text": ""
+                        }
+                    ],
+                    "text1": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "text2": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "partyId": "8d5ceaaa-1231-4c31-a63c-1e5325ce747e",
+                    "partyName": [
+                        {
+                            "languageID": "en",
+                            "text": "ALABAMA DEMOCRATIC PARTY"
+                        }
+                    ],
+                    "displayParty": false,
+                    "selected": false,
+                    "writeInSelection": null
+                },
+                {
+                    "id": "d21fdac7-fd1f-440f-9a2c-184292811e30",
+                    "order": 2,
+                    "type": 1,
+                    "title": [
+                        {
+                            "languageID": "en",
+                            "text": "TONYA SMITH CHESTNUT"
+                        }
+                    ],
+                    "subTitle": [
+                        {
+                            "languageID": "en",
+                            "text": ""
+                        }
+                    ],
+                    "text1": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "text2": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "partyId": "8d5ceaaa-1231-4c31-a63c-1e5325ce747e",
+                    "partyName": [
+                        {
+                            "languageID": "en",
+                            "text": "ALABAMA DEMOCRATIC PARTY"
+                        }
+                    ],
+                    "displayParty": false,
+                    "selected": false,
+                    "writeInSelection": null
+                },
+                {
+                    "id": "743599b8-304c-4179-955d-1519d82ad229",
+                    "order": 3,
+                    "type": 1,
+                    "title": [
+                        {
+                            "languageID": "en",
+                            "text": "RON DAVIS"
+                        }
+                    ],
+                    "subTitle": [
+                        {
+                            "languageID": "en",
+                            "text": ""
+                        }
+                    ],
+                    "text1": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "text2": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "partyId": "8d5ceaaa-1231-4c31-a63c-1e5325ce747e",
+                    "partyName": [
+                        {
+                            "languageID": "en",
+                            "text": "ALABAMA DEMOCRATIC PARTY"
+                        }
+                    ],
+                    "displayParty": false,
+                    "selected": false,
+                    "writeInSelection": null
+                },
+                {
+                    "id": "26661225-9d20-40c1-947f-ea4532df7eb5",
+                    "order": 4,
+                    "type": 1,
+                    "title": [
+                        {
+                            "languageID": "en",
+                            "text": "PAMELA J. LAFFITTE"
+                        }
+                    ],
+                    "subTitle": [
+                        {
+                            "languageID": "en",
+                            "text": ""
+                        }
+                    ],
+                    "text1": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "text2": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "partyId": "8d5ceaaa-1231-4c31-a63c-1e5325ce747e",
+                    "partyName": [
+                        {
+                            "languageID": "en",
+                            "text": "ALABAMA DEMOCRATIC PARTY"
+                        }
+                    ],
+                    "displayParty": false,
+                    "selected": false,
+                    "writeInSelection": null
+                },
+                {
+                    "id": "6bc49c0f-4e0a-4cd9-ac8e-fb9db756f14a",
+                    "order": 5,
+                    "type": 1,
+                    "title": [
+                        {
+                            "languageID": "en",
+                            "text": "PATRICE \"Penni\" McCLAMMY"
+                        }
+                    ],
+                    "subTitle": [
+                        {
+                            "languageID": "en",
+                            "text": ""
+                        }
+                    ],
+                    "text1": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "text2": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "partyId": "8d5ceaaa-1231-4c31-a63c-1e5325ce747e",
+                    "partyName": [
+                        {
+                            "languageID": "en",
+                            "text": "ALABAMA DEMOCRATIC PARTY"
+                        }
+                    ],
+                    "displayParty": false,
+                    "selected": false,
+                    "writeInSelection": null
+                },
+                {
+                    "id": "5b6cb725-378b-40c8-80bb-bbf5df06206b",
+                    "order": 6,
+                    "type": 1,
+                    "title": [
+                        {
+                            "languageID": "en",
+                            "text": "WOODIE E. PUGH JR."
+                        }
+                    ],
+                    "subTitle": [
+                        {
+                            "languageID": "en",
+                            "text": ""
+                        }
+                    ],
+                    "text1": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "text2": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "partyId": "8d5ceaaa-1231-4c31-a63c-1e5325ce747e",
+                    "partyName": [
+                        {
+                            "languageID": "en",
+                            "text": "ALABAMA DEMOCRATIC PARTY"
+                        }
+                    ],
+                    "displayParty": false,
+                    "selected": false,
+                    "writeInSelection": null
+                },
+                {
+                    "id": "c9edd924-a0e0-4486-a9f7-9f916358a5b5",
+                    "order": 7,
+                    "type": 1,
+                    "title": [
+                        {
+                            "languageID": "en",
+                            "text": "JOANNE SHUM"
+                        }
+                    ],
+                    "subTitle": [
+                        {
+                            "languageID": "en",
+                            "text": ""
+                        }
+                    ],
+                    "text1": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "text2": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "partyId": "8d5ceaaa-1231-4c31-a63c-1e5325ce747e",
+                    "partyName": [
+                        {
+                            "languageID": "en",
+                            "text": "ALABAMA DEMOCRATIC PARTY"
+                        }
+                    ],
+                    "displayParty": false,
+                    "selected": false,
+                    "writeInSelection": null
+                },
+                {
+                    "id": "32e4a37f-d85d-47d8-b8cb-7cfc7944bc0e",
+                    "order": 8,
+                    "type": 1,
+                    "title": [
+                        {
+                            "languageID": "en",
+                            "text": "BILLIE JEAN YOUNG"
+                        }
+                    ],
+                    "subTitle": [
+                        {
+                            "languageID": "en",
+                            "text": ""
+                        }
+                    ],
+                    "text1": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "text2": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "partyId": "8d5ceaaa-1231-4c31-a63c-1e5325ce747e",
+                    "partyName": [
+                        {
+                            "languageID": "en",
+                            "text": "ALABAMA DEMOCRATIC PARTY"
+                        }
+                    ],
+                    "displayParty": false,
+                    "selected": false,
+                    "writeInSelection": null
+                }
+            ],
+            "undervoteWarningEnabled": true,
+            "overvoteWarningEnabled": false
+        },
+        {
+            "id": "09223fec-fdeb-4ba7-91d7-d16788b282a7",
+            "order": 45,
+            "type": 1,
+            "title": [
+                {
+                    "languageID": "en",
+                    "text": "FOR DELEGATES TO THE 2020 DEMOCRATIC NATIONAL CONVENTION,"
+                }
+            ],
+            "subTitle": [
+                {
+                    "languageID": "en",
+                    "text": "2ND CONGRESSIONAL DISTRICT"
+                }
+            ],
+            "instructions": [
+                {
+                    "languageID": "en",
+                    "text": null
+                }
+            ],
+            "referendum": [
+                {
+                    "languageID": "en",
+                    "text": null
+                }
+            ],
+            "text1": [
+                {
+                    "languageID": "en",
+                    "text": "DELEGATE SELECTION INSTRUCTIONS\r\n\r\nAfter selecting your Presidential candidate, vote for not more than five (5) delegate candidates pledged to that candidate."
+                }
+            ],
+            "text2": [
+                {
+                    "languageID": "en",
+                    "text": " If you selected uncommitted, vote for not more than five (5) uncommitted delegates.\r\n\r\nVotes for delegate candidates pledged to someone other than your Presidential selection ARE NOT ALLOWED UNDER DEMOCRATIC PARTY RULES.\r\n\r\n"
+                }
+            ],
+            "partyId": "8d5ceaaa-1231-4c31-a63c-1e5325ce747e",
+            "partyName": [
+                {
+                    "languageID": "en",
+                    "text": "ALABAMA DEMOCRATIC PARTY"
+                }
+            ],
+            "writeInText": [
+                {
+                    "languageID": "en",
+                    "text": "Write-In"
+                }
+            ],
+            "voteForMax": 5,
+            "writeIns": 0,
+            "ballotOptions": [
+                {
+                    "id": "f21615b9-86fb-41a4-adb0-7d6ba32b8d2f",
+                    "order": 1,
+                    "type": 50,
+                    "title": [
+                        {
+                            "languageID": "en",
+                            "text": "JOSEPH R. BIDEN DELEGATES"
+                        }
+                    ],
+                    "subTitle": [
+                        {
+                            "languageID": "en",
+                            "text": "(Vote for no more than Five)"
+                        }
+                    ],
+                    "text1": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "text2": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "partyId": "8d5ceaaa-1231-4c31-a63c-1e5325ce747e",
+                    "partyName": [
+                        {
+                            "languageID": "en",
+                            "text": "ALABAMA DEMOCRATIC PARTY"
+                        }
+                    ],
+                    "displayParty": false,
+                    "selected": false,
+                    "writeInSelection": null
+                },
+                {
+                    "id": "4860851d-064d-407c-bce9-2c02a1d7f61e",
+                    "order": 2,
+                    "type": 1,
+                    "title": [
+                        {
+                            "languageID": "en",
+                            "text": "JOHN ANZALONE"
+                        }
+                    ],
+                    "subTitle": [
+                        {
+                            "languageID": "en",
+                            "text": ""
+                        }
+                    ],
+                    "text1": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "text2": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "partyId": "8d5ceaaa-1231-4c31-a63c-1e5325ce747e",
+                    "partyName": [
+                        {
+                            "languageID": "en",
+                            "text": "ALABAMA DEMOCRATIC PARTY"
+                        }
+                    ],
+                    "displayParty": false,
+                    "selected": false,
+                    "writeInSelection": null
+                },
+                {
+                    "id": "072e3cf9-9cf6-439f-bd12-cb7dfb24dc0b",
+                    "order": 3,
+                    "type": 1,
+                    "title": [
+                        {
+                            "languageID": "en",
+                            "text": "WILLIAM WILSON BLOUNT"
+                        }
+                    ],
+                    "subTitle": [
+                        {
+                            "languageID": "en",
+                            "text": ""
+                        }
+                    ],
+                    "text1": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "text2": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "partyId": "8d5ceaaa-1231-4c31-a63c-1e5325ce747e",
+                    "partyName": [
+                        {
+                            "languageID": "en",
+                            "text": "ALABAMA DEMOCRATIC PARTY"
+                        }
+                    ],
+                    "displayParty": false,
+                    "selected": false,
+                    "writeInSelection": null
+                },
+                {
+                    "id": "088f6de2-bb0a-4b99-bab0-2c02369d1475",
+                    "order": 4,
+                    "type": 1,
+                    "title": [
+                        {
+                            "languageID": "en",
+                            "text": "LYCURGUS HATCHER"
+                        }
+                    ],
+                    "subTitle": [
+                        {
+                            "languageID": "en",
+                            "text": ""
+                        }
+                    ],
+                    "text1": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "text2": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "partyId": "8d5ceaaa-1231-4c31-a63c-1e5325ce747e",
+                    "partyName": [
+                        {
+                            "languageID": "en",
+                            "text": "ALABAMA DEMOCRATIC PARTY"
+                        }
+                    ],
+                    "displayParty": false,
+                    "selected": false,
+                    "writeInSelection": null
+                },
+                {
+                    "id": "ae1900d3-536b-417b-819f-e6f5c05569ff",
+                    "order": 5,
+                    "type": 1,
+                    "title": [
+                        {
+                            "languageID": "en",
+                            "text": "HARRIET JAY HUBBARD"
+                        }
+                    ],
+                    "subTitle": [
+                        {
+                            "languageID": "en",
+                            "text": ""
+                        }
+                    ],
+                    "text1": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "text2": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "partyId": "8d5ceaaa-1231-4c31-a63c-1e5325ce747e",
+                    "partyName": [
+                        {
+                            "languageID": "en",
+                            "text": "ALABAMA DEMOCRATIC PARTY"
+                        }
+                    ],
+                    "displayParty": false,
+                    "selected": false,
+                    "writeInSelection": null
+                },
+                {
+                    "id": "944c9b01-4308-4709-b55e-ae3b7845b62b",
+                    "order": 6,
+                    "type": 1,
+                    "title": [
+                        {
+                            "languageID": "en",
+                            "text": "NOLAN IVY JACKSON"
+                        }
+                    ],
+                    "subTitle": [
+                        {
+                            "languageID": "en",
+                            "text": ""
+                        }
+                    ],
+                    "text1": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "text2": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "partyId": "8d5ceaaa-1231-4c31-a63c-1e5325ce747e",
+                    "partyName": [
+                        {
+                            "languageID": "en",
+                            "text": "ALABAMA DEMOCRATIC PARTY"
+                        }
+                    ],
+                    "displayParty": false,
+                    "selected": false,
+                    "writeInSelection": null
+                },
+                {
+                    "id": "3572b9c9-61e6-4953-aacf-e2b2348fd6c5",
+                    "order": 7,
+                    "type": 1,
+                    "title": [
+                        {
+                            "languageID": "en",
+                            "text": "JULIAN McPHILLIPS"
+                        }
+                    ],
+                    "subTitle": [
+                        {
+                            "languageID": "en",
+                            "text": ""
+                        }
+                    ],
+                    "text1": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "text2": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "partyId": "8d5ceaaa-1231-4c31-a63c-1e5325ce747e",
+                    "partyName": [
+                        {
+                            "languageID": "en",
+                            "text": "ALABAMA DEMOCRATIC PARTY"
+                        }
+                    ],
+                    "displayParty": false,
+                    "selected": false,
+                    "writeInSelection": null
+                },
+                {
+                    "id": "56ed5d9b-3169-4fd3-9302-7e295423faf7",
+                    "order": 8,
+                    "type": 1,
+                    "title": [
+                        {
+                            "languageID": "en",
+                            "text": "JOE REED"
+                        }
+                    ],
+                    "subTitle": [
+                        {
+                            "languageID": "en",
+                            "text": ""
+                        }
+                    ],
+                    "text1": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "text2": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "partyId": "8d5ceaaa-1231-4c31-a63c-1e5325ce747e",
+                    "partyName": [
+                        {
+                            "languageID": "en",
+                            "text": "ALABAMA DEMOCRATIC PARTY"
+                        }
+                    ],
+                    "displayParty": false,
+                    "selected": false,
+                    "writeInSelection": null
+                },
+                {
+                    "id": "ddef2854-4d13-4272-b3b8-7a6025c9f0ed",
+                    "order": 9,
+                    "type": 1,
+                    "title": [
+                        {
+                            "languageID": "en",
+                            "text": "JOEL LEE WILLIAMS"
+                        }
+                    ],
+                    "subTitle": [
+                        {
+                            "languageID": "en",
+                            "text": ""
+                        }
+                    ],
+                    "text1": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "text2": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "partyId": "8d5ceaaa-1231-4c31-a63c-1e5325ce747e",
+                    "partyName": [
+                        {
+                            "languageID": "en",
+                            "text": "ALABAMA DEMOCRATIC PARTY"
+                        }
+                    ],
+                    "displayParty": false,
+                    "selected": false,
+                    "writeInSelection": null
+                },
+                {
+                    "id": "e76cf48c-468f-4fd6-8909-772e82f86193",
+                    "order": 10,
+                    "type": 50,
+                    "title": [
+                        {
+                            "languageID": "en",
+                            "text": "PETE BUTTIGIEG DELEGATES"
+                        }
+                    ],
+                    "subTitle": [
+                        {
+                            "languageID": "en",
+                            "text": "(Vote for no more than Five)"
+                        }
+                    ],
+                    "text1": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "text2": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "partyId": "8d5ceaaa-1231-4c31-a63c-1e5325ce747e",
+                    "partyName": [
+                        {
+                            "languageID": "en",
+                            "text": "ALABAMA DEMOCRATIC PARTY"
+                        }
+                    ],
+                    "displayParty": false,
+                    "selected": false,
+                    "writeInSelection": null
+                },
+                {
+                    "id": "97a8adca-f614-402f-8321-68d6a104d106",
+                    "order": 11,
+                    "type": 1,
+                    "title": [
+                        {
+                            "languageID": "en",
+                            "text": "WILLIAM ALVERSON"
+                        }
+                    ],
+                    "subTitle": [
+                        {
+                            "languageID": "en",
+                            "text": ""
+                        }
+                    ],
+                    "text1": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "text2": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "partyId": "8d5ceaaa-1231-4c31-a63c-1e5325ce747e",
+                    "partyName": [
+                        {
+                            "languageID": "en",
+                            "text": "ALABAMA DEMOCRATIC PARTY"
+                        }
+                    ],
+                    "displayParty": false,
+                    "selected": false,
+                    "writeInSelection": null
+                },
+                {
+                    "id": "7cd4c134-9473-44f6-87e0-5a096e037bae",
+                    "order": 12,
+                    "type": 1,
+                    "title": [
+                        {
+                            "languageID": "en",
+                            "text": "RONNIE GARRETT EXUM"
+                        }
+                    ],
+                    "subTitle": [
+                        {
+                            "languageID": "en",
+                            "text": ""
+                        }
+                    ],
+                    "text1": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "text2": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "partyId": "8d5ceaaa-1231-4c31-a63c-1e5325ce747e",
+                    "partyName": [
+                        {
+                            "languageID": "en",
+                            "text": "ALABAMA DEMOCRATIC PARTY"
+                        }
+                    ],
+                    "displayParty": false,
+                    "selected": false,
+                    "writeInSelection": null
+                },
+                {
+                    "id": "3398da4f-f931-4504-b315-c77d64a045ab",
+                    "order": 13,
+                    "type": 1,
+                    "title": [
+                        {
+                            "languageID": "en",
+                            "text": "MADISON FAILE"
+                        }
+                    ],
+                    "subTitle": [
+                        {
+                            "languageID": "en",
+                            "text": ""
+                        }
+                    ],
+                    "text1": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "text2": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "partyId": "8d5ceaaa-1231-4c31-a63c-1e5325ce747e",
+                    "partyName": [
+                        {
+                            "languageID": "en",
+                            "text": "ALABAMA DEMOCRATIC PARTY"
+                        }
+                    ],
+                    "displayParty": false,
+                    "selected": false,
+                    "writeInSelection": null
+                },
+                {
+                    "id": "c5d038ca-5142-43db-b018-3379f03b23bd",
+                    "order": 14,
+                    "type": 1,
+                    "title": [
+                        {
+                            "languageID": "en",
+                            "text": "ELAINE STOPP MULLINS"
+                        }
+                    ],
+                    "subTitle": [
+                        {
+                            "languageID": "en",
+                            "text": ""
+                        }
+                    ],
+                    "text1": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "text2": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "partyId": "8d5ceaaa-1231-4c31-a63c-1e5325ce747e",
+                    "partyName": [
+                        {
+                            "languageID": "en",
+                            "text": "ALABAMA DEMOCRATIC PARTY"
+                        }
+                    ],
+                    "displayParty": false,
+                    "selected": false,
+                    "writeInSelection": null
+                },
+                {
+                    "id": "297488d5-e7cc-4070-87a0-cc534d675d70",
+                    "order": 15,
+                    "type": 50,
+                    "title": [
+                        {
+                            "languageID": "en",
+                            "text": "BERNIE SANDERS DELEGATES"
+                        }
+                    ],
+                    "subTitle": [
+                        {
+                            "languageID": "en",
+                            "text": "(Vote for no more than Five)"
+                        }
+                    ],
+                    "text1": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "text2": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "partyId": "8d5ceaaa-1231-4c31-a63c-1e5325ce747e",
+                    "partyName": [
+                        {
+                            "languageID": "en",
+                            "text": "ALABAMA DEMOCRATIC PARTY"
+                        }
+                    ],
+                    "displayParty": false,
+                    "selected": false,
+                    "writeInSelection": null
+                },
+                {
+                    "id": "8d6aaaa4-a871-4680-813a-f501719a6a64",
+                    "order": 16,
+                    "type": 1,
+                    "title": [
+                        {
+                            "languageID": "en",
+                            "text": "JESSE BROWN"
+                        }
+                    ],
+                    "subTitle": [
+                        {
+                            "languageID": "en",
+                            "text": ""
+                        }
+                    ],
+                    "text1": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "text2": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "partyId": "8d5ceaaa-1231-4c31-a63c-1e5325ce747e",
+                    "partyName": [
+                        {
+                            "languageID": "en",
+                            "text": "ALABAMA DEMOCRATIC PARTY"
+                        }
+                    ],
+                    "displayParty": false,
+                    "selected": false,
+                    "writeInSelection": null
+                },
+                {
+                    "id": "268056f8-4c94-424b-88e0-1c77e2b62846",
+                    "order": 17,
+                    "type": 1,
+                    "title": [
+                        {
+                            "languageID": "en",
+                            "text": "NORMA CLEGHORN"
+                        }
+                    ],
+                    "subTitle": [
+                        {
+                            "languageID": "en",
+                            "text": ""
+                        }
+                    ],
+                    "text1": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "text2": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "partyId": "8d5ceaaa-1231-4c31-a63c-1e5325ce747e",
+                    "partyName": [
+                        {
+                            "languageID": "en",
+                            "text": "ALABAMA DEMOCRATIC PARTY"
+                        }
+                    ],
+                    "displayParty": false,
+                    "selected": false,
+                    "writeInSelection": null
+                },
+                {
+                    "id": "f55919c5-689d-479e-b17c-8bbfa2542f8e",
+                    "order": 18,
+                    "type": 1,
+                    "title": [
+                        {
+                            "languageID": "en",
+                            "text": "J. MARK COLEMAN"
+                        }
+                    ],
+                    "subTitle": [
+                        {
+                            "languageID": "en",
+                            "text": ""
+                        }
+                    ],
+                    "text1": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "text2": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "partyId": "8d5ceaaa-1231-4c31-a63c-1e5325ce747e",
+                    "partyName": [
+                        {
+                            "languageID": "en",
+                            "text": "ALABAMA DEMOCRATIC PARTY"
+                        }
+                    ],
+                    "displayParty": false,
+                    "selected": false,
+                    "writeInSelection": null
+                },
+                {
+                    "id": "5e3f0258-7c96-4ae5-a075-dfd188bf7388",
+                    "order": 19,
+                    "type": 1,
+                    "title": [
+                        {
+                            "languageID": "en",
+                            "text": "JASON FIFIELD"
+                        }
+                    ],
+                    "subTitle": [
+                        {
+                            "languageID": "en",
+                            "text": ""
+                        }
+                    ],
+                    "text1": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "text2": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "partyId": "8d5ceaaa-1231-4c31-a63c-1e5325ce747e",
+                    "partyName": [
+                        {
+                            "languageID": "en",
+                            "text": "ALABAMA DEMOCRATIC PARTY"
+                        }
+                    ],
+                    "displayParty": false,
+                    "selected": false,
+                    "writeInSelection": null
+                },
+                {
+                    "id": "3ff9013b-4f36-4e02-bd86-d7f17097038b",
+                    "order": 20,
+                    "type": 1,
+                    "title": [
+                        {
+                            "languageID": "en",
+                            "text": "AMANDA MORGAN-DEEL"
+                        }
+                    ],
+                    "subTitle": [
+                        {
+                            "languageID": "en",
+                            "text": ""
+                        }
+                    ],
+                    "text1": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "text2": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "partyId": "8d5ceaaa-1231-4c31-a63c-1e5325ce747e",
+                    "partyName": [
+                        {
+                            "languageID": "en",
+                            "text": "ALABAMA DEMOCRATIC PARTY"
+                        }
+                    ],
+                    "displayParty": false,
+                    "selected": false,
+                    "writeInSelection": null
+                },
+                {
+                    "id": "7baf5230-4215-4861-89dc-a0b4a3865ac1",
+                    "order": 21,
+                    "type": 1,
+                    "title": [
+                        {
+                            "languageID": "en",
+                            "text": "BRANDON LEE RICHARDS"
+                        }
+                    ],
+                    "subTitle": [
+                        {
+                            "languageID": "en",
+                            "text": ""
+                        }
+                    ],
+                    "text1": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "text2": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "partyId": "8d5ceaaa-1231-4c31-a63c-1e5325ce747e",
+                    "partyName": [
+                        {
+                            "languageID": "en",
+                            "text": "ALABAMA DEMOCRATIC PARTY"
+                        }
+                    ],
+                    "displayParty": false,
+                    "selected": false,
+                    "writeInSelection": null
+                },
+                {
+                    "id": "5e50da5a-f3d4-4d48-a34f-9e3353080849",
+                    "order": 22,
+                    "type": 1,
+                    "title": [
+                        {
+                            "languageID": "en",
+                            "text": "TARA SEXTON"
+                        }
+                    ],
+                    "subTitle": [
+                        {
+                            "languageID": "en",
+                            "text": ""
+                        }
+                    ],
+                    "text1": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "text2": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "partyId": "8d5ceaaa-1231-4c31-a63c-1e5325ce747e",
+                    "partyName": [
+                        {
+                            "languageID": "en",
+                            "text": "ALABAMA DEMOCRATIC PARTY"
+                        }
+                    ],
+                    "displayParty": false,
+                    "selected": false,
+                    "writeInSelection": null
+                },
+                {
+                    "id": "a829c6ee-80cb-495f-9778-3ecd7253fc44",
+                    "order": 23,
+                    "type": 1,
+                    "title": [
+                        {
+                            "languageID": "en",
+                            "text": "AMY TYLER"
+                        }
+                    ],
+                    "subTitle": [
+                        {
+                            "languageID": "en",
+                            "text": ""
+                        }
+                    ],
+                    "text1": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "text2": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "partyId": "8d5ceaaa-1231-4c31-a63c-1e5325ce747e",
+                    "partyName": [
+                        {
+                            "languageID": "en",
+                            "text": "ALABAMA DEMOCRATIC PARTY"
+                        }
+                    ],
+                    "displayParty": false,
+                    "selected": false,
+                    "writeInSelection": null
+                },
+                {
+                    "id": "e7cce22f-89ac-4bc2-9d94-51f9791a02a1",
+                    "order": 24,
+                    "type": 50,
+                    "title": [
+                        {
+                            "languageID": "en",
+                            "text": "ELIZABETH WARREN DELEGATES"
+                        }
+                    ],
+                    "subTitle": [
+                        {
+                            "languageID": "en",
+                            "text": "(Vote for no more than Five)"
+                        }
+                    ],
+                    "text1": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "text2": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "partyId": "8d5ceaaa-1231-4c31-a63c-1e5325ce747e",
+                    "partyName": [
+                        {
+                            "languageID": "en",
+                            "text": "ALABAMA DEMOCRATIC PARTY"
+                        }
+                    ],
+                    "displayParty": false,
+                    "selected": false,
+                    "writeInSelection": null
+                },
+                {
+                    "id": "82de4827-f132-4ae7-8c06-de91000f3711",
+                    "order": 25,
+                    "type": 1,
+                    "title": [
+                        {
+                            "languageID": "en",
+                            "text": "IESHA BROOKS"
+                        }
+                    ],
+                    "subTitle": [
+                        {
+                            "languageID": "en",
+                            "text": ""
+                        }
+                    ],
+                    "text1": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "text2": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "partyId": "8d5ceaaa-1231-4c31-a63c-1e5325ce747e",
+                    "partyName": [
+                        {
+                            "languageID": "en",
+                            "text": "ALABAMA DEMOCRATIC PARTY"
+                        }
+                    ],
+                    "displayParty": false,
+                    "selected": false,
+                    "writeInSelection": null
+                },
+                {
+                    "id": "1ceee5c1-210c-4114-a486-eca6d08ef186",
+                    "order": 26,
+                    "type": 1,
+                    "title": [
+                        {
+                            "languageID": "en",
+                            "text": "ROBERT JACKSON"
+                        }
+                    ],
+                    "subTitle": [
+                        {
+                            "languageID": "en",
+                            "text": ""
+                        }
+                    ],
+                    "text1": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "text2": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "partyId": "8d5ceaaa-1231-4c31-a63c-1e5325ce747e",
+                    "partyName": [
+                        {
+                            "languageID": "en",
+                            "text": "ALABAMA DEMOCRATIC PARTY"
+                        }
+                    ],
+                    "displayParty": false,
+                    "selected": false,
+                    "writeInSelection": null
+                },
+                {
+                    "id": "bcf02039-02ad-4073-bd15-c3c68a9ac3e0",
+                    "order": 27,
+                    "type": 1,
+                    "title": [
+                        {
+                            "languageID": "en",
+                            "text": "S. KATHLEEN KIRKPATRICK"
+                        }
+                    ],
+                    "subTitle": [
+                        {
+                            "languageID": "en",
+                            "text": ""
+                        }
+                    ],
+                    "text1": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "text2": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "partyId": "8d5ceaaa-1231-4c31-a63c-1e5325ce747e",
+                    "partyName": [
+                        {
+                            "languageID": "en",
+                            "text": "ALABAMA DEMOCRATIC PARTY"
+                        }
+                    ],
+                    "displayParty": false,
+                    "selected": false,
+                    "writeInSelection": null
+                },
+                {
+                    "id": "e877a2ea-d84d-4c5e-9e56-d08a53d5c579",
+                    "order": 28,
+                    "type": 1,
+                    "title": [
+                        {
+                            "languageID": "en",
+                            "text": "DILLON NETTLES"
+                        }
+                    ],
+                    "subTitle": [
+                        {
+                            "languageID": "en",
+                            "text": ""
+                        }
+                    ],
+                    "text1": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "text2": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "partyId": "8d5ceaaa-1231-4c31-a63c-1e5325ce747e",
+                    "partyName": [
+                        {
+                            "languageID": "en",
+                            "text": "ALABAMA DEMOCRATIC PARTY"
+                        }
+                    ],
+                    "displayParty": false,
+                    "selected": false,
+                    "writeInSelection": null
+                },
+                {
+                    "id": "1930a1b6-5aec-4a03-b200-508c808e416a",
+                    "order": 29,
+                    "type": 1,
+                    "title": [
+                        {
+                            "languageID": "en",
+                            "text": "ZAAKIRA L. SADRUD-DIN"
+                        }
+                    ],
+                    "subTitle": [
+                        {
+                            "languageID": "en",
+                            "text": ""
+                        }
+                    ],
+                    "text1": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "text2": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "partyId": "8d5ceaaa-1231-4c31-a63c-1e5325ce747e",
+                    "partyName": [
+                        {
+                            "languageID": "en",
+                            "text": "ALABAMA DEMOCRATIC PARTY"
+                        }
+                    ],
+                    "displayParty": false,
+                    "selected": false,
+                    "writeInSelection": null
+                },
+                {
+                    "id": "51dc0158-8d69-4d5f-8af8-5c59cae225ca",
+                    "order": 30,
+                    "type": 1,
+                    "title": [
+                        {
+                            "languageID": "en",
+                            "text": "RICHARD WHETSTONE"
+                        }
+                    ],
+                    "subTitle": [
+                        {
+                            "languageID": "en",
+                            "text": ""
+                        }
+                    ],
+                    "text1": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "text2": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "partyId": "8d5ceaaa-1231-4c31-a63c-1e5325ce747e",
+                    "partyName": [
+                        {
+                            "languageID": "en",
+                            "text": "ALABAMA DEMOCRATIC PARTY"
+                        }
+                    ],
+                    "displayParty": false,
+                    "selected": false,
+                    "writeInSelection": null
+                },
+                {
+                    "id": "9e528a5e-9265-4d52-92f5-30447ed85cd3",
+                    "order": 31,
+                    "type": 1,
+                    "title": [
+                        {
+                            "languageID": "en",
+                            "text": "PAMELA WIGGINS"
+                        }
+                    ],
+                    "subTitle": [
+                        {
+                            "languageID": "en",
+                            "text": ""
+                        }
+                    ],
+                    "text1": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "text2": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "partyId": "8d5ceaaa-1231-4c31-a63c-1e5325ce747e",
+                    "partyName": [
+                        {
+                            "languageID": "en",
+                            "text": "ALABAMA DEMOCRATIC PARTY"
+                        }
+                    ],
+                    "displayParty": false,
+                    "selected": false,
+                    "writeInSelection": null
+                },
+                {
+                    "id": "b6d5ce61-16b3-4750-ad15-7dd987d07f1a",
+                    "order": 32,
+                    "type": 50,
+                    "title": [
+                        {
+                            "languageID": "en",
+                            "text": "UNCOMMITTED DELEGATES"
+                        }
+                    ],
+                    "subTitle": [
+                        {
+                            "languageID": "en",
+                            "text": "(Vote for no more than Five)"
+                        }
+                    ],
+                    "text1": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "text2": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "partyId": "8d5ceaaa-1231-4c31-a63c-1e5325ce747e",
+                    "partyName": [
+                        {
+                            "languageID": "en",
+                            "text": "ALABAMA DEMOCRATIC PARTY"
+                        }
+                    ],
+                    "displayParty": false,
+                    "selected": false,
+                    "writeInSelection": null
+                },
+                {
+                    "id": "0a64662a-530e-4144-b27c-e4c186b4dac4",
+                    "order": 33,
+                    "type": 1,
+                    "title": [
+                        {
+                            "languageID": "en",
+                            "text": "CHRISTINA BUTLER"
+                        }
+                    ],
+                    "subTitle": [
+                        {
+                            "languageID": "en",
+                            "text": ""
+                        }
+                    ],
+                    "text1": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "text2": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "partyId": "8d5ceaaa-1231-4c31-a63c-1e5325ce747e",
+                    "partyName": [
+                        {
+                            "languageID": "en",
+                            "text": "ALABAMA DEMOCRATIC PARTY"
+                        }
+                    ],
+                    "displayParty": false,
+                    "selected": false,
+                    "writeInSelection": null
+                },
+                {
+                    "id": "2db94f39-6b27-4a07-96b7-9ead1c0e0a13",
+                    "order": 34,
+                    "type": 1,
+                    "title": [
+                        {
+                            "languageID": "en",
+                            "text": "TYNA D. DAVIS"
+                        }
+                    ],
+                    "subTitle": [
+                        {
+                            "languageID": "en",
+                            "text": ""
+                        }
+                    ],
+                    "text1": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "text2": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "partyId": "8d5ceaaa-1231-4c31-a63c-1e5325ce747e",
+                    "partyName": [
+                        {
+                            "languageID": "en",
+                            "text": "ALABAMA DEMOCRATIC PARTY"
+                        }
+                    ],
+                    "displayParty": false,
+                    "selected": false,
+                    "writeInSelection": null
+                },
+                {
+                    "id": "d8fa89af-16cb-4aa8-8fcf-fcc4e6c2eca4",
+                    "order": 35,
+                    "type": 1,
+                    "title": [
+                        {
+                            "languageID": "en",
+                            "text": "WARREN L. DAVIS"
+                        }
+                    ],
+                    "subTitle": [
+                        {
+                            "languageID": "en",
+                            "text": ""
+                        }
+                    ],
+                    "text1": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "text2": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "partyId": "8d5ceaaa-1231-4c31-a63c-1e5325ce747e",
+                    "partyName": [
+                        {
+                            "languageID": "en",
+                            "text": "ALABAMA DEMOCRATIC PARTY"
+                        }
+                    ],
+                    "displayParty": false,
+                    "selected": false,
+                    "writeInSelection": null
+                },
+                {
+                    "id": "132af57d-61af-40e2-ad8e-35bd198f056a",
+                    "order": 36,
+                    "type": 1,
+                    "title": [
+                        {
+                            "languageID": "en",
+                            "text": "TABITHA ISNER"
+                        }
+                    ],
+                    "subTitle": [
+                        {
+                            "languageID": "en",
+                            "text": ""
+                        }
+                    ],
+                    "text1": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "text2": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "partyId": "8d5ceaaa-1231-4c31-a63c-1e5325ce747e",
+                    "partyName": [
+                        {
+                            "languageID": "en",
+                            "text": "ALABAMA DEMOCRATIC PARTY"
+                        }
+                    ],
+                    "displayParty": false,
+                    "selected": false,
+                    "writeInSelection": null
+                },
+                {
+                    "id": "62f30238-6e5f-4436-830e-6388dd0a13ac",
+                    "order": 37,
+                    "type": 1,
+                    "title": [
+                        {
+                            "languageID": "en",
+                            "text": "LEE LINDSAY"
+                        }
+                    ],
+                    "subTitle": [
+                        {
+                            "languageID": "en",
+                            "text": ""
+                        }
+                    ],
+                    "text1": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "text2": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "partyId": "8d5ceaaa-1231-4c31-a63c-1e5325ce747e",
+                    "partyName": [
+                        {
+                            "languageID": "en",
+                            "text": "ALABAMA DEMOCRATIC PARTY"
+                        }
+                    ],
+                    "displayParty": false,
+                    "selected": false,
+                    "writeInSelection": null
+                },
+                {
+                    "id": "3fadf3b7-9e2d-490e-99c4-ca4fd88b7539",
+                    "order": 38,
+                    "type": 1,
+                    "title": [
+                        {
+                            "languageID": "en",
+                            "text": "ANSLEY K. MARKWELL"
+                        }
+                    ],
+                    "subTitle": [
+                        {
+                            "languageID": "en",
+                            "text": ""
+                        }
+                    ],
+                    "text1": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "text2": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "partyId": "8d5ceaaa-1231-4c31-a63c-1e5325ce747e",
+                    "partyName": [
+                        {
+                            "languageID": "en",
+                            "text": "ALABAMA DEMOCRATIC PARTY"
+                        }
+                    ],
+                    "displayParty": false,
+                    "selected": false,
+                    "writeInSelection": null
+                }
+            ],
+            "undervoteWarningEnabled": true,
+            "overvoteWarningEnabled": false
+        },
+        {
+            "id": "e90189bf-be39-421e-a5ba-f8f6d7be1096",
+            "order": 75,
+            "type": 1,
+            "title": [
+                {
+                    "languageID": "en",
+                    "text": "PROPOSED AMENDMENT TO APPEAR ON THE BALLOT STATEWIDE"
+                }
+            ],
+            "subTitle": [
+                {
+                    "languageID": "en",
+                    "text": "”Shall the following Amendments to the Constitution of Alabama be adopted?”"
+                }
+            ],
+            "instructions": [
+                {
+                    "languageID": "en",
+                    "text": null
+                }
+            ],
+            "referendum": [
+                {
+                    "languageID": "en",
+                    "text": "Proposing an amendment to the Constitution of Alabama of 1901, to change the name of the State Board of Education to the Alabama Commission on Elementary and Secondary Education; to provide for the appointment of the members of the commission by the Governor, subject to confirmation by the Senate; to change the name of the State Superintendent of Education to the Secretary of Elementary and Secondary Education; to provide for the appointment of the secretary by the commission, subject to confirmation by the Senate; and to authorize the Governor to appoint a team of local educators and other officials to advise the commission on matters relating to the functioning and duties of the State Department of Education. (Proposed by Act 2019-345)"
+                }
+            ],
+            "text1": [
+                {
+                    "languageID": "en",
+                    "text": "PROPOSED STATEWIDE AMENDMENT NUMBER ONE"
+                }
+            ],
+            "text2": [
+                {
+                    "languageID": "en",
+                    "text": null
+                }
+            ],
+            "partyId": "0429de2b-1e92-42d2-b42c-99adf9da3e15",
+            "partyName": [
+                {
+                    "languageID": "en",
+                    "text": "NONPARTISAN"
+                }
+            ],
+            "writeInText": [
+                {
+                    "languageID": "en",
+                    "text": "Write-In"
+                }
+            ],
+            "voteForMax": 1,
+            "writeIns": 0,
+            "ballotOptions": [
+                {
+                    "id": "355e8aa4-5828-42b9-9938-774d6a7acac7",
+                    "order": 1,
+                    "type": 1,
+                    "title": [
+                        {
+                            "languageID": "en",
+                            "text": "YES"
+                        }
+                    ],
+                    "subTitle": [
+                        {
+                            "languageID": "en",
+                            "text": ""
+                        }
+                    ],
+                    "text1": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "text2": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "partyId": "0429de2b-1e92-42d2-b42c-99adf9da3e15",
+                    "partyName": [
+                        {
+                            "languageID": "en",
+                            "text": "NONPARTISAN"
+                        }
+                    ],
+                    "displayParty": false,
+                    "selected": false,
+                    "writeInSelection": null
+                },
+                {
+                    "id": "ca44170f-89b2-4440-9619-a47996c01f96",
+                    "order": 2,
+                    "type": 1,
+                    "title": [
+                        {
+                            "languageID": "en",
+                            "text": "NO"
+                        }
+                    ],
+                    "subTitle": [
+                        {
+                            "languageID": "en",
+                            "text": ""
+                        }
+                    ],
+                    "text1": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "text2": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "partyId": "0429de2b-1e92-42d2-b42c-99adf9da3e15",
+                    "partyName": [
+                        {
+                            "languageID": "en",
+                            "text": "NONPARTISAN"
+                        }
+                    ],
+                    "displayParty": false,
+                    "selected": false,
+                    "writeInSelection": null
+                }
+            ],
+            "undervoteWarningEnabled": true,
+            "overvoteWarningEnabled": false
+        }
+    ],
+    "ballotPages": null,
+    "ballotImages": null
+}

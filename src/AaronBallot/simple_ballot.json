@@ -1,0 +1,204 @@
+{
+    "id": "7e9ed0c9-028d-471e-a3a5-8e6ed2d31e8d",
+    "electionName": [
+        {
+            "languageID": "en",
+            "text": "2020 PRIMARY AND CONSTITUTIONAL AMENDMENT ELECTION"
+        }
+    ],
+    "title": [
+        {
+            "languageID": "en",
+            "text": "ABSENTEE OFFICIAL BALLOT"
+        }
+    ],
+    "subTitle": [
+        {
+            "languageID": "en",
+            "text": "PRIMARY AND CONSTITUTIONAL AMENDMENT ELECTION"
+        }
+    ],
+    "text0": [
+        {
+            "languageID": "en",
+            "text": "AUTAUGA COUNTY, ALABAMA"
+        }
+    ],
+    "text1": [
+        {
+            "languageID": "en",
+            "text": "MARCH 3, 2020"
+        }
+    ],
+    "text2": [
+        {
+            "languageID": "en",
+            "text": null
+        }
+    ],
+    "markingInstructions": [
+        {
+            "languageID": "en",
+            "text": "<p>Follow the instructions below when using the ballot marking wizard.</p>\r\n<div class=\"my-3\">\r\n<h2><span class=\"px-3 py-1 bg-secondary text-light rounded-circle\">1</span> Getting Started</h2>\r\n<div class=\"mx-5\">Click the <strong>Start Ballot</strong> link to begin voting your ballot.</div>\r\n</div>\r\n<div class=\"my-3\">\r\n<h2><span class=\"px-3 py-1 bg-secondary text-light rounded-circle\">2</span> Review Each Office or Question</h2>\r\n<p class=\"mx-5\">You will be presented one office or question at a time. Read each one carefully.</p>\r\n</div>\r\n<div class=\"my-3\">\r\n<h2><span class=\"px-3 py-1 bg-secondary text-light rounded-circle\">3</span> Make Selections</h2>\r\n<p class=\"mx-5\">You may indicate your choice by clicking on the option or options you prefer. Be sure to only vote for the number of options you are allowed to.</p>\r\n</div>\r\n<div class=\"my-3\">\r\n<h2><span class=\"px-3 py-1 bg-secondary text-light rounded-circle\">4</span> Navigate the Ballot</h2>\r\n<p class=\"mx-5\">Use the Next and Previous buttons to move to the next or previous office/question. After the last item on the ballot, you will have the option to review all of your selections.</p>\r\n</div>\r\n<div class=\"my-3\">\r\n<h2><span class=\"px-3 py-1 bg-secondary text-light rounded-circle\">5</span> Review the Ballot</h2>\r\n<p class=\"mx-5\">When ready, you may review each of your selections. Be sure to review carefully. After reviewing, you may complete the online marking and move to the ballot download step.</p>\r\n</div>\r\n<div class=\"my-3\">\r\n<h2><span class=\"px-3 py-1 bg-secondary text-light rounded-circle\">6</span> Download the Ballot and Return Material</h2>\r\n<p class=\"mx-5\">At this last step, you will be able to download your marked ballot and all necessary documents required for the proper return of your ballot. Be sure you review everything carefully and follow all return instructions.</p>\r\n</div>"
+        }
+    ],
+    "printableInstructions": [
+        {
+            "languageID": "en",
+            "text": "<div style=\"font-family: 'Open Sans';\"><strong> Please read the following before marking your ballot:</strong><br />To vote, completely darken the OVAL beside your choice. To vote for a person whose name is NOT on the ballot, write the candidates name on the write-in line and darken the OVAL beside the name.</div>"
+        }
+    ],
+    "partyId": "0429de2b-1e92-42d2-b42c-99adf9da3e15",
+    "partyName": [
+        {
+            "languageID": "en",
+            "text": "NONPARTISAN"
+        }
+    ],
+    "precinctId": "b5ce18ec-6110-46b6-aa53-d671720f89b8",
+    "precinctName": "HERITAGE BAPTIST 00020.015",
+    "ballotMarkerLayoutType": 0,
+    "ballotPrinterType": 0,
+    "ballotItems": [
+        {
+            "id": "e90189bf-be39-421e-a5ba-f8f6d7be1096",
+            "order": 75,
+            "type": 1,
+            "title": [
+                {
+                    "languageID": "en",
+                    "text": "PROPOSED AMENDMENT TO APPEAR ON THE BALLOT STATEWIDE"
+                }
+            ],
+            "subTitle": [
+                {
+                    "languageID": "en",
+                    "text": "”Shall the following Amendments to the Constitution of Alabama be adopted?”"
+                }
+            ],
+            "instructions": [
+                {
+                    "languageID": "en",
+                    "text": null
+                }
+            ],
+            "referendum": [
+                {
+                    "languageID": "en",
+                    "text": "Proposing an amendment to the Constitution of Alabama of 1901, to change the name of the State Board of Education to the Alabama Commission on Elementary and Secondary Education; to provide for the appointment of the members of the commission by the Governor, subject to confirmation by the Senate; to change the name of the State Superintendent of Education to the Secretary of Elementary and Secondary Education; to provide for the appointment of the secretary by the commission, subject to confirmation by the Senate; and to authorize the Governor to appoint a team of local educators and other officials to advise the commission on matters relating to the functioning and duties of the State Department of Education. (Proposed by Act 2019-345)"
+                }
+            ],
+            "text1": [
+                {
+                    "languageID": "en",
+                    "text": "PROPOSED STATEWIDE AMENDMENT NUMBER ONE"
+                }
+            ],
+            "text2": [
+                {
+                    "languageID": "en",
+                    "text": null
+                }
+            ],
+            "partyId": "0429de2b-1e92-42d2-b42c-99adf9da3e15",
+            "partyName": [
+                {
+                    "languageID": "en",
+                    "text": "NONPARTISAN"
+                }
+            ],
+            "writeInText": [
+                {
+                    "languageID": "en",
+                    "text": "Write-In"
+                }
+            ],
+            "voteForMax": 1,
+            "writeIns": 0,
+            "ballotOptions": [
+                {
+                    "id": "355e8aa4-5828-42b9-9938-774d6a7acac7",
+                    "order": 1,
+                    "type": 1,
+                    "title": [
+                        {
+                            "languageID": "en",
+                            "text": "YES"
+                        }
+                    ],
+                    "subTitle": [
+                        {
+                            "languageID": "en",
+                            "text": ""
+                        }
+                    ],
+                    "text1": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "text2": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "partyId": "0429de2b-1e92-42d2-b42c-99adf9da3e15",
+                    "partyName": [
+                        {
+                            "languageID": "en",
+                            "text": "NONPARTISAN"
+                        }
+                    ],
+                    "displayParty": false,
+                    "selected": false,
+                    "writeInSelection": null
+                },
+                {
+                    "id": "ca44170f-89b2-4440-9619-a47996c01f96",
+                    "order": 2,
+                    "type": 1,
+                    "title": [
+                        {
+                            "languageID": "en",
+                            "text": "NO"
+                        }
+                    ],
+                    "subTitle": [
+                        {
+                            "languageID": "en",
+                            "text": ""
+                        }
+                    ],
+                    "text1": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "text2": [
+                        {
+                            "languageID": "en",
+                            "text": null
+                        }
+                    ],
+                    "partyId": "0429de2b-1e92-42d2-b42c-99adf9da3e15",
+                    "partyName": [
+                        {
+                            "languageID": "en",
+                            "text": "NONPARTISAN"
+                        }
+                    ],
+                    "displayParty": false,
+                    "selected": false,
+                    "writeInSelection": null
+                }
+            ],
+            "undervoteWarningEnabled": true,
+            "overvoteWarningEnabled": false
+        }
+    ],
+    "ballotPages": null,
+    "ballotImages": null
+}

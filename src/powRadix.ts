@@ -1,0 +1,7 @@
+export enum PowRadixOption {
+  NO_ACCELERATION = 0,
+  LOW_MEMORY_USE = 8,
+  HIGH_MEMORY_USE = 12,
+  EXTREME_MEMORY_USE =16
+}
+

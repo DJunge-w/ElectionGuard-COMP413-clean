@@ -1,0 +1,56 @@
+{
+	"object_id": "7e9ed0c9-028d-471e-a3a5-8e6ed2d31e8d",
+	"style_id": "2021 COMP 413 FINAL DEMO ELECTION",
+	"contests": [
+		{
+			"sequence_order": 0,
+			"object_id": "0a0ea028-46f9-4454-a89d-41602bb6a2e4",
+			"ballot_selections": [
+
+				{
+					"is_placeholder_selection": "00",
+					"object_id": "8e05c23e-0c30-4672-96a5-07c7ec42c519",
+					"sequence_order": 2,
+					"vote": 1
+				}
+			]
+		},
+		{
+			"sequence_order": 1,
+			"object_id": "84a2e49c-afd6-4952-ae2a-f5daba6ebd6a",
+			"ballot_selections": [
+
+				{
+					"is_placeholder_selection": "00",
+					"object_id": "c6d0c0e8-3c7d-405a-8d22-8ea6af696628",
+					"sequence_order": 2,
+					"vote":  1
+				}
+			]
+		},
+		{
+			"sequence_order": 2,
+			"object_id": "206f6ed4-8bbc-42e7-b206-5471ef811602",
+			"ballot_selections": [
+				{
+					"is_placeholder_selection": "00",
+					"object_id": "7612c57f-ff13-46c7-85b4-0d22be11bek3",
+					"sequence_order": 2,
+					"vote": 1
+				}
+			]
+		},
+		{
+			"sequence_order": 3,
+			"object_id": "35652684-a91f-4507-90a8-965076a89acb",
+			"ballot_selections": [
+				{
+					"is_placeholder_selection": "00",
+					"object_id": "743599b8-304c-4179-955d-1519d82ad229",
+					"sequence_order": 2,
+					"vote": 1
+				}
+			]
+		}
+	]
+}
