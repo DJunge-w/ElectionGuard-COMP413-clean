@@ -3,6 +3,7 @@ import { bnToHex, getRandomIntExclusive, } from "./groupUtils";
 import * as bigintModArith from 'bigint-mod-arith';
 import {Type} from "class-transformer";
 import "reflect-metadata";
+import * as buffer from "buffer";
 // Constants used by ElectionGuard
 // const Q = 32633n;
 // const P = 65267n;
@@ -35,6 +36,35 @@ const mod: (a: bigint, b: bigint) => bigint = (a, b) => {
     return ((a % b) + b) % b
 }
 
+/**
+ * Converting from BigInts to byteArray(ArrayBuffer) in Big Endian.
+ * Referenced from https://coolaj86.com/articles/convert-js-bigints-to-typedarrays/
+ * @param bn the big integer
+ * @param buf the byte array that store the conversion result.
+ */
+function bnToBuf(bn: bigint, buf: ArrayBuffer) {
+  // The handy-dandy `toString(base)` works!!
+  let hex = bn.toString(16);
+
+  // But it still follows the old behavior of giving
+  // invalid hex strings (due to missing padding),
+  // but we can easily add that back
+  if (hex.length % 2) { hex = '0' + hex; }
+
+  // The byteLength will be half of the hex string length
+  const len = hex.length / 2;
+  const byteView = new DataView(buf);
+  const startOffset = buf.byteLength - len;
+  // And then we can iterate each element by one
+  // and each hex segment by two
+  let i = 0;
+  let j = 0;
+  while (i < len) {
+    byteView.setUint8(startOffset + i, parseInt(hex.slice(j, j+2), 16));
+    i += 1;
+    j += 2;
+  }
+}
 
 class ElementModQ {
     // An element of the smaller `mod q` space, i.e., in [0, Q), where Q is a 256-bit prime.
@@ -99,7 +129,16 @@ class ElementModQ {
         return createStrHashCode(this.elem.toString());
     }
 
-    toJSON():string {
+    /**
+     * Added function that output the byteArray(ArrayBuffer typed) "big-endian" representation of value.
+     * Converts from ElementModQ to a big-endian [ArrayBuffer] representation.
+     */
+    public byteArray(): ArrayBuffer {
+      const result = new ArrayBuffer(32);
+      bnToBuf(this.elem, result);
+      return result;
+    }
+  toJSON():string {
         // return this.elem.toString().toUpperCase();
         return this.elem.toString(16).toUpperCase();
 
