@@ -29,7 +29,6 @@
  * appropriate flags to request a multi-gigabyte heap.
  */
 import {ElementModP, ElementModQ, mult_p, ONE_MOD_P, pow_p} from "./group";
-import {throws} from "assert";
 
 export enum PowRadixOption {
   NO_ACCELERATION = 0,
@@ -65,6 +64,7 @@ export class PowRadix{
       let rowBasis = basis;
       let runningBasis = rowBasis;
       this.numColumns = 1 << k;
+      this.table = [];
       //row-major table
       for (let i = 0; i < this.tableLength; i++) {
         const finalRow = [];
@@ -87,7 +87,7 @@ export class PowRadix{
     if (this.acceleration == 0) {
       return pow_p(this.basis, e);
     } else {
-      let slices = kBitsPerSlice(e.byteArray(), this.acceleration, this.tableLength);
+      const slices = kBitsPerSlice(e.byteArray(), this.acceleration, this.tableLength);
       let y = ONE_MOD_P;
       for (let i = 0; i <this.tableLength; i++) {
         const eSlice = slices[i];
@@ -117,7 +117,7 @@ function getOrZeroUShort(buff: ArrayBuffer, offset: number) {
   return getOrZero(buff, offset);
 }
 
-function kBitsPerSlice(buff: ArrayBuffer, powRadixOption: PowRadixOption, tableLength: number): Uint16Array {
+export function kBitsPerSlice(buff: ArrayBuffer, powRadixOption: PowRadixOption, tableLength: number): Uint16Array {
   console.assert(buff.byteLength <= 32, "invalid input size"+ buff.byteLength +", not 32 bytes");
 
   switch (powRadixOption) {

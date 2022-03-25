@@ -3,7 +3,7 @@ import { bnToHex, getRandomIntExclusive, } from "./groupUtils";
 import * as bigintModArith from 'bigint-mod-arith';
 import {Type} from "class-transformer";
 import "reflect-metadata";
-import * as buffer from "buffer";
+// import * as buffer from "buffer";
 // Constants used by ElectionGuard
 // const Q = 32633n;
 // const P = 65267n;
@@ -42,7 +42,7 @@ const mod: (a: bigint, b: bigint) => bigint = (a, b) => {
  * @param bn the big integer
  * @param buf the byte array that store the conversion result.
  */
-function bnToBuf(bn: bigint, buf: ArrayBuffer) {
+export function bnToBuf(bn: bigint, buf: ArrayBuffer) {
   // The handy-dandy `toString(base)` works!!
   let hex = bn.toString(16);
 
@@ -530,5 +530,6 @@ const parseBigInt: (bigint:string, base: number) => Array<number> = (bigint, bas
   }
 
 
+const G_SQUARED_MOD_P: ElementModP = mult_p(G_MOD_P, G_MOD_P);
 
-export {ElementModP, ElementModQ, P, Q, ONE_MOD_P, ZERO_MOD_P, ZERO_MOD_Q, ONE_MOD_Q, G, R, Q_MINUS_ONE, TWO_MOD_P, TWO_MOD_Q, ElementModPOrQ, ElementModPOrQorInt, ElementModQorInt, ElementModPorInt, hex_to_q, int_to_q, int_to_q_unchecked, int_to_p, int_to_p_unchecked, add_q, a_minus_b_q, div_p, div_q, negate_q, a_plus_bc_q, mult_inv_p, pow_p, pow_q, mult_p, mult_q, g_pow_p, rand_q, rand_range_q, eq_elems, convertBase, groupDigits, formatBigInt, parseBigInt};
+export {ElementModP, ElementModQ, P, Q, ONE_MOD_P, ZERO_MOD_P, ZERO_MOD_Q, ONE_MOD_Q, G_MOD_P, G_SQUARED_MOD_P, G, R, Q_MINUS_ONE, TWO_MOD_P, TWO_MOD_Q, ElementModPOrQ, ElementModPOrQorInt, ElementModQorInt, ElementModPorInt, hex_to_q, int_to_q, int_to_q_unchecked, int_to_p, int_to_p_unchecked, add_q, a_minus_b_q, div_p, div_q, negate_q, a_plus_bc_q, mult_inv_p, pow_p, pow_q, mult_p, mult_q, g_pow_p, rand_q, rand_range_q, eq_elems, convertBase, groupDigits, formatBigInt, parseBigInt};
