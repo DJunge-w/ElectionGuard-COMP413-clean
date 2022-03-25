@@ -28,7 +28,7 @@
  * more). For the JVM, this will easily exhaust the standard heap size, so don't forget to use
  * appropriate flags to request a multi-gigabyte heap.
  */
-import {ElementModP, ElementModQ, mult_p, ONE_MOD_P, pow_p} from "./group";
+import {ElementModP, ElementModPOrQ,  mult_p, ONE_MOD_P, pow_p} from "./group";
 
 export enum PowRadixOption {
   NO_ACCELERATION = 0,
@@ -83,7 +83,7 @@ export class PowRadix{
     }
   }
 
-  pow(e: ElementModQ): ElementModP {
+  pow(e: ElementModPOrQ): ElementModP {
     if (this.acceleration == 0) {
       return pow_p(this.basis, e);
     } else {

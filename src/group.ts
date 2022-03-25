@@ -3,6 +3,7 @@ import { bnToHex, getRandomIntExclusive, } from "./groupUtils";
 import * as bigintModArith from 'bigint-mod-arith';
 import {Type} from "class-transformer";
 import "reflect-metadata";
+import {PowRadix} from "./powRadix";
 // import * as buffer from "buffer";
 // Constants used by ElectionGuard
 // const Q = 32633n;
@@ -206,6 +207,15 @@ class ElementModP {
         return createStrHashCode(this.elem.toString());
     }
 
+  /**
+   * Added function that output the byteArray(ArrayBuffer typed) "big-endian" representation of value.
+   * Converts from ElementModQ to a big-endian [ArrayBuffer] representation.
+   */
+  public byteArray(): ArrayBuffer {
+    const result = new ArrayBuffer(512);
+    bnToBuf(this.elem, result);
+    return result;
+  }
 
     toJSON():string {
       return this.elem.toString(16).toUpperCase();
@@ -447,6 +457,10 @@ const g_pow_p: (e: ElementModPOrQ) => ElementModP = (e) => {
     return pow_p(G_MOD_P, e);
 }
 
+const g_pow_p_speedup: (e: ElementModPOrQ, powRadix: PowRadix) => ElementModP = (e, powRadix) => {
+  return powRadix.pow(e);
+}
+
 // Generate random bigint between 0 and Q
 // return: Random value between 0 and Q
 const rand_q: () => ElementModQ = () => {
@@ -531,5 +545,4 @@ const parseBigInt: (bigint:string, base: number) => Array<number> = (bigint, bas
 
 
 const G_SQUARED_MOD_P: ElementModP = mult_p(G_MOD_P, G_MOD_P);
-
-export {ElementModP, ElementModQ, P, Q, ONE_MOD_P, ZERO_MOD_P, ZERO_MOD_Q, ONE_MOD_Q, G_MOD_P, G_SQUARED_MOD_P, G, R, Q_MINUS_ONE, TWO_MOD_P, TWO_MOD_Q, ElementModPOrQ, ElementModPOrQorInt, ElementModQorInt, ElementModPorInt, hex_to_q, int_to_q, int_to_q_unchecked, int_to_p, int_to_p_unchecked, add_q, a_minus_b_q, div_p, div_q, negate_q, a_plus_bc_q, mult_inv_p, pow_p, pow_q, mult_p, mult_q, g_pow_p, rand_q, rand_range_q, eq_elems, convertBase, groupDigits, formatBigInt, parseBigInt};
+export {ElementModP, ElementModQ, P, Q, ONE_MOD_P, ZERO_MOD_P, ZERO_MOD_Q, ONE_MOD_Q, G_MOD_P, G_SQUARED_MOD_P, G, R, Q_MINUS_ONE, TWO_MOD_P, TWO_MOD_Q, ElementModPOrQ, ElementModPOrQorInt, ElementModQorInt, ElementModPorInt, hex_to_q, int_to_q, int_to_q_unchecked, int_to_p, int_to_p_unchecked, add_q, a_minus_b_q, div_p, div_q, negate_q, a_plus_bc_q, mult_inv_p, pow_p, pow_q, mult_p, mult_q, g_pow_p, g_pow_p_speedup, rand_q, rand_range_q, eq_elems, convertBase, groupDigits, formatBigInt, parseBigInt};

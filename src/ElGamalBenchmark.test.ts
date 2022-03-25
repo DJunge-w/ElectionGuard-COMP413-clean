@@ -1,27 +1,16 @@
-import {
-  ElementModQ,
-  // ElementModP,
-  // g_pow_p,
-  // G,
-  // P,
-  // Q,
-  // ZERO_MOD_Q,
-  // TWO_MOD_Q,
-  // ONE_MOD_Q,
-  // ONE_MOD_P,
-} from './group';
-import { elements_mod_q_no_zero} from './groupUtils';
+import {ElementModQ, G_MOD_P,} from './group';
+import {elements_mod_q_no_zero} from './groupUtils';
 // import {hash_elems} from './hash';
 import {
-  ElGamalKeyPair,
-  // ElGamalCiphertext,
   elgamal_encrypt,
-  // elgamal_add,
-  elgamal_keypair_from_secret, ElGamalCiphertext,
-  // elgamal_keypair_random
+  elgamal_encrypt_speedup,
+  elgamal_keypair_from_secret,
+  ElGamalCiphertext,
+  ElGamalKeyPair,
 } from './elgamal';
 // import * as sjcl from 'sjcl';
 import {get_optional} from "./utils";
+import {PowRadix, PowRadixOption} from "./powRadix";
 // import exp from 'constants';
 // import {PowRadixOption} from './powRadix'
 
@@ -79,4 +68,38 @@ describe("BenchmarkElgamal", () => {
     expect(plaintexts).toEqual(messages);
 
   });
+
+  test('test_elgamal_low_memory_powradix_speedup', () => {
+    const N = 10;
+
+    console.log("Initializing benchmark for LOW_MEMORY_USE.");
+    const max = 1000;
+    const min = 0;
+
+    const messages: bigint[] = Array.from(Array(N)).map(() =>{ return BigInt(Math.floor(Math.random() * (max - min + 1) + min))});
+    const keypair:ElGamalKeyPair|null = elgamal_keypair_from_secret(elements_mod_q_no_zero());
+    const nonce:ElementModQ|null = elements_mod_q_no_zero();
+
+    //force the PowRadix tables to be realized before we start the clock.
+    const G_powRadix = new PowRadix(G_MOD_P, PowRadixOption.LOW_MEMORY_USE);
+    messages[0]
+
+    console.log("Running!");
+    console.log(messages);
+    const ciphertexts: ElGamalCiphertext[] = [];
+    const encryptionTimeMs = measureTimeMillis(() => {
+      messages.forEach(message => ciphertexts.push(get_optional(elgamal_encrypt_speedup(message, nonce, get_optional(keypair).public_key, G_powRadix))))
+    });
+    const encryptionTime = encryptionTimeMs / 1000.0;
+    const plaintexts: bigint[] = [];
+    const decryptionTimeMs = measureTimeMillis(() => {
+      ciphertexts.forEach(ciphertext => plaintexts.push(get_optional(ciphertext).decrypt(get_optional(keypair).secret_key)))
+    });
+    const decryptionTime = decryptionTimeMs / 1000.0;
+    console.log("ElGamal "+ N / encryptionTime +" encryptions/sec, "+ N / decryptionTime+" decryptions/sec");
+
+    expect(plaintexts).toEqual(messages);
+
+  });
+
 });
