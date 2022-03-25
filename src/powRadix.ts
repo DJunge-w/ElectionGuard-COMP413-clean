@@ -56,7 +56,7 @@ export class PowRadix{
     this.basis = basis;
     this.acceleration = acceleration;
     const k = acceleration;
-    if (k == 0) {
+    if (k === 0) {
       this.tableLength = 0;
       this.numColumns = 0;
       this.table = [];
@@ -87,46 +87,55 @@ export class PowRadix{
     if (this.acceleration == 0) {
       return pow_p(this.basis, e);
     } else {
-      let slices = e.byteArray().kBitsPerSlice(acceleration, tableLength)
-      var y = e.context.ONE_MOD_P
-      for (i in 0..(tableLength - 1)) {
-        val eSlice = slices[i].toInt() // from UShort to Int so we can do an array lookup
-        val nextProd = table[i][eSlice]
-        y = y * nextProd
+      let slices = kBitsPerSlice(e.byteArray(), this.acceleration, this.tableLength);
+      let y = ONE_MOD_P;
+      for (let i = 0; i <this.tableLength; i++) {
+        const eSlice = slices[i];
+        const nextProd = this.table[i][eSlice]
+        y = mult_p(y, nextProd);
       }
-      return y
+      return y;
     }
   }
 }
 
-ArrayBuffer.prototype.kBitsPerSlice = function (powRadixOption: PowRadixOption, tableLength: number): Uint8Array {
-  console.assert(this.byteLength <= 32, "invalid input size"+ this.byteLength +", not 32 bytes");
-
-  ArrayBuffer.prototype.getOrZero = function (offset: number) {
-    if (offset < 0 || offset >= 32) {
-      throw new Error("unexpected offset: "+ offset);
-    } else if (this.byteLength === 32) {
-      const view = new DataView(this);
-      return view.getUint8(offset);
-    } else if (offset < (32 - this.byteLength)) {
-      return 0;
-    } else {
-      const view = new DataView(this);
-      return view.getUint8(offset - 32 + this.byteLength);
-    }
+function getOrZero(buff: ArrayBuffer, offset: number) {
+  if (offset < 0 || offset >= 32) {
+    throw new Error("unexpected offset: "+ offset);
+  } else if (buff.byteLength === 32) {
+    const view = new DataView(buff);
+    return view.getUint8(offset);
+  } else if (offset < (32 - buff.byteLength)) {
+    return 0;
+  } else {
+    const view = new DataView(buff);
+    return view.getUint8(offset - 32 + this.byteLength);
   }
+}
 
-  ArrayBuffer.prototype.getOrZeroUShort = function (offset: number) {
-    return this.getOrZero(offset);
-  }
+function getOrZeroUShort(buff: ArrayBuffer, offset: number) {
+  return getOrZero(buff, offset);
+}
+
+function kBitsPerSlice(buff: ArrayBuffer, powRadixOption: PowRadixOption, tableLength: number): Uint16Array {
+  console.assert(buff.byteLength <= 32, "invalid input size"+ buff.byteLength +", not 32 bytes");
 
   switch (powRadixOption) {
-    case PowRadixOption.EXTREME_MEMORY_USE:
-      console.assert(tableLength === 16, "expected tableLength to be 16, got "+ tableLength);
-
+    case PowRadixOption.LOW_MEMORY_USE: {
+      console.assert(tableLength === 32, "expected tableLength to be 32, got "+ tableLength);
+      const ushortArray = new Uint16Array(tableLength);
+      for (let i = 0; i < tableLength; i++) {
+        ushortArray[i] = getOrZeroUShort(buff, tableLength - i - 1);
+      }
+      return ushortArray;
+    }
+    default: {
+      throw new Error("Acceleration k = "+ powRadixOption+" bits, which isn't supported. PowRadixOption other than LOW_MEMORY_USE not supported yet.");
+    }
   }
 
 }
+
 
 
 
