@@ -9,7 +9,7 @@ import {
   ZERO_MOD_Q,
   TWO_MOD_Q,
   int_to_q,
-  rand_range_q, ElementModPOrQorInt, g_pow_p_speedup,
+  rand_range_q, ElementModPOrQorInt, g_pow_p_speedup, pow_p_speedup,
 } from "./group"
 
 import {hash_elems} from "./hash"
@@ -142,13 +142,12 @@ export function elgamal_encrypt
 }
 
 export function elgamal_encrypt_speedup
-(m: bigint, nonce: ElementModQ,
- public_key: ElementModPOrQorInt, G_powRadix: PowRadix): ElGamalCiphertext | null | undefined {
+(m: bigint, nonce: ElementModQ, G_powRadix: PowRadix, PK_powRadix: PowRadix): ElGamalCiphertext | null | undefined {
   if (nonce === ZERO_MOD_Q) {
     // log_error("ElGamal encryption requires a non-zero nonce");
     return null;
   }
-  return flatmap_optional(int_to_q(m), (e:ElementModQ ) => new ElGamalCiphertext(g_pow_p_speedup(nonce, G_powRadix), mult_p(g_pow_p_speedup(e, G_powRadix), pow_p(public_key, nonce))));
+  return flatmap_optional(int_to_q(m), (e:ElementModQ ) => new ElGamalCiphertext(g_pow_p_speedup(nonce, G_powRadix), mult_p(g_pow_p_speedup(e, G_powRadix), pow_p_speedup(nonce, PK_powRadix))));
 }
 
 export function elgamal_add(...ciphertexts: ElGamalCiphertext[]): ElGamalCiphertext {

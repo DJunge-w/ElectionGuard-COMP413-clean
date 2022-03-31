@@ -82,13 +82,14 @@ describe("BenchmarkElgamal", () => {
 
     //force the PowRadix tables to be realized before we start the clock.
     const G_powRadix = new PowRadix(G_MOD_P, PowRadixOption.LOW_MEMORY_USE);
+    const PK_powRadix = new PowRadix(get_optional(keypair).public_key, PowRadixOption.LOW_MEMORY_USE);
     messages[0]
 
     console.log("Running!");
     console.log(messages);
     const ciphertexts: ElGamalCiphertext[] = [];
     const encryptionTimeMs = measureTimeMillis(() => {
-      messages.forEach(message => ciphertexts.push(get_optional(elgamal_encrypt_speedup(message, nonce, get_optional(keypair).public_key, G_powRadix))))
+      messages.forEach(message => ciphertexts.push(get_optional(elgamal_encrypt_speedup(message, nonce, G_powRadix, PK_powRadix))))
     });
     const encryptionTime = encryptionTimeMs / 1000.0;
     const plaintexts: bigint[] = [];
