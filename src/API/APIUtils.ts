@@ -54,7 +54,7 @@ export function encryptBallot_ballotOut(inputBallot: AaronBallot,
   return encrypted_ballot;
 }
 
-export function cipherTextBallot_to_EncryptBallotOutput(encrypted_ballot: CiphertextBallot, seed_nonce:ElementModQ) {
+export function cipherTextBallot_to_EncryptBallotOutput(encrypted_ballot: CiphertextBallot, seed_nonce:ElementModQ): EncryptBallotOutput {
   return new EncryptBallotOutput(seed_nonce.elem.toString(), encrypted_ballot.crypto_hash_with(seed_nonce).toString());
 }
 // Entry point of the API, give a Ballot item, return the seed and the hash
@@ -97,7 +97,7 @@ export function encryptBallot(inputBallot: Ballot, manifest: Manifest): EncryptB
  * This function will take in a string and generate a QR code
  * @param strs strings that will be represented in QR code
  */
-export function getQRCode(strs:string[]):any {
+export function getQRCode(strs:string[]):HTMLImageElement {
     const qr = new QRCode();
     // size difference found over here: https://snyk.io/advisor/npm-package/qr-code-typescript
     qr.setTypeNumber(9);
@@ -458,7 +458,7 @@ export function buildBallotStyle(manifest: any): BallotStyle[] {
  * This function generates random user id for tallying purposes
  * @param length length of generated id
  */
-export function makeId(length: number) {
+export function makeId(length: number): string {
     let result = '';
     const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
     const charactersLength = characters.length;

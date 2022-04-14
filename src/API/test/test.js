@@ -12,3 +12,4 @@ const result = eg.encryptBallot(realBallot, realManifest);
 
 console.log("encrypted ballot's hash: ", result.hash);
 console.log("encrypted ballot's seed: ", result.seed);
+
