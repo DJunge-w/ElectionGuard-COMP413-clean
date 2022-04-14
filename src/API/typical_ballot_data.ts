@@ -25,7 +25,10 @@ export enum ErrorType {
     MissingCandidatePartyName = 11
 }
 
-export class Ballot {
+/**
+ * The ballot scheme that match with Aaron's sample ballot format.
+ */
+export class AaronBallot {
     id: string;
     electionName: LanguageText[];
     /// These are fields that we probably won't need ///
@@ -57,6 +60,54 @@ export class Ballot {
     }
 
 }
+
+/**
+ *
+ * The ballot scheme that match with ElectionGuard 0.95 Sample plaintext ballot format.
+ * https://github.com/microsoft/electionguard/tree/main/data/0.95.0/sample/minimal/election_private_data/plaintext_ballots
+ */
+export class Ballot {
+    object_id: string;
+    style_id: string;
+    contests: Contest[];
+
+    constructor(object_id: string, style_id: string, contests: Contest[]) {
+        this.object_id = object_id;
+        this.style_id = style_id;
+        this.contests = contests;
+    }
+}
+
+export class Contest {
+    object_id: string;
+    sequence_order: number;
+    ballot_selections: BallotSelection[];
+
+    constructor(object_id: string, sequence_order: number, ballot_selections: BallotSelection[]) {
+        this.object_id = object_id;
+        this.sequence_order = sequence_order;
+        this.ballot_selections = ballot_selections;
+    }
+}
+
+export class BallotSelection {
+    object_id: string;
+    sequence_order: number;
+    vote: number;
+    is_placeholder_selection: boolean;
+    extended_data: any;
+
+    constructor(object_id: string, sequence_order: number, vote: number, is_placeholder_selection: boolean,
+                extended_data: any) {
+        this.object_id = object_id;
+        this.sequence_order = sequence_order;
+        this.vote = vote;
+        this.is_placeholder_selection = is_placeholder_selection;
+        this.extended_data = extended_data;
+    }
+
+}
+
 export class BallotPage {
     gridRows: GridRow[];
     ballotItems: BallotItem[];
@@ -153,7 +204,7 @@ export class EncryptBallotOutput {
     }
 }
 
-// This is a class that represent error ballot input 
+// This is a class that represent error ballot input
 export class ErrorBallotInput {
     errorType: number;
     errorMsg: string;

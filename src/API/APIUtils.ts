@@ -8,7 +8,16 @@ import {
     PlaintextBallotSelection,
 } from "../simple_election_data";
 import { get_optional } from "../utils";
-import { Ballot, BallotItem, BallotOption, EncryptBallotOutput, ErrorBallotInput, ErrorType} from "./typical_ballot_data";
+import {
+    Ballot,
+    AaronBallot,
+    BallotItem,
+    BallotOption,
+    EncryptBallotOutput,
+    ErrorBallotInput,
+    ErrorType,
+    Contest, BallotSelection
+} from "./typical_ballot_data";
 import {QRCode, ErrorCorrectLevel} from "qrcode-generator-ts";
 
 import {
@@ -34,11 +43,11 @@ import {
  */
 
 // Give a Ballot item, return the ciphertext ballot
-export function encryptBallot_ballotOut(inputBallot: Ballot,
+export function encryptBallot_ballotOut(inputBallot: AaronBallot,
                                         manifest: Manifest):  CiphertextBallot{
-  const ballot = ballot2PlainTextBallot(inputBallot);
+  const ballot = aaronBallot2PlainTextBallot(inputBallot);
   const internalManifest: InternalManifest = new InternalManifest(manifest);
-  const context = ballot2Context(inputBallot, internalManifest);
+  const context = aaronBallot2Context(inputBallot, internalManifest);
   const seed_nonce:ElementModQ =  new ElementModQ(BigInt("40358"));
   const encryption_seed: ElementModQ = new ElementModQ(BigInt("88136692332113344175662474900446441286169260372780056734314948839391938984061"));
   const encrypted_ballot: CiphertextBallot = get_optional(encrypt_ballot(ballot, internalManifest, context, encryption_seed, seed_nonce));
@@ -50,6 +59,26 @@ export function cipherTextBallot_to_EncryptBallotOutput(encrypted_ballot: Cipher
 }
 // Entry point of the API, give a Ballot item, return the seed and the hash
 // Return an ErrorBallotInput in case some fields that are required in encryption in Ballot is missing
+export function encryptAaronBallot(inputBallot: AaronBallot, manifest: Manifest): EncryptBallotOutput | ErrorBallotInput {
+    // let validatedBallot = validateBallot(inputBallot);
+    // if (validatedBallot instanceof ErrorBallotInput) return validatedBallot;
+    const ballot = aaronBallot2PlainTextBallot(inputBallot);
+    // console.log(ballot);
+    const internalManifest: InternalManifest = new InternalManifest(manifest);
+    const context = aaronBallot2Context(inputBallot, internalManifest);
+    const seed_nonce:ElementModQ =  new ElementModQ(BigInt("40358"));
+    const encryption_seed: ElementModQ = new ElementModQ(BigInt("88136692332113344175662474900446441286169260372780056734314948839391938984061"));
+
+    const encrypted_ballot: CiphertextBallot = get_optional(encrypt_ballot(ballot, internalManifest, context, encryption_seed, seed_nonce));
+    return new EncryptBallotOutput(seed_nonce.elem.toString(), encrypted_ballot.crypto_hash.to_hex().toString());
+}
+
+/**
+ * Entry point of the API, give a Ballot item, return the seed and the hash
+ * Return an ErrorBallotInput in case some fields that are required in encryption in Ballot is missing
+ * @param inputBallot a Ballot object that represent the submitted plaintext ballot.
+ * @param manifest a Manifest object that represent the election manifest.
+ */
 export function encryptBallot(inputBallot: Ballot, manifest: Manifest): EncryptBallotOutput | ErrorBallotInput {
     // let validatedBallot = validateBallot(inputBallot);
     // if (validatedBallot instanceof ErrorBallotInput) return validatedBallot;
@@ -88,12 +117,30 @@ export function getQRCode(strs:string[]):any {
  */
 export function ballot2PlainTextBallot(ballot: Ballot): PlaintextBallot {
     let ballotContests: PlaintextBallotContest[] = [];
+    for (let k = 0; k < ballot.contests.length; k++) {
+        console.log(ballot.contests[k]);
+    }
+
+    ballot.contests.forEach((contest) => {
+        ballotContests = [...ballotContests, ballotItem2PlainTextBallotContest(contest)];
+    });
+    const style_id = ballot.style_id;
+
+    return new PlaintextBallot(ballot.object_id, style_id, ballotContests);
+}
+
+/**
+ * Convert a AaronBallot defined in typical_ballot_data.ts to internal PlaintextBallot data structure
+ * @param ballot a AaronBallot defined in typical_ballot_data.ts
+ */
+export function aaronBallot2PlainTextBallot(ballot: AaronBallot): PlaintextBallot {
+    let ballotContests: PlaintextBallotContest[] = [];
     for (let k = 0; k < ballot.ballotItems.length; k++) {
         console.log(ballot.ballotItems[k]);
     }
 
     ballot.ballotItems.forEach((ballotItem) => {
-        ballotContests = [...ballotContests, ballotItem2PlainTextBallotContest(ballotItem)];
+        ballotContests = [...ballotContests, aaronBallotItem2PlainTextBallotContest(ballotItem)];
     });
     const style_id = ballot.electionName[0].text;
 
@@ -101,20 +148,30 @@ export function ballot2PlainTextBallot(ballot: Ballot): PlaintextBallot {
 }
 
 /**
- * Convert a BallotItem defined in typical_ballot_data.ts to internal PlaintextBallotContest
+ * Convert a AaronBallot's BallotItem defined in typical_ballot_data.ts to internal PlaintextBallotContest
  * @param ballotItem a BallotItem defined in typical_ballot_data.ts
  */
-export function ballotItem2PlainTextBallotContest(ballotItem: BallotItem): PlaintextBallotContest {
-    const selections: PlaintextBallotSelection[] = ballotItem2Selection(ballotItem);
+export function aaronBallotItem2PlainTextBallotContest(ballotItem: BallotItem): PlaintextBallotContest {
+    const selections: PlaintextBallotSelection[] = aaronBallotItem2Selection(ballotItem);
 
     return new PlaintextBallotContest(ballotItem.id, ballotItem.order, selections);
+}
+
+/**
+ * Convert a Ballot's contest defined in typical_ballot_data.ts to internal PlaintextBallotContest
+ * @param contest a BallotItem defined in typical_ballot_data.ts
+ */
+export function ballotItem2PlainTextBallotContest(contest: Contest): PlaintextBallotContest {
+    const selections: PlaintextBallotSelection[] = ballotContest2Selection(contest);
+
+    return new PlaintextBallotContest(contest.object_id, contest.sequence_order, selections);
 }
 
 /**
  * Convert a BallotItem defined in typical_ballot_data.ts to a list of internal PlaintextBallotSelection
  * @param ballotItem defined in typical_ballot_data.ts that contains a list of selections
  */
-export function ballotItem2Selection(ballotItem: BallotItem): PlaintextBallotSelection[] {
+export function aaronBallotItem2Selection(ballotItem: BallotItem): PlaintextBallotSelection[] {
     let plainTextSelections: PlaintextBallotSelection[] = [];
     ballotItem.ballotOptions.forEach((ballotOption) => {
         if (ballotOption.selected) {
@@ -125,11 +182,24 @@ export function ballotItem2Selection(ballotItem: BallotItem): PlaintextBallotSel
 }
 
 /**
+ * Convert a BallotItem defined in typical_ballot_data.ts to a list of internal PlaintextBallotSelection
+ * @param ballotItem defined in typical_ballot_data.ts that contains a list of selections
+ */
+export function ballotContest2Selection(contest: Contest): PlaintextBallotSelection[] {
+    let plainTextSelections: PlaintextBallotSelection[] = [];
+    contest.ballot_selections.forEach((ballotSelection) => {
+        plainTextSelections = [new PlaintextBallotSelection(ballotSelection.object_id, ballotSelection.sequence_order,
+            ballotSelection.vote, ballotSelection.is_placeholder_selection)]
+    });
+    return plainTextSelections;
+}
+
+/**
  * Construct a internal CiphertextElectionContext with Ballot and InternalManifest
  * @param ballot a ballot defined in typical_ballot_data.ts
  * @param internalManifest an InternalManifest build by Manifest
  */
-export function ballot2Context(ballot: Ballot, internalManifest: InternalManifest): CiphertextElectionContext {
+export function aaronBallot2Context(ballot: AaronBallot, internalManifest: InternalManifest): CiphertextElectionContext {
 
     // construct the names list for candidates from ballot
     const names: Set<string> = new Set();
@@ -148,6 +218,29 @@ export function ballot2Context(ballot: Ballot, internalManifest: InternalManifes
     return make_ciphertext_election_context(number_of_guardians, quorum, elgamal_public_key, commitment_hash, manifest_hash, extended_data);
 }
 
+/**
+ * Construct a internal CiphertextElectionContext with Ballot and InternalManifest
+ * @param ballot a Ballot object defined in typical_ballot_data.ts
+ * @param internalManifest an InternalManifest build by Manifest
+ */
+export function ballot2Context(ballot: Ballot, internalManifest: InternalManifest): CiphertextElectionContext {
+
+    // construct the names list for candidates from ballot
+    const names: Set<string> = new Set();
+    ballot.contests.forEach((contest) => {
+        contest.ballot_selections.forEach((ballotSelection) => {
+            names.add(ballotSelection.object_id);
+        });
+    });
+
+    const number_of_guardians = 1;
+    const quorum = 1;
+    const elgamal_public_key:ElementModP = new ElementModP(BigInt("830647157921994533723221005688631837480749398093445682001345686145740504886693557419420287148894620628327687420710726184348492930161894426493567555053596304649756865662220152329151716691934339041489536445247808117192732474571762845305844818677676027235934920872239155120388422503195221344180333410127696131933518090047779221829662472818614236336581270341516530022704420443521097772128662124700211839211210908721533915110539300139766705909309815876793687494911116485149385267865330061438844344021027447760903959136805223414385040803151787918988887581567106728305638458450493532895134074416008333717556907440325422540005263755609440349926174900556055858298011233206372856463781327705746366049681672365068236528055877038951830996931086933850260432495637363415002875938135062292231445719262483613467991371369722352993560079282071699535196245817558663511296549603008092897623602899067100100046991701043923308908034328428840035795408907896272755397659393862126111128719708642351119960293861305660688827861839076070133848354823436507263419927109258160045333741762936765504361331647521583134171766657762829386224953145958922580767709905067103552647337580390689696044087562378269531673703889514970340624863075080886563924366245877576117478210"));
+    const commitment_hash: ElementModQ = new ElementModQ(2);
+    const manifest_hash: ElementModQ = internalManifest.manifest.crypto_hash();
+    const extended_data = undefined;
+    return make_ciphertext_election_context(number_of_guardians, quorum, elgamal_public_key, commitment_hash, manifest_hash, extended_data);
+}
 
 /**
  * Convert a PlaintextBallot to JSON
@@ -171,10 +264,10 @@ export function ballot2JSON(ballot: PlaintextBallot, context: CiphertextElection
 }
 
 /**
- * Build a Ballot from a JSON defined by Aaron
- * @param ballot a ballot of JSON file, currently compatible with Aaron's example
+ * Build a AaronBallot from a JSON defined by Aaron
+ * @param ballot a JSON file of Aaron defined ballot
  */
-export function buildBallot(ballot: any): Ballot {
+export function buildAaronBallot(ballot: any): AaronBallot {
     let contests:BallotItem[] = [];
     for(let i = 0; i < ballot.ballotItems.length; i++) {
         let ballotOptions: BallotOption[] = [];
@@ -185,10 +278,37 @@ export function buildBallot(ballot: any): Ballot {
         const contest: BallotItem = new BallotItem(ballot.ballotItems[i].id, ballot.ballotItems[i].order, ballotOptions);
         contests = [...contests, contest];
     }
-    const electionBallot = new Ballot(makeId(15), ballot.electionName[0].text, contests);
+    const electionBallot = new AaronBallot(makeId(15), ballot.electionName[0].text, contests);
 
     return electionBallot;
 }
+
+/**
+ * Build a Ballot from a JSOn defined by v0.95 ElectionGuard Sample Plaintext Ballot
+ * @param ballot a JSON file of plaintext abllot
+ */
+export function buildBallot(ballot: any): Ballot{
+    let contests:Contest[] = [];
+    for(let i = 0; i < ballot.contests.length; i++) {
+        let ballotSelections: BallotSelection[] = [];
+        console.log("ballot_selections length: " + ballot.contests[i].ballot_selections.length);
+        for(let j = 0; j < ballot.contests[i].ballot_selections.length; j++) {
+            console.log(ballot.contests[i].ballot_selections[j].object_id);
+            const ballotSelection = new BallotSelection(ballot.contests[i].ballot_selections[j],
+                ballot.contests[i].ballot_selections[j].sequence_order,
+                ballot.contests[i].ballot_selections[j].vote,
+                ballot.contests[i].ballot_selections[j].is_placeholder_selection,
+                ballot.contests[i].ballot_selections[j].extended_data);
+            ballotSelections = [...ballotSelections, ballotSelection];
+        }
+        const contest: Contest = new Contest(ballot.contests[i].object_id,
+            ballot.contests[i].sequence_order, ballotSelections);
+        contests = [...contests, contest];
+    }
+    const electionBallot = new Ballot(ballot.object_id, ballot.style_id, contests);
+    return electionBallot;
+}
+
 
 /**
  * Construct a Manifest using JSON ballot
@@ -349,7 +469,7 @@ export function makeId(length: number) {
     return result;
 }
 
-export function validateBallot(ballot: Ballot): ErrorBallotInput | null {
+export function validateBallot(ballot: AaronBallot): ErrorBallotInput | null {
     if (ballot.electionName === undefined || ballot.electionName.length === 0) return new ErrorBallotInput(ErrorType.MissingElectionName, "Missing Election Name");
     if (ballot.partyId === undefined) return new ErrorBallotInput(ErrorType.MissingBallotPartyId, "Missing Ballot Party ID");
     if (ballot.partyName === undefined || ballot.partyName.length === 0) return new ErrorBallotInput(ErrorType.MissingBallotPartyName, "Missing Ballot Party Name");
