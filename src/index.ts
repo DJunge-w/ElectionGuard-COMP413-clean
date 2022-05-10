@@ -1,13 +1,13 @@
-import {add_q, ElementModP, ElementModQ, rand_q} from "../group";
-import { encrypt_ballot } from "../simple_elections";
+import {add_q, ElementModP, ElementModQ, rand_q} from "./group";
+import { encrypt_ballot } from "./simple_elections";
 import {
     CiphertextBallot,
     CiphertextElectionContext, make_ciphertext_election_context,
     PlaintextBallot,
     PlaintextBallotContest,
     PlaintextBallotSelection,
-} from "../simple_election_data";
-import { get_optional } from "../utils";
+} from "./simple_election_data";
+import { get_optional } from "./utils";
 import { Ballot, BallotItem, BallotOption, EncryptBallotOutput, ErrorBallotInput, ErrorType} from "./typical_ballot_data";
 import {QRCode, ErrorCorrectLevel} from "qrcode-generator-ts";
 
@@ -26,7 +26,7 @@ import {
     VoteVariationType,
     SelectionDescription,
     ContactInformation, AnnotatedString
-} from "../manifest"
+} from "./manifest"
 /**
  * Ballot ==> Whole Election
  * BallotItem ==> A single question on the ballot
