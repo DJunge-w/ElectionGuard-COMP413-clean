@@ -5,7 +5,6 @@
 
 [banner image]: https://raw.githubusercontent.com/microsoft/electionguard-python/main/images/electionguard-banner.svg
 
-
 ## ❓ What Is Vote-by-mail?
  Vote by mail, or vote at home, is a method of voting that voters get their ballot delivered to them weeks before Election Day, fill it out at their convenience, then return it either in-person or by mail. There are two types of vote by mail system -- comprehensive vote by mail and absentee ballots. To ensure the integrity of elections and the validity of each ballot, risk-limiting audits are implemented and ballot tracking services are provided.
 
@@ -63,5 +62,10 @@ This is not just a simple school project that will be left out once the semester
 
 Therefore, this is a project that has already benefited and will continue to benefit multiple parties. We are really glad to work on a project that has such a long-lasting impact during this semester. Hope you’ve enjoyed our presentation and thank you for listening. 
 
-
-
+## Contributors  
+* [Xin Hao](https://github.com/Xin128)
+* [Alex Guo](alexiland@outlook.com)
+* [Zihe Zhao](https://github.com/zihe-zhao)
+* [Yanyu Zhong](https://github.com/yanyuzhong)
+* [Arthur Wu](wuwenqin200613@gmail.com)
+* [Shreyas Minocha](shreyasminocha@rice.edu)
