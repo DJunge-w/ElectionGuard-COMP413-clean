@@ -66,7 +66,7 @@ export function testGroup(
     });
   });
 
-  describe(`${contextName}: properties on ElementModQ`, () => {
+  describe.skip(`${contextName}: properties on ElementModQ`, () => {
     test('addition laws', async () => {
       const context = await contextPromise;
       fc.assert(
@@ -136,7 +136,7 @@ export function testGroup(
     });
   });
 
-  describe(`${contextName}: properties on ElementModP`, () => {
+  describe.skip(`${contextName}: properties on ElementModP`, () => {
     test('valid residues', async () => {
       const context = await contextPromise;
       fc.assert(
@@ -371,4 +371,4 @@ export function testGroup(
 // testGroup(bigIntContext3072());
 
 testGroup('HaclContext-3072', haclContext3072());
-testGroup('HaclContext-4096', haclContext4096());
+// testGroup('HaclContext-4096', haclContext4096());
