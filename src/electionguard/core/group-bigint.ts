@@ -493,3 +493,11 @@ export function bigIntContext3072(): GroupContext {
   }
   return bigIntContext3072Val;
 }
+
+export async function BigIntContext4096Async(): Promise<GroupContext> {
+  return bigIntContext4096();
+}
+
+export async function BigIntContext3072Async(): Promise<GroupContext> {
+  return bigIntContext4096();
+}

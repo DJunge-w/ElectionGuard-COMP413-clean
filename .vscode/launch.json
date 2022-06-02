@@ -4,6 +4,7 @@
   // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
   "version": "0.2.0",
   "configurations": [
+  
     {
       "name": "NPM debug election-object-base",
       "request": "launch",
@@ -12,6 +13,22 @@
         "test",
         "--",
         "test/electionguard/ballot/election-object-base.test.ts"
+      ],
+      "runtimeExecutable": "npm",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "type": "node"
+    },
+
+    {
+      "name": "NPM debug group",
+      "request": "launch",
+      "runtimeArgs": [
+        "run",
+        "test",
+        "--",
+        "test/electionguard/core/group.test.ts"
       ],
       "runtimeExecutable": "npm",
       "skipFiles": [

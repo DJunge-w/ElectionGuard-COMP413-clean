@@ -130,7 +130,7 @@ var invertSize = function(parsedSize, total) {
     case "*":
       let x = parseInt(const_);
       if (total % x != 0)
-        throw new Error("Argument whose length is "+parsedSize+" is not a multiple of "+x);
+        throw new Error("Argument whose length is "+parsedSize+" is not a multiple of "+x+" : total("+total+")");
       return [ var_, total / x ];
     case "/":
       return [ var_, total * parseInt(const_) ];

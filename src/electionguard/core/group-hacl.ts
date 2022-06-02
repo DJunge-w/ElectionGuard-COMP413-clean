@@ -33,8 +33,9 @@ import HaclWasm from '../../../hacl-wasm/api.js';
 type Hacl64_BigNum = Uint8Array;
 type HaclApi = any;
 
-const uintZero = new Uint8Array(1);
+const uintZero = new Uint8Array(2);
 uintZero[0] = 0;
+uintZero[1] = 0;
 
 function bigIntToHacl64(hacl: HaclApi, input: bigint): Hacl64_BigNum {
   const bytes = input === BIG_ZERO ? uintZero : bigIntToUint8Array(input);
@@ -235,7 +236,8 @@ class ElementModPImpl implements ElementModP {
   }
 
   acceleratePow(): ElementModP {
-    return new AcceleratedElementModPImpl(this.value, this.context);
+    return this;
+    // return new AcceleratedElementModPImpl(this.value, this.context);
   }
 
   powP(exponent: ElementModQ | number): ElementModP {
@@ -387,13 +389,20 @@ class HaclProductionContext implements GroupContext {
     this.HACL_P = bigIntToHacl64(Hacl, P);
     this.HACL_Q = bigIntToHacl64(Hacl, Q);
     this.HACL_G = bigIntToHacl64(Hacl, G);
+
+    this.MONT_CTX_P = Hacl.Bignum_64.mont_ctx_init(this.HACL_P);
+    this.MONT_CTX_Q = Hacl.Bignum_64.mont_ctx_init(this.HACL_Q);
+    this.MONT_FIELD_CTX = Hacl.Bignum_Montgomery_64.field_init(this.HACL_P);
+
     this.ZERO_MOD_Q = new ElementModQImpl(this.HACL_ZERO, this);
     this.ONE_MOD_Q = new ElementModQImpl(this.HACL_ONE, this);
     this.TWO_MOD_Q = new ElementModQImpl(this.HACL_TWO, this);
     this.ZERO_MOD_P = new ElementModPImpl(this.HACL_ZERO, this);
     this.ONE_MOD_P = new ElementModPImpl(this.HACL_ONE, this);
     this.TWO_MOD_P = new ElementModPImpl(this.HACL_TWO, this);
-    this.G_MOD_P = new ElementModPImpl(this.HACL_G, this).acceleratePow();
+    this.G_MOD_P = new ElementModPImpl(this.HACL_G, this); //.acceleratePow();
+
+    console.log('Initialization: about to try multiplication');
     this.G_SQUARED_MOD_P = multP(this.G_MOD_P, this.G_MOD_P);
     this.G_INVERSE_MOD_P = multInvP(this.G_MOD_P);
 
@@ -401,10 +410,6 @@ class HaclProductionContext implements GroupContext {
       bigIntToHacl64(Hacl, Q - BigInt(1)),
       this
     );
-
-    this.MONT_CTX_P = Hacl.Bignum_64.mont_ctx_init(this.HACL_P);
-    this.MONT_CTX_Q = Hacl.Bignum_64.mont_ctx_init(this.HACL_Q);
-    this.MONT_FIELD_CTX = Hacl.Bignum_Montgomery_64.field_init(this.HACL_P);
 
     this.dLogger = new DLogger(this.G_MOD_P);
     console.log('Initialization complete');
@@ -553,7 +558,7 @@ class HaclProductionContext implements GroupContext {
       (a as ElementModPImpl).value,
       (b as ElementModPImpl).value
     );
-    const result = this.Hacl.Bignum_64.mod(this.HACL_P, product);
+    const result = this.Hacl.Bignum_64.mod_precomp(this.MONT_CTX_P, product);
     return new ElementModPImpl(result, this);
   }
 
@@ -592,19 +597,22 @@ const haclModules = [
  * ElectionGuard GroupContext using hacl-wasm as the underlying engine and implementing
  * the "full-strength" 4096-bit group.
  */
-export async function haclContext4096(): Promise<GroupContext> {
+export function haclContext4096(): Promise<GroupContext> {
   if (haclContext4096Val === undefined) {
-    const HaclApi = await HaclWasm.getInitializedHaclModule(haclModules);
-    haclContext4096Val = new HaclProductionContext(
-      'Hacl-4096 Group',
-      4096,
-      production4096P,
-      production4096Q,
-      production4096G,
-      HaclApi
-    );
+    return HaclWasm.getInitializedHaclModule(haclModules).then(HaclApi => {
+      haclContext4096Val = new HaclProductionContext(
+        'Hacl-4096 Group',
+        4096,
+        production4096P,
+        production4096Q,
+        production4096G,
+        HaclApi
+      );
+      return haclContext4096Val;
+    });
+  } else {
+    return Promise.resolve(haclContext4096Val);
   }
-  return haclContext4096Val;
 }
 
 let haclContext3072Val: GroupContext | undefined = undefined;
@@ -614,17 +622,20 @@ let haclContext3072Val: GroupContext | undefined = undefined;
  * the "pretty-much-full-strength" 3072-bit group (which can run 1.8x faster than
  * the 4096-bit group) for modular exponentiations.
  */
-export async function haclContext3072(): Promise<GroupContext> {
+export function haclContext3072(): Promise<GroupContext> {
   if (haclContext3072Val === undefined) {
-    const HaclApi = await HaclWasm.getInitializedHaclModule(haclModules);
-    haclContext3072Val = new HaclProductionContext(
-      'Hacl-3072 Group',
-      3072,
-      production3072P,
-      production3072Q,
-      production3072G,
-      HaclApi
-    );
+    return HaclWasm.getInitializedHaclModule(haclModules).then(HaclApi => {
+      haclContext3072Val = new HaclProductionContext(
+        'Hacl-3072 Group',
+        3072,
+        production3072P,
+        production3072Q,
+        production3072G,
+        HaclApi
+      );
+      return haclContext3072Val;
+    });
+  } else {
+    return Promise.resolve(haclContext3072Val);
   }
-  return haclContext3072Val;
 }
