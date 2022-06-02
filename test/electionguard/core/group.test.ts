@@ -21,6 +21,10 @@ import {
   bigIntContext4096,
   bigIntContext3072,
 } from '../../../src/electionguard/core/group-bigint';
+import {
+  haclContext4096,
+  haclContext3072,
+} from '../../../src/electionguard/core/group-hacl';
 
 /**
  * General-purpose tester for anything that implements the GroupContext interface.
@@ -341,5 +345,8 @@ export function testGroup(context: GroupContext): void {
   });
 }
 
-testGroup(bigIntContext4096());
-testGroup(bigIntContext3072());
+// testGroup(bigIntContext4096());
+// testGroup(bigIntContext3072());
+
+haclContext3072().then(ctx => testGroup(ctx));
+haclContext4096().then(ctx => testGroup(ctx));

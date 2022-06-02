@@ -24,9 +24,9 @@ import {
 import {UInt256} from './uint256';
 import {PowRadix} from './powradix';
 
-// This file exports the symbol `bigIntContext`, which is an instance of the GroupContext
-// interface found in group-common.ts, and which implements all the ElementModP and ElementModQ
-// functions that we need for ElectionGuard.
+// This file exports the symbols `bigIntContext4096()` and `bigIntContext3072(), which return
+// instances of the GroupContext interface found in group-common.ts, and which implements all
+// the ElementModP and ElementModQ functions that we need for ElectionGuard.
 
 // We're adopting this somewhat excessive separation between interface and implementation,
 // even though we don't strictly need it when using bigint, because we need something significantly
