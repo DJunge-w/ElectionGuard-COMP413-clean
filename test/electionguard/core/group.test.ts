@@ -36,7 +36,9 @@ export function testGroup(
   describe(`${contextName}: super basics`, () => {
     let context: GroupContext;
     beforeAll(async () => {
-      context = await contextPromise;
+      if (context === undefined) {
+        context = await contextPromise;
+      }
     });
 
     test('addition basics', () => {

@@ -21,7 +21,9 @@ function testElGamal(
   let context: GroupContext;
   describe(`${contextName}: ElGamal properties`, () => {
     beforeAll(async () => {
-      context = await contextPromise;
+      if (context === undefined) {
+        context = await contextPromise;
+      }
     });
 
     test('encryption/decryption', () => {

@@ -8,6 +8,7 @@ import {
   bigIntContext4096,
 } from '../src/electionguard/core/group-bigint';
 import {GroupContext} from '../src/electionguard/core/group-common';
+import { haclContext3072Async, haclContext4096Async } from '../src/electionguard/core/group-hacl';
 
 function measureTimeMillis(f: () => void): number {
   const start = Date.now();
@@ -64,3 +65,6 @@ function benchmarkElGamal(context: GroupContext) {
 
 benchmarkElGamal(bigIntContext3072());
 benchmarkElGamal(bigIntContext4096());
+
+haclContext3072Async().then(context => benchmarkElGamal(context));
+haclContext4096Async().then(context => benchmarkElGamal(context));
