@@ -663,7 +663,7 @@ var HaclWasm = (function() {
     }
     if (proto.return.type === "uint64") {
       // krml convention: uint64s are sent over as two uint32s
-      console.log(call_return);
+      // console.log(call_return);
       return [BigInt(call_return[0]>>>0) + (BigInt(call_return[1]>>>0) << 32n), return_buffers].flat();
     }
     if (proto.return.type === "void") {

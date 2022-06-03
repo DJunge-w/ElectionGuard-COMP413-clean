@@ -32,6 +32,7 @@ import assert from 'assert';
 // computations in the WASM subsystem.
 
 type Hacl64_BigNum = BigUint64Array;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 type HaclApi = any;
 
 const uintZero = new Uint8Array(2);
@@ -93,7 +94,6 @@ function hacl64Equals(a: Hacl64_BigNum, b: Hacl64_BigNum): boolean {
   }
 }
 
-
 class ElementModQImpl implements ElementModQ {
   constructor(
     readonly value: Hacl64_BigNum,
@@ -101,7 +101,7 @@ class ElementModQImpl implements ElementModQ {
   ) {
     assert(
       this.value instanceof BigUint64Array,
-      'unexpected type for an ElementModP value'
+      'unexpected type for an ElementModQ value'
     );
     assert(
       this.value.length * 8 === context.numQBytes,
@@ -177,10 +177,13 @@ class ElementModQImpl implements ElementModQ {
   }
 
   lessThan(other: ElementModQ): boolean {
-    return (
-      other instanceof ElementModQImpl &&
-      this.context.Hacl.Bignum_64.lt_mask(this.value, other.value)[0] !== 0
-    );
+    if (!(other instanceof ElementModQImpl)) {
+      return false;
+    } else {
+      return this.toBigint() < other.toBigint();
+      // const less = this.context.Hacl.Bignum_64.lt_mask(this.value, other.value);
+      // return less[0] !== 0;
+    }
   }
 
   lessThanOrEqual(other: ElementModQ): boolean {
@@ -426,6 +429,7 @@ class MontgomeryElementModPImpl implements MontgomeryElementModP {
   }
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 type Hacl_Bignum_MontArithmetic_bn_mont_ctx_u64 = any;
 
 class HaclProductionContext implements GroupContext {
@@ -462,7 +466,7 @@ class HaclProductionContext implements GroupContext {
     readonly G: bigint,
     readonly Hacl: HaclApi // Hacl API object
   ) {
-    console.log(`Initializing context for ${name} (${numPBytes} p-bytes)`);
+    // console.log(`Initializing context for ${name} (${numPBytes} p-bytes)`);
     this.HACL_ZERO_Q = bigIntToHacl64(Hacl, BigInt(0), numQBytes);
     this.HACL_ONE_Q = bigIntToHacl64(Hacl, BigInt(1), numQBytes);
     this.HACL_TWO_Q = bigIntToHacl64(Hacl, BigInt(2), numQBytes);
@@ -485,7 +489,7 @@ class HaclProductionContext implements GroupContext {
     this.TWO_MOD_P = new ElementModPImpl(this.HACL_TWO_P, this);
     this.G_MOD_P = new ElementModPImpl(this.HACL_G, this); //.acceleratePow();
 
-    console.log('Initialization: about to try multiplication');
+    // console.log('Initialization: about to try multiplication');
     this.G_SQUARED_MOD_P = multP(this.G_MOD_P, this.G_MOD_P);
 
     this.Q_MINUS_ONE_MOD_Q = new ElementModQImpl(
@@ -496,7 +500,7 @@ class HaclProductionContext implements GroupContext {
     this.G_INVERSE_MOD_P = multInvP(this.G_MOD_P);
 
     this.dLogger = new DLogger(this.G_MOD_P);
-    console.log('Initialization complete');
+    // console.log('Initialization complete');
   }
 
   createElementModQFromHex(value: string): ElementModQ | undefined {
@@ -611,11 +615,11 @@ class HaclProductionContext implements GroupContext {
     if (a.isZero()) {
       return a; // zero is its own additive inverse
     } else {
-      const [result] = this.Hacl.Bignum_64.sub(
+      const result = this.Hacl.Bignum_64.sub(
         this.HACL_Q,
         (a as ElementModQImpl).value
       );
-      return new ElementModQImpl(result, this);
+      return new ElementModQImpl(result[1], this);
     }
   }
 

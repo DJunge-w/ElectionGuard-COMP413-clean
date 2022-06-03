@@ -64,9 +64,65 @@ export function testGroup(
       expect(context.ZERO_MOD_Q).toEqual(context.ZERO_MOD_Q);
       expect(context.ZERO_MOD_P).toEqual(context.ZERO_MOD_P);
     });
+
+    test('super basic ordering', async () => {
+      const context = await contextPromise;
+      const three = context.createElementModQ(3) || fail(); // requires not undefined
+      const four = context.createElementModQ(4) || fail();
+      const results = {
+        '3<4': three.lessThan(four),
+        '3<3': three.lessThan(three),
+        '4<3': four.lessThan(three),
+        '3<=4': three.lessThanOrEqual(four),
+        '3<=3': three.lessThanOrEqual(three),
+        '4<=3': four.lessThanOrEqual(three),
+        '3>4': three.greaterThan(four),
+        '3>3': three.greaterThan(three),
+        '4>3': four.greaterThan(three),
+        '3>=4': three.greaterThanOrEqual(four),
+        '3>=3': three.greaterThanOrEqual(three),
+        '4>=3': four.greaterThanOrEqual(three),
+      };
+
+      // Rather than a bunch of individual tests, that might fail
+      // sequentially, we instead run all of them and check all of
+      // them at once. Also handy to be able to log the output.
+
+      // console.log(results);
+
+      expect(results).toEqual({
+        '3<4': true,
+        '3<3': false,
+        '4<3': false,
+        '3<=4': true,
+        '3<=3': true,
+        '4<=3': false,
+        '3>4': false,
+        '3>3': false,
+        '4>3': true,
+        '3>=4': false,
+        '3>=3': true,
+        '4>=3': true,
+      });
+    });
+
+    test('counterexample from addition laws', async () => {
+      const context = await contextPromise;
+      const a = context.createElementModQ(1) || fail();
+      const b = context.createElementModQ(0) || fail();
+      const c = context.createElementModQ(0) || fail();
+      expect(addQ(a, context.ZERO_MOD_Q)).toEqual(a); // identity
+      expect(negateQ(a).isInBounds()).toBe(true); // closure
+      expect(subQ(a, b).isInBounds()).toBe(true); // closure
+      expect(addQ(a, negateQ(a))).toEqual(context.ZERO_MOD_Q); // inverse
+      const aPlusB = addQ(a, b);
+      expect(aPlusB.isInBounds()).toBe(true); // closure
+      expect(aPlusB).toEqual(addQ(b, a)); // commutativity
+      expect(addQ(a, addQ(b, c))).toEqual(addQ(addQ(a, b), c)); // associativity
+    });
   });
 
-  describe.skip(`${contextName}: properties on ElementModQ`, () => {
+  describe(`${contextName}: properties on ElementModQ`, () => {
     test('addition laws', async () => {
       const context = await contextPromise;
       fc.assert(
@@ -128,7 +184,8 @@ export function testGroup(
           const r1 = context.randQ(min);
           const r2 = context.randQ(min);
           const minQ = context.createElementModQ(min) || fail();
-          expect(r1).not.toEqual(r2); // the probability of equality should be basically zero
+          const r1EqR2 = r1.equals(r2);
+          expect(r1EqR2).toBe(false); // the probability of equality should be basically zero
           expect(r1.greaterThanOrEqual(minQ)).toBe(true);
           expect(r2.greaterThanOrEqual(minQ)).toBe(true);
         })
@@ -136,7 +193,7 @@ export function testGroup(
     });
   });
 
-  describe.skip(`${contextName}: properties on ElementModP`, () => {
+  describe(`${contextName}: properties on ElementModP`, () => {
     test('valid residues', async () => {
       const context = await contextPromise;
       fc.assert(
@@ -196,7 +253,8 @@ export function testGroup(
             expect(success4).toBe(true);
             // negative powers work as an alternative to division
           }
-        )
+        ),
+        fcFastConfig
       );
     });
 
