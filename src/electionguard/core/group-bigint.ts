@@ -265,12 +265,12 @@ class AcceleratedElementModPImpl extends ElementModPImpl {
 }
 
 class MontgomeryElementModPImpl implements MontgomeryElementModP {
+  // Total hack of an implementation for now; we're not actually doing the Montgomery
+  // transformation at all; just doing all the work by delegating. The HACL implementation
+  // will do the transformation for real and see insane speedups.
   constructor(readonly value: ElementModP) {}
 
   multiply(other: MontgomeryElementModP): MontgomeryElementModP {
-    // Total hack of an implementation for now; we're not actually doing the Montgomery
-    // transformation at all; just doing all the work by delegating. The HACL implementation
-    // will do the transformation for real and see insane speedups.
     return new MontgomeryElementModPImpl(
       multP(this.value, (other as MontgomeryElementModPImpl).value)
     );
@@ -494,10 +494,10 @@ export function bigIntContext3072(): GroupContext {
   return bigIntContext3072Val;
 }
 
-export async function BigIntContext4096Async(): Promise<GroupContext> {
+export async function bigIntContext4096Async(): Promise<GroupContext> {
   return bigIntContext4096();
 }
 
-export async function BigIntContext3072Async(): Promise<GroupContext> {
+export async function bigIntContext3072Async(): Promise<GroupContext> {
   return bigIntContext4096();
 }

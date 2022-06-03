@@ -5,13 +5,25 @@ import {
   elGamalEncrypt,
 } from '../../../src/electionguard/core/elgamal';
 import {
-  bigIntContext3072,
-  bigIntContext4096,
+  bigIntContext3072Async,
+  bigIntContext4096Async,
 } from '../../../src/electionguard/core/group-bigint';
 import {GroupContext} from '../../../src/electionguard/core/group-common';
+import {
+  haclContext3072Async,
+  haclContext4096Async,
+} from '../../../src/electionguard/core/group-hacl';
 
-function testElGamal(context: GroupContext) {
-  describe(`${context.name}: ElGamal properties`, () => {
+function testElGamal(
+  contextName: string,
+  contextPromise: Promise<GroupContext>
+) {
+  let context: GroupContext;
+  describe(`${contextName}: ElGamal properties`, () => {
+    beforeAll(async () => {
+      context = await contextPromise;
+    });
+
     test('encryption/decryption', () => {
       fc.assert(
         fc.property(
@@ -45,5 +57,7 @@ function testElGamal(context: GroupContext) {
   });
 }
 
-testElGamal(bigIntContext4096());
-testElGamal(bigIntContext3072());
+testElGamal('BigIntContext-3072', bigIntContext3072Async());
+testElGamal('BigIntContext-4096', bigIntContext4096Async());
+testElGamal('HaclContext-3072', haclContext3072Async());
+testElGamal('HaclContext-4096', haclContext4096Async());

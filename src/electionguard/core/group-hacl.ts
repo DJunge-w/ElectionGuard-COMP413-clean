@@ -315,8 +315,7 @@ class ElementModPImpl implements ElementModP {
   }
 
   acceleratePow(): ElementModP {
-    return this;
-    // return new AcceleratedElementModPImpl(this.value, this.context);
+    return new AcceleratedElementModPImpl(this.value, this.context);
   }
 
   powP(exponent: ElementModQ | number): ElementModP {
@@ -361,7 +360,7 @@ class ElementModPImpl implements ElementModP {
   }
 
   toMontgomeryElementModP(): MontgomeryElementModP {
-    return new MontgomeryElementModPImpl(this);
+    return MontgomeryElementModPImpl.fromElementModP(this);
   }
 }
 
@@ -415,17 +414,46 @@ class AcceleratedElementModPImpl extends ElementModPImpl {
 }
 
 class MontgomeryElementModPImpl implements MontgomeryElementModP {
-  // TODO: use the Montgomery transformation built into HACL-WASM for speed!
-  constructor(readonly value: ElementModP) {}
+  constructor(
+    readonly mvalue: Hacl64_BigNum,
+    readonly context: HaclProductionContext
+  ) {}
+
+  static fromElementModP(input: ElementModP): MontgomeryElementModPImpl {
+    assert(
+      input instanceof ElementModPImpl,
+      'unexpected input to MontgomeryElementModPImpl constructor'
+    );
+    const context = input.context;
+    const [mvalue] = context.Hacl.Bignum_Montgomery_64.to_field(
+      context.MONT_FIELD_CTX,
+      input.value
+    );
+
+    return new MontgomeryElementModPImpl(mvalue, context);
+  }
 
   multiply(other: MontgomeryElementModP): MontgomeryElementModP {
-    return new MontgomeryElementModPImpl(
-      multP(this.value, (other as MontgomeryElementModPImpl).value)
+    assert(
+      other instanceof MontgomeryElementModPImpl,
+      'unexpected other type for Montgomery multiply'
     );
+
+    const [product] = this.context.Hacl.Bignum_Montgomery_64.mul(
+      this.context.MONT_FIELD_CTX,
+      (this as MontgomeryElementModPImpl).mvalue,
+      (other as MontgomeryElementModPImpl).mvalue
+    );
+    return new MontgomeryElementModPImpl(product, this.context);
   }
 
   toElementModP(): ElementModP {
-    return this.value;
+    const [pvalue] = this.context.Hacl.Bignum_Montgomery_64.from_field(
+      this.context.MONT_FIELD_CTX,
+      this.mvalue
+    );
+
+    return new ElementModPImpl(pvalue, this.context);
   }
 }
 
@@ -466,7 +494,7 @@ class HaclProductionContext implements GroupContext {
     readonly G: bigint,
     readonly Hacl: HaclApi // Hacl API object
   ) {
-    // console.log(`Initializing context for ${name} (${numPBytes} p-bytes)`);
+    console.log(`Initializing context for ${name} (${numPBytes} p-bytes)`);
     this.HACL_ZERO_Q = bigIntToHacl64(Hacl, BigInt(0), numQBytes);
     this.HACL_ONE_Q = bigIntToHacl64(Hacl, BigInt(1), numQBytes);
     this.HACL_TWO_Q = bigIntToHacl64(Hacl, BigInt(2), numQBytes);
@@ -487,7 +515,7 @@ class HaclProductionContext implements GroupContext {
     this.ZERO_MOD_P = new ElementModPImpl(this.HACL_ZERO_P, this);
     this.ONE_MOD_P = new ElementModPImpl(this.HACL_ONE_P, this);
     this.TWO_MOD_P = new ElementModPImpl(this.HACL_TWO_P, this);
-    this.G_MOD_P = new ElementModPImpl(this.HACL_G, this); //.acceleratePow();
+    this.G_MOD_P = new ElementModPImpl(this.HACL_G, this).acceleratePow();
 
     // console.log('Initialization: about to try multiplication');
     this.G_SQUARED_MOD_P = multP(this.G_MOD_P, this.G_MOD_P);
@@ -500,7 +528,7 @@ class HaclProductionContext implements GroupContext {
     this.G_INVERSE_MOD_P = multInvP(this.G_MOD_P);
 
     this.dLogger = new DLogger(this.G_MOD_P);
-    // console.log('Initialization complete');
+    console.log('Initialization complete');
   }
 
   createElementModQFromHex(value: string): ElementModQ | undefined {
@@ -685,7 +713,7 @@ const haclModules = [
  * ElectionGuard GroupContext using hacl-wasm as the underlying engine and implementing
  * the "full-strength" 4096-bit group.
  */
-export function haclContext4096(): Promise<GroupContext> {
+export function haclContext4096Async(): Promise<GroupContext> {
   if (haclContext4096Val === undefined) {
     return HaclWasm.getInitializedHaclModule(haclModules).then(HaclApi => {
       haclContext4096Val = new HaclProductionContext(
@@ -711,7 +739,7 @@ let haclContext3072Val: GroupContext | undefined = undefined;
  * the "pretty-much-full-strength" 3072-bit group (which can run 1.8x faster than
  * the 4096-bit group) for modular exponentiations.
  */
-export function haclContext3072(): Promise<GroupContext> {
+export function haclContext3072Async(): Promise<GroupContext> {
   if (haclContext3072Val === undefined) {
     return HaclWasm.getInitializedHaclModule(haclModules).then(HaclApi => {
       haclContext3072Val = new HaclProductionContext(

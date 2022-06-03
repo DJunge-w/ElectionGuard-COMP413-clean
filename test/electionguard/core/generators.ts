@@ -132,6 +132,6 @@ export function elGamalCiphertextAndContext(
  */
 export const fcFastConfig = {
   endOnFailure: true, // disable shrinking
-  interruptAfterTimeLimit: 5000, // milliseconds
+  skipAllAfterTimeLimit: 5000, // milliseconds
   markInterruptAsFailure: false, // we'll still declare success if tests have passed so far
 };

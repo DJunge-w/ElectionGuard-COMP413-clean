@@ -18,12 +18,12 @@ import {
   subQ,
 } from '../../../src/electionguard/core/group-common';
 import {
-  bigIntContext4096,
-  bigIntContext3072,
+  bigIntContext3072Async,
+  bigIntContext4096Async,
 } from '../../../src/electionguard/core/group-bigint';
 import {
-  haclContext4096,
-  haclContext3072,
+  haclContext4096Async,
+  haclContext3072Async,
 } from '../../../src/electionguard/core/group-hacl';
 
 /**
@@ -34,30 +34,31 @@ export function testGroup(
   contextPromise: Promise<GroupContext>
 ): void {
   describe(`${contextName}: super basics`, () => {
-    test('addition basics', async () => {
-      const context = await contextPromise;
+    let context: GroupContext;
+    beforeAll(async () => {
+      context = await contextPromise;
+    });
+
+    test('addition basics', () => {
       const three = context.createElementModQ(3) || fail(); // requires not undefined
       const four = context.createElementModQ(4) || fail();
       const seven = context.createElementModQ(7) || fail();
       expect(context.addQ(three, four)).toEqual(seven);
     });
 
-    test('multiplication basics', async () => {
-      const context = await contextPromise;
+    test('multiplication basics', () => {
       const three = context.createElementModQ(3) || fail();
       const four = context.createElementModQ(4) || fail();
       const twelve = context.createElementModQ(12) || fail();
       expect(context.multQ(three, four)).toEqual(twelve);
     });
 
-    test('constants are in bounds', async () => {
-      const context = await contextPromise;
+    test('constants are in bounds', () => {
       expect(context.G < context.P).toBe(true);
       expect(context.Q < context.P).toBe(true);
     });
 
-    test('super basic equality testing', async () => {
-      const context = await contextPromise;
+    test('super basic equality testing', () => {
       expect(context.createElementModQ(0)).toEqual(context.ZERO_MOD_Q);
       expect(context.createElementModQ(0)?.isZero()).toBe(true);
       expect(context.ZERO_MOD_Q).toEqual(context.createElementModQ(0));
@@ -65,8 +66,7 @@ export function testGroup(
       expect(context.ZERO_MOD_P).toEqual(context.ZERO_MOD_P);
     });
 
-    test('super basic ordering', async () => {
-      const context = await contextPromise;
+    test('super basic ordering', () => {
       const three = context.createElementModQ(3) || fail(); // requires not undefined
       const four = context.createElementModQ(4) || fail();
       const results = {
@@ -106,8 +106,7 @@ export function testGroup(
       });
     });
 
-    test('counterexample from addition laws', async () => {
-      const context = await contextPromise;
+    test('counterexample from addition laws', () => {
       const a = context.createElementModQ(1) || fail();
       const b = context.createElementModQ(0) || fail();
       const c = context.createElementModQ(0) || fail();
@@ -123,8 +122,12 @@ export function testGroup(
   });
 
   describe(`${contextName}: properties on ElementModQ`, () => {
-    test('addition laws', async () => {
-      const context = await contextPromise;
+    let context: GroupContext;
+    beforeAll(async () => {
+      context = await contextPromise;
+    });
+
+    test('addition laws', () => {
       fc.assert(
         fc.property(
           elementModQ(context),
@@ -144,8 +147,7 @@ export function testGroup(
       );
     });
 
-    test('multiplication laws', async () => {
-      const context = await contextPromise;
+    test('multiplication laws', () => {
       fc.assert(
         fc.property(
           elementModQ(context),
@@ -168,8 +170,7 @@ export function testGroup(
       );
     });
 
-    test('serialization', async () => {
-      const context = await contextPromise;
+    test('serialization', () => {
       fc.assert(
         fc.property(elementModQ(context), a => {
           expect(context.createElementModQFromHex(a.toHex())).toEqual(a);
@@ -177,8 +178,7 @@ export function testGroup(
       );
     });
 
-    test('randomness', async () => {
-      const context = await contextPromise;
+    test('randomness', () => {
       fc.assert(
         fc.property(fc.nat(100), min => {
           const r1 = context.randQ(min);
@@ -194,8 +194,12 @@ export function testGroup(
   });
 
   describe(`${contextName}: properties on ElementModP`, () => {
-    test('valid residues', async () => {
-      const context = await contextPromise;
+    let context: GroupContext;
+    beforeAll(async () => {
+      context = await contextPromise;
+    });
+
+    test('valid residues', () => {
       fc.assert(
         fc.property(validElementModP(context), x => {
           // if this isn't true, the generator is broken and we have bigger problems
@@ -204,12 +208,12 @@ export function testGroup(
           expect(x.toBigint() < context.P).toBe(true);
           expect(inBounds).toBe(true);
           expect(isValidResidue).toBe(true);
-        })
+        }),
+        fcFastConfig
       );
     });
 
-    test('multiplication laws', async () => {
-      const context = await contextPromise;
+    test('multiplication laws', () => {
       fc.assert(
         fc.property(
           validElementModP(context),
@@ -225,12 +229,12 @@ export function testGroup(
             expect(aTimesB).toEqual(multP(b, a)); // commutativity
             expect(multP(a, multP(b, c))).toEqual(multP(aTimesB, c)); // associativity
           }
-        )
+        ),
+        fcFastConfig
       );
     });
 
-    test('exponentiation laws', async () => {
-      const context = await contextPromise;
+    test('exponentiation laws', () => {
       fc.assert(
         fc.property(
           validElementModP(context),
@@ -258,8 +262,7 @@ export function testGroup(
       );
     });
 
-    test('super-basic generator exponentiation', async () => {
-      const context = await contextPromise;
+    test('super-basic generator exponentiation', () => {
       const g = context.createElementModP(context.G) || fail(); // unaccelerated generator
       expect(powP(g, 0).toBigint()).toEqual(BigInt(1));
       expect(powP(g, 1).toBigint()).toEqual(context.G);
@@ -272,8 +275,7 @@ export function testGroup(
       expect(context.gPowP(2)).toEqual(context.G_SQUARED_MOD_P);
     });
 
-    test('generator exponentiation acceleration', async () => {
-      const context = await contextPromise;
+    test('generator exponentiation acceleration', () => {
       fc.assert(
         fc.property(elementModQ(context), e1 => {
           const g = context.createElementModP(context.G) || fail(); // unaccelerated generator
@@ -285,8 +287,7 @@ export function testGroup(
       );
     });
 
-    test('public-key exponentiation acceleration', async () => {
-      const context = await contextPromise;
+    test('public-key exponentiation acceleration', () => {
       fc.assert(
         fc.property(elementModQ(context), elementModQ(context), (a, e) => {
           const pkNormal = context.gPowP(a);
@@ -300,8 +301,7 @@ export function testGroup(
       );
     });
 
-    test('exponentiation laws (generator)', async () => {
-      const context = await contextPromise;
+    test('exponentiation laws (generator)', () => {
       fc.assert(
         fc.property(elementModQ(context), elementModQ(context), (e1, e2) => {
           const r1 = context.gPowP(addQ(e1, e2));
@@ -318,8 +318,7 @@ export function testGroup(
       );
     });
 
-    test('divP vs. multP with negative exponent', async () => {
-      const context = await contextPromise;
+    test('divP vs. multP with negative exponent', () => {
       fc.assert(
         fc.property(
           elementModQ(context),
@@ -347,8 +346,7 @@ export function testGroup(
       );
     });
 
-    test('divP vs. multP with negative exponent, v2', async () => {
-      const context = await contextPromise;
+    test('divP vs. multP with negative exponent, v2', () => {
       fc.assert(
         fc.property(
           elementModQ(context),
@@ -383,8 +381,7 @@ export function testGroup(
       );
     });
 
-    test('divP vs. multP with negative exponent, v2, just the generator', async () => {
-      const context = await contextPromise;
+    test('divP vs. multP with negative exponent, v2, just the generator', () => {
       fc.assert(
         fc.property(elementModQ(context), elementModQ(context), (c, r) => {
           const gxPlain = context.createElementModP(context.G) || fail();
@@ -414,8 +411,7 @@ export function testGroup(
       );
     });
 
-    test('serialization', async () => {
-      const context = await contextPromise;
+    test('serialization', () => {
       fc.assert(
         fc.property(elementModP(context), a => {
           expect(context.createElementModPFromHex(a.toHex())).toEqual(a);
@@ -425,8 +421,7 @@ export function testGroup(
   });
 }
 
-// testGroup(bigIntContext4096());
-// testGroup(bigIntContext3072());
-
-testGroup('HaclContext-3072', haclContext3072());
-// testGroup('HaclContext-4096', haclContext4096());
+testGroup('BigIntContext-3072', bigIntContext3072Async());
+testGroup('BigIntContext-4096', bigIntContext4096Async());
+testGroup('HaclContext-3072', haclContext3072Async());
+testGroup('HaclContext-4096', haclContext4096Async());
