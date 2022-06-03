@@ -28,13 +28,11 @@ function getRandomInt(min: number, max: number): number {
  */
 function benchmarkElGamal(context: GroupContext) {
   console.log(`${context.name}: BenchmarkElgamal`);
-  const N = 1000;
+  const N = 100;
 
-  const max = 100;
-  const min = 0;
   console.log(`Initializing benchmark for ${N} attempts.`);
 
-  const messages = Array.from({length: N}, () => getRandomInt(min, max));
+  const messages = Array.from({length: N}, () => getRandomInt(0, 100));
   const keypair = ElGamalKeypair.createRandom(context);
   const nonce = context.randQ();
 
