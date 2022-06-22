@@ -723,9 +723,6 @@ export class BallotCodecs {
           nonce: D.nullable(D.string),
           is_placeholder_selection: D.boolean,
           proof: this.coreCodecs.disjunctiveChaumPedersenProofKnownNonceCodec,
-          extended_data: D.nullable(
-            this.coreCodecs.hashedElGamalCiphertextCodec
-          ),
         }),
         D.map(
           s =>
@@ -736,8 +733,7 @@ export class BallotCodecs {
               s.ciphertext,
               s.crypto_hash,
               s.is_placeholder_selection,
-              s.proof,
-              s.extended_data || undefined
+              s.proof
             )
         )
       );
@@ -760,11 +756,6 @@ export class BallotCodecs {
           this.coreCodecs.disjunctiveChaumPedersenProofKnownNonceCodec.encode(
             input.proof
           ),
-        extended_data:
-          input.extendedData &&
-          this.coreCodecs.hashedElGamalCiphertextCodec.encode(
-            input.extendedData
-          ),
       }),
     };
 
@@ -782,6 +773,7 @@ export class BallotCodecs {
         ciphertext_accumulation: this.coreCodecs.elGamalCiphertextCodec,
         crypto_hash: this.coreCodecs.elementModQCodec,
         proof: this.coreCodecs.constantChaumPedersenProofKnownNonceCodec,
+        extended_data: D.nullable(this.coreCodecs.hashedElGamalCiphertextCodec),
       }),
       D.map(
         s =>
@@ -792,7 +784,8 @@ export class BallotCodecs {
             s.ballot_selections,
             s.ciphertext_accumulation,
             s.crypto_hash,
-            s.proof
+            s.proof,
+            s.extended_data || undefined
           )
       )
     );
@@ -816,6 +809,11 @@ export class BallotCodecs {
         proof: this.coreCodecs.constantChaumPedersenProofKnownNonceCodec.encode(
           input.proof
         ),
+        extended_data:
+          input.extendedData &&
+          this.coreCodecs.hashedElGamalCiphertextCodec.encode(
+            input.extendedData
+          ),
       }),
     };
 
@@ -887,9 +885,6 @@ export class BallotCodecs {
           nonce: D.nullable(this.coreCodecs.elementModQCodec),
           is_placeholder_selection: D.boolean,
           proof: this.coreCodecs.disjunctiveChaumPedersenProofKnownNonceCodec,
-          extended_data: D.nullable(
-            this.coreCodecs.hashedElGamalCiphertextCodec
-          ),
         }),
         D.map(
           s =>
@@ -901,8 +896,7 @@ export class BallotCodecs {
               s.crypto_hash,
               s.is_placeholder_selection,
               s.proof,
-              s.nonce || undefined,
-              s.extended_data || undefined
+              s.nonce || undefined
             )
         )
       );
@@ -926,11 +920,6 @@ export class BallotCodecs {
             this.coreCodecs.disjunctiveChaumPedersenProofKnownNonceCodec.encode(
               input.proof
             ),
-          extended_data:
-            input.extendedData &&
-            this.coreCodecs.hashedElGamalCiphertextCodec.encode(
-              input.extendedData
-            ),
         }),
       };
 
@@ -950,6 +939,9 @@ export class BallotCodecs {
           crypto_hash: this.coreCodecs.elementModQCodec,
           nonce: this.coreCodecs.elementModQCodec,
           proof: this.coreCodecs.constantChaumPedersenProofKnownNonceCodec,
+          extended_data: D.nullable(
+            this.coreCodecs.hashedElGamalCiphertextCodec
+          ),
         }),
         D.map(
           s =>
@@ -961,7 +953,8 @@ export class BallotCodecs {
               s.ciphertext_accumulation,
               s.crypto_hash,
               s.proof,
-              s.nonce
+              s.nonce,
+              s.extended_data || undefined
             )
         )
       );
@@ -983,6 +976,11 @@ export class BallotCodecs {
         proof: this.coreCodecs.constantChaumPedersenProofKnownNonceCodec.encode(
           input.proof
         ),
+        extended_data:
+          input.extendedData &&
+          this.coreCodecs.hashedElGamalCiphertextCodec.encode(
+            input.extendedData
+          ),
       }),
     };
 

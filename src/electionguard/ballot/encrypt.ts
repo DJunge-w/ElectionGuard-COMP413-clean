@@ -401,8 +401,7 @@ export function encryptSelection(
     cryptoHash,
     isPlaceholder,
     proof,
-    selectionNonce,
-    undefined // no extended data (yet!)
+    selectionNonce
   );
   return encryptedSelection;
 }

@@ -90,7 +90,8 @@ export class CiphertextContest
     readonly ciphertextAccumulation: ElGamalCiphertext,
     readonly cryptoHash: ElementModQ,
     readonly proof: ConstantChaumPedersenProofKnownNonce,
-    readonly contestNonce: ElementModQ
+    readonly contestNonce: ElementModQ,
+    readonly extendedData?: HashedElGamalCiphertext
   ) {}
 
   get objectId(): string {
@@ -110,6 +111,7 @@ export class CiphertextContest
       other.proof.equals(this.proof) &&
       other.contestNonce.equals(this.contestNonce)
     );
+    // ignoring extended data
   }
 
   get cryptoHashElement(): ElementModQ {
@@ -140,8 +142,7 @@ export class CiphertextSelection
     readonly cryptoHash: ElementModQ,
     readonly isPlaceholderSelection: boolean,
     readonly proof: DisjunctiveChaumPedersenProofKnownNonce,
-    readonly selectionNonce?: ElementModQ,
-    readonly extendedData?: HashedElGamalCiphertext
+    readonly selectionNonce?: ElementModQ
   ) {}
 
   get objectId(): string {
@@ -160,7 +161,6 @@ export class CiphertextSelection
       other.proof.equals(this.proof) &&
       objEqualsOrUndefEquals(other.selectionNonce, this.selectionNonce)
     );
-    // ignoring extended data
   }
 
   get cryptoHashElement(): ElementModQ {
@@ -175,8 +175,7 @@ export class CiphertextSelection
       this.ciphertext,
       this.cryptoHash,
       this.isPlaceholderSelection,
-      this.proof,
-      this.extendedData
+      this.proof
     );
   }
 }

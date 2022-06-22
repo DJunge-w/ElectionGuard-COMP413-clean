@@ -56,7 +56,8 @@ export class SubmittedContest
     readonly selections: Array<SubmittedSelection>,
     readonly ciphertextAccumulation: ElGamalCiphertext,
     readonly cryptoHashElement: ElementModQ,
-    readonly proof: ConstantChaumPedersenProofKnownNonce
+    readonly proof: ConstantChaumPedersenProofKnownNonce,
+    readonly extendedData?: HashedElGamalCiphertext
   ) {}
 
   get objectId(): string {
@@ -73,6 +74,7 @@ export class SubmittedContest
       this.ciphertextAccumulation.equals(other.ciphertextAccumulation) &&
       this.proof.equals(other.proof)
     );
+    // ignoring extended data
   }
 }
 
@@ -86,8 +88,7 @@ export class SubmittedSelection
     readonly ciphertext: ElGamalCiphertext,
     readonly cryptoHashElement: ElementModQ,
     readonly isPlaceholderSelection: boolean,
-    readonly proof: DisjunctiveChaumPedersenProofKnownNonce,
-    readonly extendedData?: HashedElGamalCiphertext
+    readonly proof: DisjunctiveChaumPedersenProofKnownNonce
   ) {}
 
   get objectId(): string {
@@ -104,7 +105,6 @@ export class SubmittedSelection
       this.isPlaceholderSelection === other.isPlaceholderSelection &&
       this.proof.equals(other.proof) &&
       this.cryptoHashElement.equals(other.cryptoHashElement)
-      // ignoring extended data
     );
   }
 }
