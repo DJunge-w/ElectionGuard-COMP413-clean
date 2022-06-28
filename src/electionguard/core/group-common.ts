@@ -101,6 +101,9 @@ export interface MontgomeryElementModP {
 
   /** Convert back to the normal representation. */
   toElementModP(): ElementModP;
+
+  /** Fetches the GroupContext used by this element. */
+  get context(): GroupContext;
 }
 
 /**

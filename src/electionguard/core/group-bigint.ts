@@ -23,6 +23,10 @@ import {
   production4096P,
   production4096Q,
   production4096R,
+  production4096MontIPrime,
+  production4096MontPPrime,
+  production3072MontIPrime,
+  production3072MontPPrime,
 } from './constants';
 import {UInt256} from './uint256';
 import {PowRadix} from './powradix';
@@ -235,7 +239,7 @@ class ElementModPImpl implements ElementModP {
   }
 
   toMontgomeryElementModP(): MontgomeryElementModP {
-    return new MontgomeryElementModPImpl(this);
+    return MontgomeryElementModPImpl.create(this);
   }
 }
 
@@ -275,19 +279,56 @@ class AcceleratedElementModPImpl extends ElementModPImpl {
 }
 
 class MontgomeryElementModPImpl implements MontgomeryElementModP {
-  constructor(readonly value: ElementModP) {}
+  constructor(
+    readonly value: bigint,
+    readonly context: BigIntProductionContext
+  ) {}
+
+  static create(pValue: ElementModPImpl) {
+    const context = pValue.context as BigIntProductionContext;
+    return new MontgomeryElementModPImpl(
+      (pValue.value << BigInt(context.numBits)) % context.P,
+      context
+    );
+  }
+
+  private modI(input: bigint): bigint {
+    return input & this.context.montgomeryIMinusOne;
+  }
+
+  private divI(input: bigint): bigint {
+    return input >> BigInt(this.context.numBits);
+  }
 
   multiply(other: MontgomeryElementModP): MontgomeryElementModP {
     // Total hack of an implementation for now; we're not actually doing the Montgomery
     // transformation at all; just doing all the work by delegating. The HACL implementation
     // will do the transformation for real and see insane speedups.
+    if (other.context.name !== this.context.name) {
+      throw new Error(
+        `incompatible contexts: ${other.context.name} vs. ${this.context.name}`
+      );
+    }
+
+    // won't fail because the contexts are the same
+    const otherI = other as MontgomeryElementModPImpl;
+    const w: bigint = this.value * otherI.value;
+    const z: bigint = this.divI(
+      this.modI(this.modI(w) * this.context.montgomeryPPrime) * this.context.P +
+        w
+    );
+
     return new MontgomeryElementModPImpl(
-      multP(this.value, (other as MontgomeryElementModPImpl).value)
+      z >= this.context.P ? z - this.context.P : z,
+      this.context
     );
   }
 
   toElementModP(): ElementModP {
-    return this.value;
+    return new ElementModPImpl(
+      (this.value * this.context.montgomeryIPrime) % this.context.P,
+      this.context
+    );
   }
 }
 
@@ -303,6 +344,7 @@ class BigIntProductionContext implements GroupContext {
   readonly G_INVERSE_MOD_P: ElementModP;
   private readonly dLogger: DLogger;
   readonly electionConstants: ElectionConstants;
+  readonly montgomeryIMinusOne: bigint;
 
   constructor(
     readonly name: string,
@@ -310,7 +352,9 @@ class BigIntProductionContext implements GroupContext {
     readonly P: bigint,
     readonly Q: bigint,
     readonly G: bigint,
-    readonly R: bigint
+    readonly R: bigint,
+    readonly montgomeryIPrime: bigint,
+    readonly montgomeryPPrime: bigint
   ) {
     this.ZERO_MOD_Q = new ElementModQImpl(BIG_ZERO, this);
     this.ONE_MOD_Q = new ElementModQImpl(BIG_ONE, this);
@@ -318,6 +362,10 @@ class BigIntProductionContext implements GroupContext {
     this.ZERO_MOD_P = new ElementModPImpl(BIG_ZERO, this);
     this.ONE_MOD_P = new ElementModPImpl(BIG_ONE, this);
     this.TWO_MOD_P = new ElementModPImpl(BIG_TWO, this);
+
+    // necessary to initialize this before calling acceleratePow
+    this.montgomeryIMinusOne = (BigInt(1) << BigInt(numBits)) - BigInt(1);
+
     this.G_MOD_P = new ElementModPImpl(G, this).acceleratePow();
     this.G_SQUARED_MOD_P = multP(this.G_MOD_P, this.G_MOD_P);
     this.G_INVERSE_MOD_P = multInvP(this.G_MOD_P);
@@ -482,7 +530,9 @@ export function bigIntContext4096(): GroupContext {
       production4096P,
       production4096Q,
       production4096G,
-      production4096R
+      production4096R,
+      production4096MontIPrime,
+      production4096MontPPrime
     );
   }
   return bigIntContext4096Val;
@@ -503,7 +553,9 @@ export function bigIntContext3072(): GroupContext {
       production3072P,
       production3072Q,
       production3072G,
-      production3072R
+      production3072R,
+      production3072MontIPrime,
+      production3072MontPPrime
     );
   }
   return bigIntContext3072Val;
