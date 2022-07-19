@@ -34,6 +34,7 @@ const builds = [
     external: [
       'bigint-mod-arith',
       'io-ts/Decoder',
+      'io-ts/Encoder',
       'io-ts/Codec',
       'fp-ts/function',
       'fp-ts/lib/Either',
@@ -41,6 +42,13 @@ const builds = [
       'create-hash',
       'create-hmac',
       'seedrandom',
+      '@stdlib/assert-has-arrow-function-support',
+      '@stdlib/assert-has-async-await-support',
+      '@stdlib/assert-has-bigint-support',
+      '@stdlib/assert-has-class-support',
+      '@stdlib/assert-has-map-support',
+      '@stdlib/assert-has-set-support',
+      '@stdlib/assert-has-uint8array-support',
     ],
   },
   {

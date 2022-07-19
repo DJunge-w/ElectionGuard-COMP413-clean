@@ -1,5 +1,12 @@
 import * as bigintModArith from 'bigint-mod-arith';
 import randomBytes from 'randombytes';
+import hasArrowFunctionSupport from '@stdlib/assert-has-arrow-function-support';
+import hasAsyncAwaitSupport from '@stdlib/assert-has-async-await-support';
+import hasBigIntSupport from '@stdlib/assert-has-bigint-support';
+import hasClassSupport from '@stdlib/assert-has-class-support';
+import hasMapSupport from '@stdlib/assert-has-map-support';
+import hasSetSupport from '@stdlib/assert-has-set-support';
+import hasUint8ArraySupport from '@stdlib/assert-has-uint8array-support';
 import {bigIntToUint8Array, uint8ArrayToBigInt} from './utils';
 import {DLogger} from './dlog';
 import {
@@ -312,6 +319,21 @@ class BigIntProductionContext implements GroupContext {
     readonly G: bigint,
     readonly R: bigint
   ) {
+    if (!hasUint8ArraySupport())
+      throw new Error("Environment doesn't have Uint8Array support");
+    if (!hasSetSupport())
+      throw new Error("Environment doesn't have Set support");
+    if (!hasMapSupport())
+      throw new Error("Environment doesn't have Map support");
+    if (!hasArrowFunctionSupport())
+      throw new Error("Environment doesn't have arrow function support");
+    if (!hasClassSupport())
+      throw new Error("Environment doesn't have class support");
+    if (!hasAsyncAwaitSupport())
+      throw new Error("Environment doesn't have async-await support");
+    if (!hasBigIntSupport())
+      throw new Error("Environment doesn't have BigInt support");
+
     this.ZERO_MOD_Q = new ElementModQImpl(BIG_ZERO, this);
     this.ONE_MOD_Q = new ElementModQImpl(BIG_ONE, this);
     this.TWO_MOD_Q = new ElementModQImpl(BIG_TWO, this);
