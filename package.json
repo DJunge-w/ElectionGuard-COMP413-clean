@@ -1,14 +1,22 @@
 {
-  "name": "electionguard-typescript",
+  "name": "electionguard",
   "version": "0.6.0",
   "description": "Client-side implementation of ElectionGuard for ballot encryption",
-  "author": "Arthur Wu <wuwenqin200613@gmail.com>",
+  "contributors": [
+    "Han Guo <alexiland@outlook.com>",
+    "Xin Hao <xinhaofighting@gmail.com>",
+    "Shreyas Minocha <shreyasminocha@rice.edu>",
+    "Dan S. Wallach <dwallach@rice.edu> or <dwallach@gmail.com>",
+    "Arthur Wu <wuwenqin200613@gmail.com>",
+    "Yanyu Zhong <yanyuzhongzyy@gmail.com>",
+    "Zihe Zhao <zz83@rice.edu>"
+  ],
   "repository": "https://github.com/danwallach/ElectionGuard-TypeScript",
   "license": "MIT",
   "keywords": [
-    "typescript",
+    "cryptography",
     "electionguard",
-    "esbuild"
+    "voting"
   ],
   "files": [
     "dist",
@@ -17,6 +25,7 @@
   ],
   "type": "module",
   "main": "dist/index.js",
+  "module": "dist/index.js",
   "exports": {
     "import": "./dist/index.js",
     "require": "./dist/index.cjs",

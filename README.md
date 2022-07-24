@@ -1,31 +1,142 @@
-![Microsoft Defending Democracy Program: ElectionGuard Python][banner image]
+# 🗳 ElectionGuard Typescript
 
-# 🗳 ETS: ElectionGuard Typescript
+A typescript library that implements a subset of the [ElectionGuard](https://www.electionguard.vote/) spec to allow encryption of ballots in browsers.
 
+## Features
 
-[banner image]: https://raw.githubusercontent.com/microsoft/electionguard-python/main/images/electionguard-banner.svg
+- Ballot encryption
 
+  **Note**: write-ins, overvotes, and undervotes are not supported in our implementation of ElectionGuard 1.0.
 
-## ❓ What Is Vote-by-mail?
- Vote by mail, or vote at home, is a method of voting that voters get their ballot delivered to them weeks before Election Day, fill it out at their convenience, then return it either in-person or by mail. There are two types of vote by mail system -- comprehensive vote by mail and absentee ballots. To ensure the integrity of elections and the validity of each ballot, risk-limiting audits are implemented and ballot tracking services are provided.
+- Compatibility with [electionguard-python](https://github.com/microsoft/electionguard-python/)
+- Support for [modern](https://caniuse.com/bigint) browsers
+- Support for NodeJS >= 14
 
-## ❓ What Is End-to-End Verifiable Voting?
- E2E verifiable voting is a way to guarantee voting system security, preventing someone other than the sender or recipient from accessing & modifying the ballots. The voters first vote the way they would traditionally on an electronic voting system, but in the end, an e2e system would use cryptography and generate a receipt of a long numeric sequence or a qrcode. This receipt is essentially a record of the vote that's been encrypted with a secret key the voter doesn't have. But it still allows voters to verify that their votes were counted. E2E verifiable voting is able to respond to voters' challenge on whether their ballots are included by providing mathematical proofs which show that the ballots add up to the officially announced totals.  That is the mechanism of how the voters can get confident evidence of their ballot being effective without revealing which candidates were voted for nor requiring them to trust election official results, software, hardware, and so on.
+## Non-features
 
+- Ballot decryption
+- Verification
 
-## ❓ What Is ElectionGuard?
-ElectionGuard is an open source software development kit (SDK) that makes voting more secure, transparent and accessible. The ElectionGuard SDK leverages homomorphic encryption to ensure that votes recorded by electronic systems of any type remain encrypted, secure, and secret. Meanwhile, ElectionGuard also allows verifiable and accurate tallying of ballots by any 3rd party organization without compromising secrecy or security.
+## Installation
 
-## ❗️Here comes Electionguard Typescript!
-Our team focuses on building a bridge between the vote-by-mail system and end-to-end verifiable encryption. We want to create a user-friendly web application that not only allows user to vote and print out their ballot, but also performs chaum Peterson encryption while they are voting. This is actually an in-browser version of election guard. 
+### Node
 
-To achieve this, for Microsoft team, we built a typescript frontend implementation that uses the exactly same encryption logic as election guard. For Front end web interface, we built a fully encapsulated API to add the feature of ballot encryption for them. You can just use approximately few lines of code that calls encrpt_ballot in the front-end typescript, and we will handle everything else for you. 
+**Note**: we haven't published a npm package yet.
 
-## Workflow of ETS:
-Data pipeline:
-![workflow of ETS](README_src/workflow.png)
+```sh
+npm install github:danwallach/electionguard
+# or
+yarn add electionguard@danwallach/electionguard
+```
 
-### Getting Started
+### Browser
+
+As an **ES module**:
+
+```html
+<head>
+  <!-- ... -->
+  <script type="module">
+    import {ManifestParty, bigIntContext4096} from './dist/electionguard.js';
+    console.log(new ManifestParty(bigIntContext4096(), 'example'));
+  </script>
+</head>
+```
+
+As a **UMD module**:
+
+```html
+<head>
+  <!-- ... -->
+  <script src="./dist/electionguard.umd.js"></script>
+</head>
+<body>
+  <!-- ... -->
+  <script>
+    console.log(
+      new eg.ManifestParty(eg.bigIntContext4096(), 'example')
+    );
+  </script>
+</body>
+```
+
+## Usage
+
+```js
+import {
+  AsyncBallotEncryptor,
+  bigIntContext4096,
+  EncryptionDevice,
+  PlaintextBallot,
+  PlaintextContest,
+  PlaintextSelection,
+} from 'electionguard';
+
+const context = bigIntContext4096();
+const device = new EncryptionDevice(context, 55890250559315, 12345, 45678, 'polling-place');
+let codeSeed = device.cryptoHashElement;
+
+const manifestObj = {
+  election_scope_id: 'hamilton-county-general-election',
+  spec_version: '1.0',
+  // ...
+};
+const electionContextObj = {
+  number_of_guardians: 5,
+  quorum: 3,
+  // ...
+};
+const ballot = new PlaintextBallot(
+  'ballot-8a27eaa6-f1c3-11ec-b605-aaf53b701db4',
+  'congress-district-5-hamilton-county',
+  [
+    new PlaintextContest('president-vice-president-contest', [
+      new PlaintextSelection('cramer-vuocolo-selection', 1),
+    ]),
+    // ...
+  ]
+);
+
+const encryptor = AsyncBallotEncryptor.create(
+  context,
+  manifestObj,
+  electionContextObj,
+  false,
+  ballot.ballotStyleId,
+  ballot.ballotId,
+  codeSeed
+);
+ballot.contests.forEach(contest => encryptor.encrypt(contest));
+
+(async () => {
+  const result = await encryptor.getSerializedEncryptedBallot();
+  const {serializedEncryptedBallot, ballotHash} = result;
+
+  const ballotHashModQ = context.createElementModQ(ballotHash);
+  if (ballotHashModQ === undefined) {
+    throw new Error('unable to create ElementModQ from ballotHash');
+  }
+  codeSeed = ballotHashModQ;
+
+  console.log(JSON.stringify(serializedEncryptedBallot, null, 2));
+})();
+```
+
+<!-- See `examples/` for more examples. -->
+
+Check the [documentation](#documentation) for a full list of exports.
+
+## Documentation
+
+<!-- TODO: deploy these somewhere -->
+
+You can generate API documentation using [TypeDoc](https://typedoc.org/guides/doccomments/).
+
+```bash
+npm run docs
+```
+
+### Development
 
 ```bash
 # Install dependencies
@@ -33,31 +144,26 @@ npm install
 
 # Now you can run various npm commands:
 npm run test
+npm run coverage
+npm run build
 npm run elgamal-bench
-...
+# ...
 
 # Auto-indenter and linter (uses gts)
 npm run fix
 ```
 
+See also:
 
-### Documentation, published with CI
+- [`NOTES.md`](./NOTES.md)
+- [`PRECOMPUTE.md`](./PRECOMPUTE.md)
 
-You can auto-generate API documentation from the TypeScript source files using [TypeDoc](https://typedoc.org/guides/doccomments/). The generated documentation can be published to GitHub / GitLab pages through the CI.
+## License
 
-```bash
-npm run docs
-```
-
-The resulting HTML is saved in `docs/`.
-
-You can publish the documentation through CI:
-* [GitHub pages](https://pages.github.com/): See [`.github/workflows/deploy-gh-pages.yml`](https://github.com/metachris/typescript-boilerplate/blob/master/.github/workflows/deploy-gh-pages.yml)
-* [GitLab pages](https://docs.gitlab.com/ee/user/project/pages/): [`.gitlab-ci.yml`](https://github.com/metachris/typescript-boilerplate/blob/master/.gitlab-ci.yml)
-
-This is the documentation for this boilerplate project: https://metachris.github.io/typescript-boilerplate/
+[MIT License](./LICENSE)
 
 ## Authors
+
 - Han Guo <alexiland@outlook.com>
 - Xin Hao <xinhaofighting@gmail.com>
 - Shreyas Minocha <shreyasminocha@rice.edu>
