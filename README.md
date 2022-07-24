@@ -10,7 +10,7 @@ A typescript library that implements a subset of the [ElectionGuard](https://www
 
 - Compatibility with [electionguard-python](https://github.com/microsoft/electionguard-python/)
 - Support for [modern](https://caniuse.com/bigint) browsers
-- Support for NodeJS >= 14
+- Support for NodeJS
 
 ## Non-features
 
@@ -136,7 +136,7 @@ You can generate API documentation using [TypeDoc](https://typedoc.org/guides/do
 npm run docs
 ```
 
-### Development
+## Development
 
 ```bash
 # Install dependencies
