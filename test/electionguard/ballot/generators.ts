@@ -638,54 +638,47 @@ export function plaintextVotedBallot(manifest: M.Manifest) {
     .constantFrom(...manifest.ballotStyles)
     .filter(bs => manifest.getContests(bs.ballotStyleId).length >= 1)
     .chain(ballotStyle => {
-      return fc
-        .tuple(
-          fc.shuffledSubarray(manifest.getContests(ballotStyle.ballotStyleId), {
-            minLength: 1,
-          }),
-          fc.uuid(),
-          fc.string()
-        )
-        .map(t => {
-          const [contests, ballotUuid, rngSeed] = t;
-          const rng = seedrandom(rngSeed);
+      return fc.tuple(fc.uuid(), fc.string()).map(t => {
+        const [ballotUuid, rngSeed] = t;
+        const contests = manifest.getContests(ballotStyle.ballotStyleId);
+        const rng = seedrandom(rngSeed);
 
-          const votedContests = contests.map(contest => {
-            if (!contest.isValid()) {
-              throw new Error(`contest isn't valid?: ${contest}`);
-            }
-            const n = contest.numberElected;
-            const ballotSelections = contest.selections;
-            const randomSelections = shuffleArray(ballotSelections, rng);
-            const cutPoint = rng.int32() % n;
-            const yesVotes = randomSelections.slice(0, cutPoint);
-            const noVotes = randomSelections.slice(cutPoint);
-            const noVotesSubset = noVotes.slice(
-              0,
-              rng.int32() % (noVotes.length + 1)
-            );
+        const votedContests = contests.map(contest => {
+          if (!contest.isValid()) {
+            throw new Error(`contest isn't valid?: ${contest}`);
+          }
+          const n = contest.numberElected;
+          const ballotSelections = contest.selections;
+          const randomSelections = shuffleArray(ballotSelections, rng);
+          const cutPoint = rng.int32() % n;
+          const yesVotes = randomSelections.slice(0, cutPoint);
+          const noVotes = randomSelections.slice(cutPoint);
+          const noVotesSubset = noVotes.slice(
+            0,
+            rng.int32() % (noVotes.length + 1)
+          );
 
-            const votedSelections = yesVotes
-              .map(selectionDesc =>
-                selectionFrom(selectionDesc.selectionId, false, true)
+          const votedSelections = yesVotes
+            .map(selectionDesc =>
+              selectionFrom(selectionDesc.selectionId, false, true)
+            )
+            .concat(
+              noVotesSubset.map(selectionDesc =>
+                selectionFrom(selectionDesc.selectionId, false, false)
               )
-              .concat(
-                noVotesSubset.map(selectionDesc =>
-                  selectionFrom(selectionDesc.selectionId, false, false)
-                )
-              );
-            return new PlaintextContest(
-              contest.contestId,
-              shuffleArray(votedSelections, rng)
             );
-          });
-
-          return new PlaintextBallot(
-            ballotUuid,
-            ballotStyle.ballotStyleId,
-            votedContests // already shuffled
+          return new PlaintextContest(
+            contest.contestId,
+            shuffleArray(votedSelections, rng)
           );
         });
+
+        return new PlaintextBallot(
+          ballotUuid,
+          ballotStyle.ballotStyleId,
+          votedContests // already shuffled
+        );
+      });
     });
 }
 

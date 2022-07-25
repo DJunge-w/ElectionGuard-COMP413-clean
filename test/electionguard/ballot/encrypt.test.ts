@@ -311,6 +311,39 @@ describe('Election / ballot encryption', () => {
       fcFastConfig
     );
   });
+  test('Ballots with missing contests result in errors', () => {
+    fc.assert(
+      fc.property(
+        electionAndBallots(groupContext),
+        elementModQ(groupContext),
+        elementModQ(groupContext),
+        (eb, prev, seed) => {
+          const nonces = new Nonces(seed);
+          const encryptionState = new EncryptionState(
+            groupContext,
+            eb.manifest,
+            eb.electionContext,
+            true
+          );
+          const ballotsMissingContests = eb.ballots.map(
+            ballot =>
+              new PlaintextBallot(
+                ballot.ballotId,
+                ballot.ballotStyleId,
+                ballot.contests.slice(1)
+              )
+          );
+
+          ballotsMissingContests.forEach((b, i) => {
+            expect(() =>
+              encryptBallot(encryptionState, b, prev, nonces.get(i))
+            ).toThrow();
+          });
+        }
+      ),
+      fcFastConfig
+    );
+  });
 });
 
 function noRepeatingBigints(input: bigint[]): boolean {

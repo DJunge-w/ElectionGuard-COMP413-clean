@@ -86,9 +86,11 @@ export function encryptBallot(
   const encryptedContests = state.manifest
     .getContests(ballot.ballotStyleId)
     .map(mcontest => {
-      const pcontest: PlaintextContest =
-        pcontests.get(mcontest.contestId) ?? contestFrom(mcontest);
-      // If no contest on the ballot, create a placeholder
+      const pcontest = pcontests.get(mcontest.contestId);
+      if (pcontest === undefined) {
+        throw new Error(`Missing contest: ${mcontest.contestId}`);
+      }
+
       return encryptContest(
         state,
         pcontest,
@@ -128,13 +130,6 @@ export function encryptBallot(
     ballotEncryptionSeed
   );
   return encryptedBallot;
-}
-
-function contestFrom(mcontest: ManifestContestDescription): PlaintextContest {
-  const selections = mcontest.selections.map(it =>
-    selectionFrom(it.selectionId, false, false)
-  );
-  return new PlaintextContest(mcontest.contestId, selections);
 }
 
 /**

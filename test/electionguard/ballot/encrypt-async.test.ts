@@ -115,6 +115,61 @@ describe('Async encryption wrapper', () => {
       fcFastConfig
     );
   });
+  test('Ballots with missing contests result in errors', async () => {
+    jest.spyOn(console, 'info').mockImplementation(() => {});
+    jest.spyOn(console, 'warn').mockImplementation(() => {});
+    jest.spyOn(console, 'error').mockImplementation(() => {});
+
+    await fc.assert(
+      fc.asyncProperty(
+        electionAndBallots(groupContext, 1),
+        elementModQ(groupContext),
+        async (eb, prev) => {
+          const bCodecs = getBallotCodecsForContext(groupContext);
+          const cCodecs = getCoreCodecsForContext(groupContext);
+
+          const manifestJson = bCodecs.manifestCodec.encode(
+            eb.manifest
+          ) as object;
+          const electionContextJson = cCodecs.electionContextCodec.encode(
+            eb.electionContext
+          ) as object;
+
+          /* const manifestDecoded = */ eitherRightOrFail(
+            bCodecs.manifestCodec.decode(manifestJson)
+          );
+          const electionContextDecoded = eitherRightOrFail(
+            cCodecs.electionContextCodec.decode(electionContextJson)
+          );
+
+          expect(
+            electionContextDecoded.jointPublicKey.element.isValidResidue()
+          ).toBe(true);
+
+          const [plaintextBallot] = eb.ballots;
+          const asyncEncryptor = AsyncBallotEncryptor.create(
+            groupContext,
+            manifestJson,
+            electionContextJson,
+            true,
+            plaintextBallot.ballotStyleId,
+            plaintextBallot.ballotId,
+            prev
+          );
+
+          const contestsProperSubset = plaintextBallot.contests.slice(1);
+          contestsProperSubset.forEach(contest =>
+            asyncEncryptor.encrypt(contest)
+          );
+
+          await expect(
+            async () => await asyncEncryptor.getEncryptedBallot()
+          ).rejects.toBeTruthy();
+        }
+      ),
+      fcFastConfig
+    );
+  });
 
   test.todo('incompatible contexts');
 });
