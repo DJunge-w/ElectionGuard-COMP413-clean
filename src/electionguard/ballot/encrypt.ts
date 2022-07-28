@@ -7,7 +7,7 @@ import {elGamalAdd, elGamalEncrypt, ElGamalPublicKey} from '../core/elgamal';
 import {addQ, ElementModQ, GroupContext} from '../core/group-common';
 import {hashElements} from '../core/hash';
 import {Nonces} from '../core/nonces';
-import {associateBy, maxOf, numberRange} from '../core/utils';
+import {associateBy, maxOf, numberRange, stringSetsEqual} from '../core/utils';
 import {
   CiphertextBallot,
   CiphertextContest,
@@ -22,6 +22,7 @@ import {
   PlaintextBallot,
   PlaintextContest,
   PlaintextSelection,
+  selectionFrom,
 } from './plaintext-ballot';
 import * as log from '../core/logging';
 import {sortedArrayOfOrderedElectionObjects} from './election-object-base';
@@ -81,28 +82,40 @@ export function encryptBallot(
     ballotEncryptionSeed
   );
 
-  const pcontests = associateBy(ballot.contests, c => c.contestId);
+  const normalizedBallot = ballot.normalize(state.manifest);
+  const contestsForStyle = state.manifest.getContests(
+    normalizedBallot.ballotStyleId
+  );
 
-  const encryptedContests = state.manifest
-    .getContests(ballot.ballotStyleId)
-    .map(mcontest => {
-      const pcontest = pcontests.get(mcontest.contestId);
-      if (pcontest === undefined) {
-        throw new Error(`Missing contest: ${mcontest.contestId}`);
-      }
+  if (
+    !stringSetsEqual(
+      normalizedBallot.contests.map(c => c.contestId),
+      contestsForStyle.map(c => c.contestId)
+    )
+  ) {
+    throw new Error('Ballot has missing or extraneous contests');
+  }
 
-      return encryptContest(
-        state,
-        pcontest,
-        ballot.ballotId,
-        mcontest,
-        ballotNonce
-      );
-    });
+  const pcontests = associateBy(normalizedBallot.contests, c => c.contestId);
+  const encryptedContests = contestsForStyle.map(mcontest => {
+    const pcontest = pcontests.get(mcontest.contestId);
+
+    // This shouldn't happen, since we would throw earlier anyway
+    if (pcontest === undefined)
+      throw new Error(`Missing contest: ${mcontest.contestId}`);
+
+    return encryptContest(
+      state,
+      pcontest,
+      normalizedBallot.ballotId,
+      mcontest,
+      ballotNonce
+    );
+  });
 
   const cryptoHash = hashElements(
     state.group,
-    ballot.ballotId,
+    normalizedBallot.ballotId,
     state.manifestHash,
     ...sortedArrayOfOrderedElectionObjects(encryptedContests)
   );
@@ -119,8 +132,8 @@ export function encryptBallot(
   );
 
   const encryptedBallot = new CiphertextBallot(
-    ballot.ballotId,
-    ballot.ballotStyleId,
+    normalizedBallot.ballotId,
+    normalizedBallot.ballotStyleId,
     state.manifestHash,
     ballotCodeSeed,
     ballotCode,
@@ -156,8 +169,9 @@ export function encryptContest(
   const contestNonce = nonceSequence.get(contestDescription.sequenceOrder);
   const chaumPedersenNonce = nonceSequence.get(0);
 
+  const normalizedContest = contest.normalize(contestDescription);
   const plaintextSelections = associateBy(
-    contest.selections,
+    normalizedContest.selections,
     s => s.selectionId
   );
 
@@ -166,10 +180,15 @@ export function encryptContest(
   const encryptedNormalSelections = contestDescription.selections.map(
     mselection => {
       // Find the actual selection matching the contest description.
-      const plaintextSelection =
-        plaintextSelections.get(mselection.selectionId) ??
-        selectionFrom(mselection.selectionId, false, false);
-      // If no selection was made for this possible value, we explicitly set it to false
+      const plaintextSelection = plaintextSelections.get(
+        mselection.selectionId
+      );
+
+      // If there's no selection even after normalization, we throw an error
+      if (plaintextSelection === undefined)
+        throw new Error(
+          `Contest ${contest.contestId} contains no selection for ${mselection.selectionId}`
+        );
 
       // track the selection count so we can append the appropriate number of true placeholder
       // votes
@@ -280,19 +299,6 @@ export function encryptContest(
   );
 
   return encryptedContest;
-}
-
-export function selectionFrom(
-  selectionId: string,
-  isPlaceholder: boolean,
-  isAffirmative: boolean
-): PlaintextSelection {
-  return new PlaintextSelection(
-    selectionId,
-    isAffirmative ? 1 : 0,
-    isPlaceholder,
-    undefined // no extended data
-  );
 }
 
 /** Generates a placeholder selection description that is unique so it can be hashed. */

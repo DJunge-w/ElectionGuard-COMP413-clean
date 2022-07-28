@@ -31,4 +31,29 @@ describe('Plaintext ballots', () => {
       })
     );
   });
+
+  test('Normalization works', () => {
+    fc.assert(
+      fc.property(electionAndBallots(groupContext, 1), eb => {
+        const [ballot] = eb.ballots;
+        expect(
+          ballot.normalize(eb.manifest).contests.map(c => c.contestId)
+        ).toStrictEqual(
+          eb.manifest.getContests(ballot.ballotStyleId).map(c => c.contestId)
+        );
+      })
+    );
+
+    // idempotent
+    fc.assert(
+      fc.property(electionAndBallots(groupContext, 1), eb => {
+        const [ballot] = eb.ballots;
+        expect(
+          ballot
+            .normalize(eb.manifest)
+            .equals(ballot.normalize(eb.manifest).normalize(eb.manifest))
+        ).toBe(true);
+      })
+    );
+  });
 });

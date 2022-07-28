@@ -61,7 +61,10 @@ describe('Election / ballot encryption', () => {
           );
 
           expect(
-            matchingArraysOfAnyElectionObjects(eb.ballots, decryptedBallots)
+            matchingArraysOfAnyElectionObjects(
+              eb.ballots.map(ballot => ballot.normalize(eb.manifest)),
+              decryptedBallots
+            )
           ).toBe(true);
         }
       ),

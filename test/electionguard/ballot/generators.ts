@@ -8,8 +8,8 @@ import {
   PlaintextContest,
   EncryptionState,
 } from '../../../src/electionguard';
-import {selectionFrom} from '../../../src/electionguard/ballot/encrypt';
 import * as M from '../../../src/electionguard/ballot/manifest';
+import {selectionFrom} from '../../../src/electionguard/ballot/plaintext-ballot';
 import {
   chunkArray,
   numberRange,
