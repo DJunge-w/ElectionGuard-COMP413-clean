@@ -106,7 +106,7 @@ describe('Election / ballot encryption', () => {
       fcFastConfig
     );
   });
-  test('Encrypt the same election twice; idential result', () => {
+  test('Encrypt the same election twice; identical result', () => {
     fc.assert(
       fc.property(
         electionAndBallots(groupContext),
@@ -314,10 +314,10 @@ describe('Election / ballot encryption', () => {
       fcFastConfig
     );
   });
-  test('Ballots with missing contests result in errors', () => {
+  test('Ballots with missing or extra contests result in errors', () => {
     fc.assert(
       fc.property(
-        electionAndBallots(groupContext),
+        electionAndBallots(groupContext, 1),
         elementModQ(groupContext),
         elementModQ(groupContext),
         (eb, prev, seed) => {
@@ -328,20 +328,35 @@ describe('Election / ballot encryption', () => {
             eb.electionContext,
             true
           );
-          const ballotsMissingContests = eb.ballots.map(
-            ballot =>
-              new PlaintextBallot(
-                ballot.ballotId,
-                ballot.ballotStyleId,
-                ballot.contests.slice(1)
-              )
-          );
+          const [ballot] = eb.ballots;
 
-          ballotsMissingContests.forEach((b, i) => {
-            expect(() =>
-              encryptBallot(encryptionState, b, prev, nonces.get(i))
-            ).toThrow();
-          });
+          const ballotMissingContests = new PlaintextBallot(
+            ballot.ballotId,
+            ballot.ballotStyleId,
+            ballot.contests.slice(1)
+          );
+          expect(() =>
+            encryptBallot(
+              encryptionState,
+              ballotMissingContests,
+              prev,
+              nonces.get(0)
+            )
+          ).toThrow();
+
+          const ballotExtraContests = new PlaintextBallot(
+            ballot.ballotId,
+            ballot.ballotStyleId,
+            [...ballot.contests, new PlaintextContest('', [])]
+          );
+          expect(() =>
+            encryptBallot(
+              encryptionState,
+              ballotExtraContests,
+              prev,
+              nonces.get(0)
+            )
+          ).toThrow();
         }
       ),
       fcFastConfig
