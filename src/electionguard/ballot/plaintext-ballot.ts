@@ -20,20 +20,6 @@ export class PlaintextBallot implements ElectionObjectBase {
     return this.ballotId;
   }
 
-  normalize(manifest: Manifest) {
-    return new PlaintextBallot(
-      this.ballotId,
-      this.ballotStyleId,
-      this.contests.map(contest => {
-        const mcontest = manifest.getContest(contest.contestId);
-        if (mcontest === undefined)
-          throw new Error(`Extraneous contest: ${contest.contestId}`);
-
-        return contest.normalize(mcontest);
-      })
-    );
-  }
-
   equals(other: PlaintextBallot): boolean {
     return (
       other instanceof PlaintextBallot &&
@@ -53,26 +39,6 @@ export class PlaintextContest implements ElectionObjectBase {
 
   get objectId(): string {
     return this.contestId;
-  }
-
-  normalize(description: ManifestContestDescription) {
-    const pselections = associateBy(this.selections, s => s.selectionId);
-
-    const normalizedSelections = description.selections.map(s => {
-      const match = pselections.get(s.selectionId);
-      // if no selection was made, we explicitly set it to false
-      if (match === undefined)
-        return selectionFrom(s.selectionId, false, false);
-
-      return new PlaintextSelection(
-        match.selectionId,
-        match.vote,
-        match.isPlaceholderSelection,
-        match.writeIn
-      );
-    });
-
-    return new PlaintextContest(this.contestId, normalizedSelections);
   }
 
   equals(other: PlaintextContest): boolean {
@@ -108,6 +74,91 @@ export class PlaintextSelection implements ElectionObjectBase {
   }
 }
 
+/**
+ * Returns a new ballot with contests corresponding to every contest in the given manifest.
+ * Puts contests full of non-affirmative selections in place of missing contests.
+ * All contests on the returned ballot are themselves normalized.
+ *
+ * If the given ballot has contests or selections that don't correspond to any on the ballot,
+ * an error is thrown.
+ */
+export function normalizeBallot(
+  ballot: PlaintextBallot,
+  manifest: Manifest
+): PlaintextBallot {
+  const pcontests = associateBy(ballot.contests, c => c.contestId);
+  const contestsForStyle = manifest.getContests(ballot.ballotStyleId);
+  const contestsForStyleIds = contestsForStyle.map(c => c.contestId);
+
+  for (const pcontest of ballot.contests) {
+    if (!contestsForStyleIds.includes(pcontest.contestId))
+      throw new Error(`Ballot has extraneous contest: ${pcontest.contestId}`);
+  }
+
+  const normalizedContests = contestsForStyle.map(mcontest => {
+    const pcontest = pcontests.get(mcontest.contestId);
+    // if this contest is absent, we create a new one with just placeholders
+    if (pcontest === undefined) return contestFrom(mcontest);
+
+    return normalizeContest(pcontest, mcontest);
+  });
+
+  return new PlaintextBallot(
+    ballot.ballotId,
+    ballot.ballotStyleId,
+    normalizedContests
+  );
+}
+
+/**
+ * Returns a new contest with as many selections as the given contest description.
+ * Puts non-affirmative selections in place of missing selections.
+ *
+ * If the contest has selections that don't correspond to any selection in the description,
+ * an error is thrown.
+ */
+export function normalizeContest(
+  contest: PlaintextContest,
+  description: ManifestContestDescription
+): PlaintextContest {
+  const pselections = associateBy(contest.selections, s => s.selectionId);
+  const descriptionSelectionIds = description.selections.map(
+    s => s.selectionId
+  );
+
+  for (const pselection of contest.selections) {
+    if (!descriptionSelectionIds.includes(pselection.selectionId))
+      throw new Error(
+        `Contest has extraneous selection: ${pselection.selectionId}`
+      );
+  }
+
+  const normalizedSelections = description.selections.map(mselection => {
+    const pselection = pselections.get(mselection.selectionId);
+    // if no selection was made, we explicitly set it to a non-affirmative vote
+    if (pselection === undefined)
+      return new PlaintextSelection(mselection.selectionId, 0, false);
+
+    return new PlaintextSelection(
+      pselection.selectionId,
+      pselection.vote,
+      pselection.isPlaceholderSelection,
+      pselection.writeIn
+    );
+  });
+
+  return new PlaintextContest(contest.contestId, normalizedSelections);
+}
+
+/** Returns a contest full of non-affirmative selections for the given description. */
+function contestFrom(mcontest: ManifestContestDescription): PlaintextContest {
+  const selections = mcontest.selections.map(it =>
+    selectionFrom(it.selectionId, false, false)
+  );
+  return new PlaintextContest(mcontest.contestId, selections);
+}
+
+/** Returns a selection */
 export function selectionFrom(
   selectionId: string,
   isPlaceholder: boolean,

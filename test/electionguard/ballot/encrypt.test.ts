@@ -9,6 +9,7 @@ import {
   encryptBallot,
   EncryptionState,
 } from '../../../src/electionguard';
+import {normalizeBallot} from '../../../src/electionguard/ballot/plaintext-ballot';
 import {decryptAndVerifyBallot} from '../../../src/electionguard/ballot/decrypt';
 import {matchingArraysOfAnyElectionObjects} from '../../../src/electionguard/ballot/election-object-base';
 import {Nonces} from '../../../src/electionguard/core/nonces';
@@ -62,7 +63,7 @@ describe('Election / ballot encryption', () => {
 
           expect(
             matchingArraysOfAnyElectionObjects(
-              eb.ballots.map(ballot => ballot.normalize(eb.manifest)),
+              eb.ballots.map(ballot => normalizeBallot(ballot, eb.manifest)),
               decryptedBallots
             )
           ).toBe(true);
@@ -314,13 +315,14 @@ describe('Election / ballot encryption', () => {
       fcFastConfig
     );
   });
-  test('Ballots with missing or extra contests result in errors', () => {
+  test('Ballots with extraneous contests result in errors', () => {
     fc.assert(
       fc.property(
         electionAndBallots(groupContext, 1),
         elementModQ(groupContext),
         elementModQ(groupContext),
-        (eb, prev, seed) => {
+        fc.string(),
+        (eb, prev, seed, bogusContestId) => {
           const nonces = new Nonces(seed);
           const encryptionState = new EncryptionState(
             groupContext,
@@ -330,29 +332,19 @@ describe('Election / ballot encryption', () => {
           );
           const [ballot] = eb.ballots;
 
-          const ballotMissingContests = new PlaintextBallot(
-            ballot.ballotId,
-            ballot.ballotStyleId,
-            ballot.contests.slice(1)
+          fc.pre(
+            !ballot.contests.map(c => c.contestId).includes(bogusContestId)
           );
-          expect(() =>
-            encryptBallot(
-              encryptionState,
-              ballotMissingContests,
-              prev,
-              nonces.get(0)
-            )
-          ).toThrow();
 
-          const ballotExtraContests = new PlaintextBallot(
+          const ballotExtraneousContests = new PlaintextBallot(
             ballot.ballotId,
             ballot.ballotStyleId,
-            [...ballot.contests, new PlaintextContest('', [])]
+            [...ballot.contests, new PlaintextContest(bogusContestId, [])]
           );
           expect(() =>
             encryptBallot(
               encryptionState,
-              ballotExtraContests,
+              ballotExtraneousContests,
               prev,
               nonces.get(0)
             )

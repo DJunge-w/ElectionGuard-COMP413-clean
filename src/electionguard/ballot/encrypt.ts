@@ -7,7 +7,7 @@ import {elGamalAdd, elGamalEncrypt, ElGamalPublicKey} from '../core/elgamal';
 import {addQ, ElementModQ, GroupContext} from '../core/group-common';
 import {hashElements} from '../core/hash';
 import {Nonces} from '../core/nonces';
-import {associateBy, maxOf, numberRange, stringSetsEqual} from '../core/utils';
+import {associateBy, maxOf, numberRange} from '../core/utils';
 import {
   CiphertextBallot,
   CiphertextContest,
@@ -22,6 +22,8 @@ import {
   PlaintextBallot,
   PlaintextContest,
   PlaintextSelection,
+  normalizeBallot,
+  normalizeContest,
   selectionFrom,
 } from './plaintext-ballot';
 import * as log from '../core/logging';
@@ -82,19 +84,10 @@ export function encryptBallot(
     ballotEncryptionSeed
   );
 
-  const normalizedBallot = ballot.normalize(state.manifest);
+  const normalizedBallot = normalizeBallot(ballot, state.manifest);
   const contestsForStyle = state.manifest.getContests(
     normalizedBallot.ballotStyleId
   );
-
-  if (
-    !stringSetsEqual(
-      normalizedBallot.contests.map(c => c.contestId),
-      contestsForStyle.map(c => c.contestId)
-    )
-  ) {
-    throw new Error('Ballot has missing or extraneous contests');
-  }
 
   const pcontests = associateBy(normalizedBallot.contests, c => c.contestId);
   const encryptedContests = contestsForStyle.map(mcontest => {
@@ -169,7 +162,7 @@ export function encryptContest(
   const contestNonce = nonceSequence.get(contestDescription.sequenceOrder);
   const chaumPedersenNonce = nonceSequence.get(0);
 
-  const normalizedContest = contest.normalize(contestDescription);
+  const normalizedContest = normalizeContest(contest, contestDescription);
   const plaintextSelections = associateBy(
     normalizedContest.selections,
     s => s.selectionId

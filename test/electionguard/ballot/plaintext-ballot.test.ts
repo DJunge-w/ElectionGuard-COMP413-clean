@@ -4,6 +4,7 @@ import {
   PlaintextBallot,
   PlaintextContest,
 } from '../../../src/electionguard';
+import {normalizeBallot} from '../../../src/electionguard/ballot/plaintext-ballot';
 import {shuffleArray} from '../../../src/electionguard/core/utils';
 import {fcFastConfig} from '../core/generators';
 import {electionAndBallots} from './generators';
@@ -37,7 +38,7 @@ describe('Plaintext ballots', () => {
     fc.assert(
       fc.property(electionAndBallots(groupContext, 1), eb => {
         const [ballot] = eb.ballots;
-        const normalizedBallot = ballot.normalize(eb.manifest);
+        const normalizedBallot = normalizeBallot(ballot, eb.manifest);
 
         normalizedBallot.contests.forEach(contest => {
           const mcontest = eb.manifest.getContest(contest.contestId);
@@ -56,9 +57,10 @@ describe('Plaintext ballots', () => {
       fc.property(electionAndBallots(groupContext, 1), eb => {
         const [ballot] = eb.ballots;
         expect(
-          ballot
-            .normalize(eb.manifest)
-            .equals(ballot.normalize(eb.manifest).normalize(eb.manifest))
+          normalizeBallot(
+            normalizeBallot(ballot, eb.manifest),
+            eb.manifest
+          ).equals(normalizeBallot(ballot, eb.manifest))
         ).toBe(true);
       }),
       fcFastConfig
