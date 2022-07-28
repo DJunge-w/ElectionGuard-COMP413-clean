@@ -5,6 +5,7 @@ import {
   PlaintextContest,
 } from '../../../src/electionguard';
 import {shuffleArray} from '../../../src/electionguard/core/utils';
+import {fcFastConfig} from '../core/generators';
 import {electionAndBallots} from './generators';
 
 const groupContext = bigIntContext3072();
@@ -36,12 +37,18 @@ describe('Plaintext ballots', () => {
     fc.assert(
       fc.property(electionAndBallots(groupContext, 1), eb => {
         const [ballot] = eb.ballots;
-        expect(
-          ballot.normalize(eb.manifest).contests.map(c => c.contestId)
-        ).toStrictEqual(
-          eb.manifest.getContests(ballot.ballotStyleId).map(c => c.contestId)
-        );
-      })
+        const normalizedBallot = ballot.normalize(eb.manifest);
+
+        normalizedBallot.contests.forEach(contest => {
+          const mcontest = eb.manifest.getContest(contest.contestId);
+          expect(mcontest).toBeTruthy();
+
+          expect(contest.selections.map(s => s.selectionId)).toStrictEqual(
+            mcontest?.selections.map(s => s.selectionId)
+          );
+        });
+      }),
+      fcFastConfig
     );
 
     // idempotent
@@ -53,7 +60,8 @@ describe('Plaintext ballots', () => {
             .normalize(eb.manifest)
             .equals(ballot.normalize(eb.manifest).normalize(eb.manifest))
         ).toBe(true);
-      })
+      }),
+      fcFastConfig
     );
   });
 });
